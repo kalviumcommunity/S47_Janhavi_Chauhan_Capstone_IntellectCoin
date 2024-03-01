@@ -2,6 +2,8 @@ CAPSTONE
 IntellectCoin
 Learn2Earn
 
+Now you can starting earning while you are earning.
+
 IntellectCoin is the app where you can learn as well as earn. This app is not only for students but for every person on the entire earth with minimal knowledge. This app will allow you to earn money with even basic knowledge. This app will be a bridge between company, organisation, etc and the people who are willing to earn and learn at same time. 
 
 For example :
