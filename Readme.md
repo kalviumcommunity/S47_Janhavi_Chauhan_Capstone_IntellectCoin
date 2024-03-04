@@ -22,4 +22,8 @@ Road Map :
 - Authentication and Authorisation.
 —--------------------------
 
+Low Fidelity : https://www.figma.com/file/Yalg8tvyuTtHUoDInifzP1/Untitled?type=design&node-id=0-1&mode=design&t=7Vvxh4kFj2ZhcopC-0 
+
+Low Fidelity prototype : https://www.figma.com/proto/Yalg8tvyuTtHUoDInifzP1/Untitled?type=design&node-id=1-3&t=7Vvxh4kFj2ZhcopC-0&scaling=min-zoom&page-id=0%3A1&starting-point-node-id=1%3A2
+
 
