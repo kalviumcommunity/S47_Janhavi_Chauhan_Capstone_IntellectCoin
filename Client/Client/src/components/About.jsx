@@ -18,8 +18,8 @@ const RegistrationForm = () => {
   useEffect(() => {
     axios.get('http://localhost:4000/registrations')
       .then(response => {
-        console.log('Fetched registrations:', response.data); 
-        setRegistrations(response.data);
+        console.log('Fetched registrations:', response.data.data); 
+        setRegistrations(response.data.data);
       })
       .catch(error => {
         console.error('Error fetching registrations:', error);
@@ -64,7 +64,7 @@ const RegistrationForm = () => {
       <div className="registered-users">
         <h3>Registered Users:</h3>
         <ul>
-          {registrations.map(registration => (
+          {registrations && registrations.map(registration => (
             <li key={registration._id}>
               <div>First Name: {registration.FirstName}</div>
               <div>Last Name: {registration.LastName}</div>
