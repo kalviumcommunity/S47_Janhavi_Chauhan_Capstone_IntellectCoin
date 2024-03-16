@@ -4,6 +4,7 @@ import RegistrationForm from './components/About';
 import Educations from './components/Education';
 import LoginPage from './components/Login';
 import SignupPage from './components/Signup';
+import './App.css'; 
 
 function App() {
   return (
