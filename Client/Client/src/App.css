@@ -50,4 +50,66 @@
   li div {
     margin-bottom: 5px;
   }
+
+  /* App.css */
+
+.App {
+  text-align: center;
+  margin-top: 50px;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+nav ul li button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+nav ul li button:hover {
+  background-color: #45a049;
+}
+
+nav ul li a {
+  color: #333;
+  text-decoration: none;
+}
+
+nav ul li a:hover {
+  color: #000;
+}
+
+.Home h1 {
+  font-size: 36px;
+  color: #333;
+  margin-bottom: 50px;
+}
+
+.RegistrationForm,
+.Educations,
+.LoginPage,
+.SignupPage {
+  text-align: left;
+  margin: 0 auto;
+  width: 80%;
+  max-width: 600px;
+}
+
+
+
   
