@@ -1,16 +1,27 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import RegistrationForm from './components/About';
+import RegistrationForm from './components/ProfileAbout';
 import Educations from './components/Education';
 import LoginPage from './components/Login';
 import SignupPage from './components/Signup';
+import Findjob from './pages/Findjob';
+import Navbar from './pages/Navbar';
+import Events from './pages/Events';
+import Features from './pages/Features';
+import Contact from './pages/Contact';
+import Whyus from './pages/Whyus';
+import Aboutus from './pages/AboutUs';
+
+
 import './App.css'; 
+import'./pages/Heading.css';
 
 function App() {
   return (
     <div className="App">
       <Router>
         <nav>
+          <Navbar />
           <ul>
             <li>
               <Link to="/">Home</Link>
@@ -33,6 +44,13 @@ function App() {
           <Route path="/educations" element={<Educations />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
+          <Route path="/Findjob" element={<Findjob />} />
+          <Route path="/Events" element={<Events />} />
+          <Route path="/Features" element={<Features />} />
+          <Route path="/Contact" element={<Contact />} />
+          <Route path="/Whyus" element={<Whyus />} />
+          <Route path="/Aboutus" element={<Aboutus />} />
+      
         </Routes>
       </Router>
     </div>
@@ -40,7 +58,11 @@ function App() {
 }
 
 function Home() {
-  return <h1>Home</h1>;
+  return (
+    <>
+      <Navbar />
+    </>
+  );
 }
 
 export default App;
