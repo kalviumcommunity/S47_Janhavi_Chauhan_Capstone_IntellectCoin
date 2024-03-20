@@ -18,7 +18,24 @@ const Schema = mongoose.Schema({
     languages: {
         type: [String], 
         default: []
+    },
+    CollegeName: String,
+    Degree: String,
+    YearOfStudy: String,
+    Skills: String,
+    About: String,
+    ProjectCode: {
+        type: String, 
+        trim: true 
+    },
+    DeployedLink: {
+        type: String,
+        trim: true
+    },
+    Certificates: {
+        type:String
     }
+
 })
 
 module.exports = Schema;
