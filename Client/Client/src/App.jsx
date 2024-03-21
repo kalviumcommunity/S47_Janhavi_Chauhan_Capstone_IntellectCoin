@@ -7,6 +7,7 @@ import Features from './pages/Features';
 import Contact from './pages/Contact';
 import Whyus from './pages/Whyus';
 import Aboutus from './pages/AboutUs';
+import UpdateUser from './components/UpdateUser';
 import RegistrationAndEducationForm from './components/Profile';
 import DataDisplayPage from './components/Datadisplay';
 
@@ -39,7 +40,7 @@ function App() {
           <Route path="/Contact" element={<Contact />} />
           <Route path="/Whyus" element={<Whyus />} />
           <Route path="/Aboutus" element={<Aboutus />} />
-      
+          <Route path="/update-user/:id" element={<UpdateUser />} />
         </Routes>
       </Router>
     </div>

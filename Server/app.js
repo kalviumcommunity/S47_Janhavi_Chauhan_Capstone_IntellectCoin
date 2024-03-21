@@ -33,6 +33,17 @@ app.get("/registrations", async (req, res) => {
     res.status(400).send(err);
   }
 });
+
+app.get("/registrations/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const registrations = await Registration.findById(id);
+    res.json({ data: registrations });
+  } catch (err) {
+    res.status(400).send(err);
+  }
+});
+
 // Update registration by ID
 app.put("/register/:id", async (req, res) => {
   const { id } = req.params;
