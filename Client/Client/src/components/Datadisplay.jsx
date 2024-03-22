@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom instead of useHistory
 import styles from './Datadisplay.module.css'; 
+import { useNavigate } from 'react-router-dom';
 
 const DataDisplayPage = () => {
   const [registrationsAndEducations, setRegistrationsAndEducations] = useState([]);
-  const navigate = useNavigate(); // Use useNavigate hook instead of useHistory
+  const navigate = useNavigate()
 
   useEffect(() => {
     fetchData();
@@ -13,7 +13,8 @@ const DataDisplayPage = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get('http://localhost:4000/registrations');
+      const response = await axios.get("http://localhost:4000/registrations");
+      console.log('Response data:', response.data); 
       setRegistrationsAndEducations(response.data.data);
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -22,12 +23,12 @@ const DataDisplayPage = () => {
 
   const handleEdit = async (id) => {
     console.log(`Editing registration with ID: ${id}`);
-    navigate(`/update-user/${id}`); // Navigate to the UpdateUser page with the ID parameter
+    navigate(`/update-user/${id}`) 
   };
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:4000/register/${id}`);
+      await axios.delete(`/register/${id}`);
       setRegistrationsAndEducations(prevState => prevState.filter(item => item._id !== id));
       alert('Registration deleted successfully');
     } catch (error) {
@@ -63,7 +64,7 @@ const DataDisplayPage = () => {
             <p>Certificates: {data.Certificates}</p>
           </div>
           <div className={styles.buttons}>
-            <button onClick={() => {handleEdit(data._id), console.log(data._id)}}>Edit</button>
+            <button onClick={() => handleEdit(data._id)}>Edit</button>
             <button onClick={() => handleDelete(data._id)}>Delete</button>
           </div>
         </div>

@@ -2,16 +2,29 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const Schema = require("./models/Schema");
-// const EduSchema = require("./models/EducationSchema");
+require("dotenv").config();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose
-  .connect("mongodb://localhost:27017/janhavidb")
-  .then(() => console.log("MongoDB connected"))
-  .catch((err) => console.error(err));
+const PORT = process.env.PORT || 4000;
+
+const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      dbName: 'Capstone', 
+    });
+    console.log('MongoDB connected');
+  } catch (err) {
+    console.error('MongoDB connection error:', err);
+    process.exit(1); 
+  }
+};
+
+connectDB();
 
 const Registration = mongoose.model("Register", Schema);
 
@@ -44,7 +57,7 @@ app.get("/registrations/:id", async (req, res) => {
   }
 });
 
-// Update registration by ID
+
 app.put("/register/:id", async (req, res) => {
   const { id } = req.params;
   try {
@@ -55,7 +68,7 @@ app.put("/register/:id", async (req, res) => {
   }
 });
 
-// Delete registration by ID
+
 app.delete("/register/:id", async (req, res) => {
   const { id } = req.params;
   try {
@@ -66,7 +79,6 @@ app.delete("/register/:id", async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
