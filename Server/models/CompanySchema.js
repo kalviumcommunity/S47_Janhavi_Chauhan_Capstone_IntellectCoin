@@ -25,13 +25,14 @@ const CompanySchema = new mongoose.Schema({
         type: String,
         trim: true
     },
-    Projects: [
-        {
-            ProjectName: String,
-            Description: String,
-            Requirements: String
-        }
-    ]
+    Projects: {
+        type: String,
+        
+    },
+    ProjectDescription: {
+        type: String,
+    
+    }
 });
 
-module.exports = mongoose.model('Company', CompanySchema);
+module.exports = CompanySchema

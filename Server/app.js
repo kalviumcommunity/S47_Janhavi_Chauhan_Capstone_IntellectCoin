@@ -86,15 +86,17 @@ app.delete("/register/:id", async (req, res) => {
   }
 });
 
-app.post ("/companyregister", async (req, res) => {
+app.post("/companyregister", async (req, res) => {
   const companyregistration = new CompanyRegistration(req.body);
   try {
     const savedCompanyRegistration = await companyregistration.save();
-    res.send(savedCompanyRegistration);
+    res.status(201).send(savedCompanyRegistration); // HTTP status 201 indicates successful creation
   } catch (err) {
-    res.status(400).send(err);
+    console.error('Company registration failed:', err);
+    res.status(400).send({ error: 'Company registration failed', details: err.message });
   }
-})
+});
+
 
 app.get("/companyregistrations", async (req, res) => {
   try {
