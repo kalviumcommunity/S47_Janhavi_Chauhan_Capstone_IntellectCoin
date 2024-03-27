@@ -13,7 +13,7 @@ import DataDisplayPage from './components/Datadisplay';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import CompanyRegistration from './components/CompanyProfile';
-
+import CompanyList from './components/DisplayCompanyData';
 
 import './App.css'; 
 import'./pages/Heading.css';
@@ -48,6 +48,7 @@ function App() {
          <Route path="/signup" element={<Signup />} />
          <Route path="/companyregister" element={<CompanyRegistration />} />
          <Route path="/UserProfileData" element={<DataDisplayPage />}></Route>
+         <Route path="/companylist" element={<CompanyList />}></Route>
         </Routes>
       </Router>
     </div>
@@ -61,7 +62,7 @@ function Home() {
       <Link to="/signup"><button>Signup</button></Link>
       <Link to ="/companyregister"><button>Company Registration</button></Link>
       <Link to ="/UserProfileData">Browse Projects</Link>
-
+      <Link to ="/companylist">Company List</Link>
      
     </>
   );
