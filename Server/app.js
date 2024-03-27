@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const Schema = require("./models/Schema");
+const CompanySchema = require("./models/CompanySchema");
 const usersRoutes = require('./routes/users')
 const authRoutes = require('./routes/auth')
 require("dotenv").config();
@@ -32,6 +33,7 @@ const connectDB = async () => {
 connectDB();
 
 const Registration = mongoose.model("Register", Schema);
+const CompanyRegistration = mongoose.model("CompanyRegister", CompanySchema);
 
 app.post("/register", async (req, res) => {
   const registration = new Registration(req.body);
@@ -83,6 +85,55 @@ app.delete("/register/:id", async (req, res) => {
     res.status(400).send(err);
   }
 });
+
+app.post ("/companyregister", async (req, res) => {
+  const companyregistration = new CompanyRegistration(req.body);
+  try {
+    const savedCompanyRegistration = await companyregistration.save();
+    res.send(savedCompanyRegistration);
+  } catch (err) {
+    res.status(400).send(err);
+  }
+})
+
+app.get("/companyregistrations", async (req, res) => {
+  try {
+    const companyregistrations = await CompanyRegistration.find();
+    res.json({ data: companyregistrations });
+  } catch (err) {
+    res.status(400).send(err);
+  }
+})
+
+app.get ("/companyregistrations/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const companyregistrations = await CompanyRegistration.findById(id);
+    res.json({ data: companyregistrations });
+  } catch (err) {
+    res.status(400).send(err);
+  }
+})
+
+app.put("/companyregister/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const updatedCompanyRegistration = await CompanyRegistration.findByIdAndUpdate(id, req.body, { new: true });
+    res.send(updatedCompanyRegistration);
+  } catch (err) {
+    res.status(400).send(err);
+  }
+})
+
+app.delete("/companyregister/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    await CompanyRegistration.findByIdAndDelete(id);
+    res.send("Company Registration deleted successfully");
+  } catch (err) {
+    res.status(400).send(err);
+  }
+})
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
