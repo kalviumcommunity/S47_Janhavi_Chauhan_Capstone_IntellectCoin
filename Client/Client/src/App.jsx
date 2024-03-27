@@ -10,6 +10,8 @@ import Aboutus from './pages/AboutUs';
 import UpdateUser from './components/UpdateUser';
 import RegistrationAndEducationForm from './components/Profile';
 import DataDisplayPage from './components/Datadisplay';
+import Login from './components/Login';
+import Signup from './components/Signup';
 
 
 import './App.css'; 
@@ -41,6 +43,8 @@ function App() {
           <Route path="/Whyus" element={<Whyus />} />
           <Route path="/Aboutus" element={<Aboutus />} />
           <Route path="/update-user/:id" element={<UpdateUser />} />
+          <Route path="/login" element={<Login />} />
+         <Route path="/signup" element={<Signup />} />
         </Routes>
       </Router>
     </div>
@@ -50,7 +54,11 @@ function App() {
 function Home() {
   return (
     <>
+      <Link to="/login"><button>Login</button></Link>
+      <Link to="/signup"><button>Signup</button></Link>
       <DataDisplayPage />
+      this is home page
+     
     </>
   );
 }

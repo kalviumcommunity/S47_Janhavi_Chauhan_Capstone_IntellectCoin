@@ -2,6 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const Schema = require("./models/Schema");
+const usersRoutes = require('./routes/users')
+const authRoutes = require('./routes/auth')
 require("dotenv").config();
 
 const app = express();
@@ -9,6 +11,9 @@ app.use(cors());
 app.use(express.json());
 
 const PORT = process.env.PORT || 4000;
+
+app.use('/api/users', usersRoutes);
+app.use('/api/auth', authRoutes);
 
 const connectDB = async () => {
   try {
