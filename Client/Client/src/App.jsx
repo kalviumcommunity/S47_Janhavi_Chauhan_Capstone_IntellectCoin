@@ -14,7 +14,7 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import CompanyRegistration from './components/CompanyProfile';
 import CompanyList from './components/DisplayCompanyData';
-
+import LandingPage from './components/LandingPage';
 import './App.css'; 
 import'./pages/Heading.css';
 
@@ -22,19 +22,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <nav>
-          <Navbar />
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/registration"><button>Registration</button></Link>
-            </li>
-          </ul>
-        </nav>
-
-        <Routes>
+         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/registration" element={<RegistrationAndEducationForm />} />
           <Route path="/Findjob" element={<Findjob />} />
@@ -51,6 +39,7 @@ function App() {
          <Route path="/companylist" element={<CompanyList />}></Route>
         </Routes>
       </Router>
+
     </div>
   );
 }
@@ -58,12 +47,12 @@ function App() {
 function Home() {
   return (
     <>
-      <Link to="/login"><button>Login</button></Link>
-      <Link to="/signup"><button>Signup</button></Link>
-      <Link to ="/companyregister"><button>Company Registration</button></Link>
+
+      <LandingPage/>
+      {/* <Link to ="/companyregister"><button>Company Registration</button></Link>
       <Link to ="/UserProfileData">Browse Projects</Link>
       <Link to ="/companylist">Company List</Link>
-     
+      <Link to="/registration"><button>Registration</button></Link> */}
     </>
   );
 }
