@@ -12,7 +12,8 @@ import RegistrationAndEducationForm from './components/Profile';
 import DataDisplayPage from './components/Datadisplay';
 import Login from './components/Login';
 import Signup from './components/Signup';
-
+import CompanyRegistration from './components/CompanyProfile';
+import CompanyList from './components/DisplayCompanyData';
 
 import './App.css'; 
 import'./pages/Heading.css';
@@ -45,6 +46,9 @@ function App() {
           <Route path="/update-user/:id" element={<UpdateUser />} />
           <Route path="/login" element={<Login />} />
          <Route path="/signup" element={<Signup />} />
+         <Route path="/companyregister" element={<CompanyRegistration />} />
+         <Route path="/UserProfileData" element={<DataDisplayPage />}></Route>
+         <Route path="/companylist" element={<CompanyList />}></Route>
         </Routes>
       </Router>
     </div>
@@ -56,8 +60,9 @@ function Home() {
     <>
       <Link to="/login"><button>Login</button></Link>
       <Link to="/signup"><button>Signup</button></Link>
-      <DataDisplayPage />
-      this is home page
+      <Link to ="/companyregister"><button>Company Registration</button></Link>
+      <Link to ="/UserProfileData">Browse Projects</Link>
+      <Link to ="/companylist">Company List</Link>
      
     </>
   );
