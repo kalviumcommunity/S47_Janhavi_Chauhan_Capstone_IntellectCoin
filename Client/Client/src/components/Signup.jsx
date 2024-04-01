@@ -2,8 +2,11 @@ import styles from './Datadisplay.module.css';
 import { Link, useNavigate } from 'react-router-dom' 
 import { useState } from 'react'
 import axios from 'axios'
+import { useAuth0 } from "@auth0/auth0-react";
+// import { loginWithRedirect } from "@auth0/auth0-react";
 
 const Signup = () => {
+    const { loginWithRedirect } = useAuth0();
     const navigate = useNavigate() 
     const [error, setError] = useState(null) 
     const [formData, setFormData] = useState({
@@ -54,6 +57,7 @@ const Signup = () => {
                         <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} />
                         {error && <div className={styles.error_msg}>{error}</div>}
                         <button type="submit">Sign Up</button> 
+                        <button onClick={() => loginWithRedirect()}>Signup using google</button>
                     </form>
                 </div>
             </div>
