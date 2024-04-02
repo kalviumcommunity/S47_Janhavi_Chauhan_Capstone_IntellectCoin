@@ -18,15 +18,15 @@ export const CarouselData = [
         title : "Revise your concepts while earning",
         img : Revise
     },{
-        title : "Earn money with IntellectCoin without disturbing your studies",
+        title : "Earn money without disturbing your studies",
         img : Earn
     },{
         img : LE
     },{
-        title : "Share with your friends ",
+        title : "Learn with fun",
         img : share
     },{
-        title : "No Degree required just show and earn with your talent",
+        title : "No Degree required",
         img : withoutDegree
     },{
         img : logo
