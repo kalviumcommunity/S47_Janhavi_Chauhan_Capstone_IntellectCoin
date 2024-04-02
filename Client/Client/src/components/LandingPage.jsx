@@ -2,9 +2,9 @@ import {Link} from 'react-router-dom'
 import { useState } from 'react';
 import './LandingPage.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faUser} from '@fortawesome/free-solid-svg-icons';
 import {faUserPlus} from '@fortawesome/free-solid-svg-icons';
 import{faArrowRight} from '@fortawesome/free-solid-svg-icons';
+import{faUser} from '@fortawesome/free-solid-svg-icons';
 
 function LandingPage(){
     const [showDropdown, setShowDropdown] = useState(false);

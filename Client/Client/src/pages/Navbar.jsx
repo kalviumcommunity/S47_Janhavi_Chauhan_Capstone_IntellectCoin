@@ -11,7 +11,7 @@ function Navbar(){
               <Link to='Events'>Events</Link>
               <Link to="/Features">Features</Link>
               <Link to="Contact">Contact</Link>
-              <Link to='/Whyus'>Why Us</Link>
+              <Link to='/Whyus'>Why Us?</Link>
               <Link to='/Aboutus'>About Us</Link>
            </ul>
         </div>
