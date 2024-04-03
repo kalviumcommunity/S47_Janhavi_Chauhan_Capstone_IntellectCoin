@@ -61,8 +61,9 @@ const Login = () => {
             navigate('/');
             console.log(res.message);
         } catch (error) {
-            if (error.response && error.response.data.message) {
-                setError(error.response.data.message);
+            console.log(error);
+            if (error.response && error.response.data && error.response.data.error) {
+                setError(error.response.data.error);
             } else {
                 setError('An unexpected error occurred.');
             }
@@ -108,7 +109,7 @@ const Login = () => {
                         <form className={styles.form_container} onSubmit={handleSubmit}>
                             <h1 className={styles.heading}>Welcome Back!</h1>
                             <p className={styles.para1}>Login to Your Account..Let's resume <br /> your journey</p>
-                            <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} />
+                            <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} ></input>
                             <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} />
                             {error && <div className={styles.error_msg}>{error}</div>}
                             <button className="btn">Login <FontAwesomeIcon icon={faArrowRight} className='arrow' /></button>

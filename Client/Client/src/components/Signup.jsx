@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
@@ -13,7 +14,7 @@ import styles from './Signup.module.css';
 const Signup = () => {
     const { loginWithRedirect } = useAuth0();
     const navigate = useNavigate();
-    const [error, setError] = useState(null);
+    const [errors, setErrors] = useState("");
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -48,30 +49,36 @@ const Signup = () => {
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
+        
+        let errorMessage = '';
+        if (name === 'email' && !/\S+@\S+\.\S+/.test(value))
+            errorMessage = 'Email is not valid';
+        else if (name !== 'password' && !value.trim())
+            errorMessage = `${name.charAt(0).toUpperCase() + name.slice(1)} is required`;
+
+        setErrors({ ...errors, [name]: errorMessage });
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            const uri = "http://localhost:4000/api/users/add"; 
-            const data = await axios.post(uri, formData);
-            console.log(data.data);
-            navigate('/');
-        } catch (error) {
-            if (error.response && error.response.data.message) {
-                setError(error.response.data.message);
-            } else {
-                setError("An unexpected error occurred.");
-            }
-        }
-        // axios.post('http://localhost:4000/api/users/add', formData)
-        //     .then((response) => {
-        //         console.log(response.data);
-        //         navigate('/');
-        //     })
-        //     .catch((error) => {
-        //         console.log(error);
-        //     })
+
+        
+            const data = await axios.post('http://localhost:4000/api/users/add', formData)
+                .then(data =>{
+
+                    console.log(data.data);
+                    navigate('/');
+                })
+                .catch((error) =>{ 
+                    console.log(error.response.data.error); 
+                    if (error.response && error.response.data && error.response.data.error) {
+                        setErrors(error.response.data.error.map(err=>err.message).join(", ") );
+                    } 
+                     else {
+                
+                        console.log("An unexpected error occurred.");
+                    }
+                })
     };
 
     return (
@@ -121,10 +128,14 @@ const Signup = () => {
                             <h1 className={styles.heading}>Create Account</h1>
                             <p className={styles.para1}>Sign up and start your journey</p>
                             <input type="text" name="firstName" placeholder="First Name" value={formData.firstName} onChange={handleChange} />
+                            {errors.firstName && <div className={styles.error_msg}>{errors.firstName}</div>}
                             <input type="text" name="lastName" placeholder="Last Name" value={formData.lastName} onChange={handleChange} />
+                            {errors.lastName && <div className={styles.error_msg}>{errors.lastName}</div>}
                             <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} />
+                            {errors.email && <div className={styles.error_msg}>{errors.email}</div>}
                             <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} />
-                            {error && <div className={styles.error_msg}>{error}</div>}
+                            {errors.password && <div className={styles.error_msg}>{errors.password}</div>}
+                            {errors && typeof errors === 'string' && <div className={styles.error_msg}>{errors}</div>}
                             <button className="btn">Sign Up <FontAwesomeIcon icon={faArrowRight} className='arrow' /></button>
                             <button type="button" className="login-with-google-btn" onClick={loginWithRedirect}>Sign up with Google</button>
                             <p className={styles.noaccount}>Already have an account? <Link to="/login">Login</Link></p>

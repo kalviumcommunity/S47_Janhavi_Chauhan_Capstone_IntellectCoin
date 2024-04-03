@@ -19,8 +19,6 @@ app.use('/api/auth', authRoutes);
 const connectDB = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
       dbName: 'Capstone', 
     });
     console.log('MongoDB connected');
@@ -90,7 +88,7 @@ app.post("/companyregister", async (req, res) => {
   const companyregistration = new CompanyRegistration(req.body);
   try {
     const savedCompanyRegistration = await companyregistration.save();
-    res.status(201).send(savedCompanyRegistration); // HTTP status 201 indicates successful creation
+    res.status(201).send(savedCompanyRegistration); 
   } catch (err) {
     console.error('Company registration failed:', err);
     res.status(400).send({ error: 'Company registration failed', details: err.message });
