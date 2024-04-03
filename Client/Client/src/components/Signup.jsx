@@ -54,9 +54,9 @@ const Signup = () => {
         e.preventDefault();
         try {
             const uri = "http://localhost:4000/api/users/add"; 
-            const { data: res } = await axios.post(uri, formData);
+            const data = await axios.post(uri, formData);
+            console.log(data.data);
             navigate('/');
-            console.log(res.message);
         } catch (error) {
             if (error.response && error.response.data.message) {
                 setError(error.response.data.message);
@@ -64,6 +64,14 @@ const Signup = () => {
                 setError("An unexpected error occurred.");
             }
         }
+        // axios.post('http://localhost:4000/api/users/add', formData)
+        //     .then((response) => {
+        //         console.log(response.data);
+        //         navigate('/');
+        //     })
+        //     .catch((error) => {
+        //         console.log(error);
+        //     })
     };
 
     return (
