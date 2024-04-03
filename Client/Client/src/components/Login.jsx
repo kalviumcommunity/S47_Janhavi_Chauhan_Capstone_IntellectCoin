@@ -58,7 +58,7 @@ const Login = () => {
             const uri = 'http://localhost:4000/api/auth';
             const { data: res } = await axios.post(uri, formData);
             localStorage.setItem('token', res.data);
-            navigate('/');
+            navigate('/home');
             console.log(res.message);
         } catch (error) {
             console.log(error);
