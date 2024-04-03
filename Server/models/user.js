@@ -39,8 +39,9 @@ const Validate = (data) => {
         lastName: Joi.string().required().label("Last Name"),
         email: Joi.string().email().required().label("Email"),
         password: passwordComplexity().required().label("Password"),
-    })
-    return schema.validate(data)
+    }).options({ abortEarly: false });
+    return schema.validate(data);
 }
+
 
 module.exports = { User, Validate }
