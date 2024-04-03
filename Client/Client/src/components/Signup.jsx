@@ -67,7 +67,7 @@ const Signup = () => {
                 .then(data =>{
 
                     console.log(data.data);
-                    navigate('/');
+                    navigate('/home');
                 })
                 .catch((error) =>{ 
                     console.log(error.response.data.error); 
