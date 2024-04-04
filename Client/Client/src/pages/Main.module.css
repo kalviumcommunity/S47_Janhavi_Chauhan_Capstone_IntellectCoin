@@ -1,0 +1,52 @@
+.main{
+    text-align: center;
+    margin-top: 5%;
+}
+
+.static{
+    color: rgb(56, 55, 55);
+    font-size: 40px;
+}
+
+.dynamic{
+    color: rgb(84,121,247);
+}
+
+.line {
+    border-top: 2px solid rgba(84, 122, 247, 0.571);
+    margin-top: 20px;
+    width: 700px;
+    margin-left: 22%;
+}
+
+.motivation{
+    color: rgba(65, 63, 63, 0.644);
+    font-weight: 300;
+    margin-top: 1%;
+}
+
+.buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px; 
+    margin-top: 20px;
+    gap:10px;
+}
+.login{
+    background-color: rgb(84,121,247);
+    color: white;
+    border: none;
+    height: 30px;
+    width: 60px;
+    border-radius: 1px;
+}
+
+.signup{
+    background-color: rgb(84,121,247);
+    color: white;
+    border: none;
+    height: 30px;
+    width: 60px; 
+    border-radius: 1px;
+}
