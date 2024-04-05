@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 
 router.post('/', async (req, res) => {
     try {
-    
+        console.log(req.body);
         const user = await User.findOne({ email: req.body.email });
         if (!user)
             return res.status(401).send({ error: "Invalid email" });
