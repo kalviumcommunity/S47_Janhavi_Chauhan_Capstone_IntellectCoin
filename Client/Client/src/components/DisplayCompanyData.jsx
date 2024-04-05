@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import styles from './DisplayCompanyData.module.css'; 
 
 const CompanyList = () => {
   const [companies, setCompanies] = useState([]);
@@ -18,11 +19,14 @@ const CompanyList = () => {
   }, []);
 
   return (
-    <div className="container">
+    <div className={styles.container}> 
       <h3>Registered Companies</h3>
       <div>
+       
         {companies.map(company => (
-          <div key={company._id} className="company-card">
+          <div key={company._id} className={styles['company-card']}> 
+            
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRkio6jUnN_FJS16iFq5pcAkCcEVUxEZKfMA&s" alt="" />
             <h4>{company.Name}</h4>
             <p><strong>Description:</strong> {company.Description}</p>
             <p><strong>Requirements:</strong> {company.Requirements}</p>
@@ -40,4 +44,3 @@ const CompanyList = () => {
 };
 
 export default CompanyList;
-

@@ -1,0 +1,23 @@
+/* CompanyList.module.css */
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .company-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .company-card h4 {
+    margin-top: 0;
+  }
+  
+  .company-card p {
+    margin: 5px 0;
+  }
+  
