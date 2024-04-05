@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faUserPlus} from '@fortawesome/free-solid-svg-icons';
 import{faArrowRight} from '@fortawesome/free-solid-svg-icons';
 import{faUser} from '@fortawesome/free-solid-svg-icons';
-
+import Main from '../pages/Main';
 function LandingPage(){
     const [showDropdown, setShowDropdown] = useState(false);
 
@@ -13,6 +13,7 @@ function LandingPage(){
     setShowDropdown(!showDropdown);
   };
     return(
+  <>
     <nav className="navbar">
     
         <h3><Link to='/'>Intellect Coin</Link></h3>
@@ -38,6 +39,10 @@ function LandingPage(){
        
       </div>
     </nav>
+    <div>
+        <Main/>
+    </div>
+  </>
     
 )
 

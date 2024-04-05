@@ -1,0 +1,29 @@
+.navbar {
+    position: relative;
+    z-index: 1; /* Change z-index to 1 */
+   
+    margin-right: 1%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+}
+
+.link {
+    color: rgb(84,121,247);
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: rgb(84,121,247);
+    color: white;
+}
+
+.button:hover {
+    background-color: #555;
+}
