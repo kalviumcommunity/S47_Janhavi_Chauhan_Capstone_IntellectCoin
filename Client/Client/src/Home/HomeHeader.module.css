@@ -1,0 +1,39 @@
+
+
+.homeHeaderContainer {
+    position: relative;
+    width: calc(100% - 230px); 
+    height: 200px;
+    margin-left: 230px; 
+    
+  }
+  
+  .homeHeaderImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .homeHeaderArrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    color:rgb(84,121,247) ;
+  }
+  
+  .homeHeaderArrowLeft {
+    left: 10px;
+    transform: translateY(-50%) rotate(180deg);
+  }
+  
+  .homeHeaderArrowRight {
+    right: 10px;
+  }
+  
+  .homeHeaderTitle{
+    text-align: center;
+    color: rgb(84,121,247);
+  }
