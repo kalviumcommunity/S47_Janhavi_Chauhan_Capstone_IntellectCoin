@@ -65,10 +65,13 @@ function Main() {
       </ScrollPage>
       <ScrollPage>
         <Animator animation={batch(Fade(), Sticky())}>
-          <span style={{ fontSize: "40px" }}>Done</span>
+          <span style={{ fontSize: "40px" }}>Join our community!!</span>
           <br/>
           <span style={{ fontSize: "30px" }}>
-            GET STARTED !!!!
+          <Link to="/login">  
+<button className={styles.login} style={{backgroundColor:"rgb(84,121,247)",color:"white", marginTop:"10px",marginRight:"10px",marginLeft:"100px"}}>Login</button>
+</Link>
+     <Link to="/signup"><button className={styles.signup}>Signup </button></Link>
           </span>
         </Animator>
       </ScrollPage>
