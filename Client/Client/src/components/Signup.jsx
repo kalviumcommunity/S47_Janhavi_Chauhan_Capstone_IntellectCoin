@@ -65,12 +65,11 @@ const Signup = () => {
         
             const data = await axios.post('http://localhost:4000/api/users/add', formData)
                 .then(data =>{
-
-                    console.log(data.data);
+                    localStorage.setItem('token', data.data.token);
                     navigate('/home');
                 })
                 .catch((error) =>{ 
-                    console.log(error.response.data.error); 
+                
                     if (error.response && error.response.data && error.response.data.error) {
                         setErrors(error.response.data.error.map(err=>err.message).join(", ") );
                     } 

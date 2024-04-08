@@ -16,6 +16,7 @@ import Signup from '../components/Signup';
 import CompanyRegistration from '../components/CompanyProfile';
 import DataDisplayPage from '../components/Datadisplay';
 import CompanyList from '../components/DisplayCompanyData';
+import PersonalProfile from '../components/PersonalProfile';
 
 function Rout() {
   return (
@@ -36,6 +37,7 @@ function Rout() {
         <Route path="/companyregister" element={<CompanyRegistration />} />
         <Route path="/userprofiledata" element={<DataDisplayPage />} />
         <Route path="/companylist" element={<CompanyList />} />
+        <Route path="/personalprofile/:id" element={<PersonalProfile />} />
       </Routes>
     </Router>
   );
