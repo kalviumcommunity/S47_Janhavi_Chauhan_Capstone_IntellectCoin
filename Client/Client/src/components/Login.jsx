@@ -60,6 +60,8 @@ const Login = () => {
             localStorage.setItem('token', res.data);
             navigate('/home');
             console.log(res.message);
+            console.log(res);
+            localStorage.setItem('id', res.user._id);
         } catch (error) {
             console.log(error);
             if (error.response && error.response.data && error.response.data.error) {

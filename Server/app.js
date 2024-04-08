@@ -1,10 +1,12 @@
+// server.js
+
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const Schema = require("./models/Schema");
 const CompanySchema = require("./models/CompanySchema");
-const usersRoutes = require('./routes/users')
-const authRoutes = require('./routes/auth')
+const usersRoutes = require('./routes/users');
+const authRoutes = require('./routes/auth');
 require("dotenv").config();
 
 const app = express();
@@ -29,6 +31,16 @@ const connectDB = async () => {
 };
 
 connectDB();
+
+// Middleware to log responses
+app.use((req, res, next) => {
+  const oldSend = res.send;
+  res.send = function (data) {
+    console.log('Response from server:', data);
+    oldSend.apply(res, arguments);
+  };
+  next();
+});
 
 const Registration = mongoose.model("Register", Schema);
 const CompanyRegistration = mongoose.model("CompanyRegister", CompanySchema);
@@ -55,29 +67,36 @@ app.get("/registrations", async (req, res) => {
 app.get("/registrations/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    const registrations = await Registration.findById(id);
-    res.json({ data: registrations });
+    const registration = await Registration.findById(id);
+    if (!registration) {
+      return res.status(404).json({ error: "Registration not found" });
+    }
+    res.json({ data: registration });
   } catch (err) {
     res.status(400).send(err);
   }
 });
 
-
 app.put("/register/:id", async (req, res) => {
   const { id } = req.params;
   try {
     const updatedRegistration = await Registration.findByIdAndUpdate(id, req.body, { new: true });
+    if (!updatedRegistration) {
+      return res.status(404).json({ error: "Registration not found" });
+    }
     res.send(updatedRegistration);
   } catch (err) {
     res.status(400).send(err);
   }
 });
 
-
 app.delete("/register/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    await Registration.findByIdAndDelete(id);
+    const deletedRegistration = await Registration.findByIdAndDelete(id);
+    if (!deletedRegistration) {
+      return res.status(404).json({ error: "Registration not found" });
+    }
     res.send("Registration deleted successfully");
   } catch (err) {
     res.status(400).send(err);
@@ -95,7 +114,6 @@ app.post("/companyregister", async (req, res) => {
   }
 });
 
-
 app.get("/companyregistrations", async (req, res) => {
   try {
     const companyregistrations = await CompanyRegistration.find();
@@ -103,37 +121,67 @@ app.get("/companyregistrations", async (req, res) => {
   } catch (err) {
     res.status(400).send(err);
   }
-})
+});
 
 app.get ("/companyregistrations/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    const companyregistrations = await CompanyRegistration.findById(id);
-    res.json({ data: companyregistrations });
+    const companyregistration = await CompanyRegistration.findById(id);
+    if (!companyregistration) {
+      return res.status(404).json({ error: "Company registration not found" });
+    }
+    res.json({ data: companyregistration });
   } catch (err) {
     res.status(400).send(err);
   }
-})
+});
 
 app.put("/companyregister/:id", async (req, res) => {
   const { id } = req.params;
   try {
     const updatedCompanyRegistration = await CompanyRegistration.findByIdAndUpdate(id, req.body, { new: true });
+    if (!updatedCompanyRegistration) {
+      return res.status(404).json({ error: "Company registration not found" });
+    }
     res.send(updatedCompanyRegistration);
   } catch (err) {
     res.status(400).send(err);
   }
-})
+});
 
 app.delete("/companyregister/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    await CompanyRegistration.findByIdAndDelete(id);
+    const deletedCompanyRegistration = await CompanyRegistration.findByIdAndDelete(id);
+    if (!deletedCompanyRegistration) {
+      return res.status(404).json({ error: "Company registration not found" });
+    }
     res.send("Company Registration deleted successfully");
   } catch (err) {
     res.status(400).send(err);
   }
-})
+});
+
+// Get user by ID
+app.get('/personalprofile/:id', async (req, res) => {
+  try {
+    const user = await user.findById(req.params.userId);
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+    // Only send relevant user data (you may customize this)
+    const userData = {
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+      // Add more fields as needed
+    };
+    res.json(userData);
+  } catch (error) {
+    console.error('Error fetching user data:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
