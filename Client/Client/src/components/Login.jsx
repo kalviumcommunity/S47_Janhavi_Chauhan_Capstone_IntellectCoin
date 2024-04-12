@@ -9,15 +9,19 @@ import { CarouselData } from '../../data/Carouseldata';
 import { faChevronRight, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import styles from './Login.module.css';
 import './button.css';
+import { useDispatch, useSelector } from 'react-redux';
+import {selectors, actions } from '../authSlice'; 
 
 const Login = () => {
     const { loginWithRedirect } = useAuth0();
+    const dispatch = useDispatch();
     const [error, setError] = useState(null);
     const [formData, setFormData] = useState({
         email: '',
         password: ''
     });
     const [currentImage, setCurrentImage] = useState(0);
+    const isAuthenticated = useSelector ((state )=> state.root)
 
     const navigate = useNavigate();
 
@@ -58,10 +62,14 @@ const Login = () => {
             const uri = 'http://localhost:4000/api/auth';
             const { data: res } = await axios.post(uri, formData);
             localStorage.setItem('token', res.data);
-            navigate('/home');
-            console.log(res.message);
-            console.log(res);
+            console.log(isAuthenticated)
+            dispatch(actions.login());
+            console.log(isAuthenticated)
+            // console.log(login)     
+            // console.log(res.message);
+            // console.log(res);
             localStorage.setItem('id', res.user._id);
+            navigate('/home');
         } catch (error) {
             console.log(error);
             if (error.response && error.response.data && error.response.data.error) {
@@ -71,6 +79,11 @@ const Login = () => {
             }
         }
     };
+    // useEffect(() => {
+    //     if (isAuthenticated) {
+    //         navigate('/home');
+    //     }
+    // }, [isAuthenticated, navigate]);
 
     return (
         <>

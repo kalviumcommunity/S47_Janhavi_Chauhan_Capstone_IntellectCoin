@@ -17,15 +17,20 @@ import CompanyRegistration from '../components/CompanyProfile';
 import DataDisplayPage from '../components/Datadisplay';
 import CompanyList from '../components/DisplayCompanyData';
 import PersonalProfile from '../components/PersonalProfile';
+import ProtectedRoute from '../ProtectedRoute';
+import { useSelector } from 'react-redux';
+import { selectors } from '../authSlice';
 
 function Rout() {
+  const isAuthenticated = useSelector(selectors);
+  console.log('routes isAuthenticated:--',isAuthenticated)
   return (
     <Router>
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/registration" element={<RegistrationAndEducationForm />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/findjob" element={<Findjob />} />
+        <Route path="/home" element={<ProtectedRoute isAuthenticated = {isAuthenticated} component={Home} > </ProtectedRoute>} />
+        <Route path="/findjob" element={<ProtectedRoute isAuthenticated = {isAuthenticated} component={Findjob} > </ProtectedRoute>} />
         <Route path="/events" element={<Events />} />
         <Route path="/features" element={<Features />} />
         <Route path="/contact" element={<Contact />} />

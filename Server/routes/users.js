@@ -27,9 +27,9 @@ router.post("/add", async (req, res) => {
 });
 
 router.get("/getUser/:id", async (req, res) => {
-  console.log("route visited");
+  // console.log("route visited");
   const { id } = req.params;
-  console.log("userID", id);
+  // console.log("userID", id);
   try {
     const user = await User.findById({_id:id});
     if (!user) {
@@ -41,8 +41,5 @@ router.get("/getUser/:id", async (req, res) => {
   }
 });
 
-// router.get("/", async (req, res) => {
-//   res.send({message:"hello"})
-// })
 
 module.exports = router;
