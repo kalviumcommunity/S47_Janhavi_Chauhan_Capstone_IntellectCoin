@@ -1,7 +1,8 @@
-// components/PersonalProfile.js
+
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+
 
 const PersonalProfile = ({ userId }) => {
   const [userData, setUserData] = useState(null);
@@ -25,6 +26,7 @@ const PersonalProfile = ({ userId }) => {
   }, [userId]);
 
   return (
+    <>
     <div>
       <h2>Personal Profile</h2>
       {error ? (
@@ -33,11 +35,16 @@ const PersonalProfile = ({ userId }) => {
         <div>
           <h3>{userData.firstName} {userData.lastName}</h3>
           <p>Email: {userData.email}</p>
+    
         </div>
       ) : (
         <p>Loading user data...</p>
       )}
     </div>
+    <div>
+  
+    </div>
+  </>
   );
 };
 

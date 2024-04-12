@@ -1,4 +1,3 @@
-// server.js
 
 const express = require("express");
 const mongoose = require("mongoose");
@@ -162,6 +161,7 @@ app.delete("/companyregister/:id", async (req, res) => {
   }
 });
 
+
 // Get user by ID
 app.get('/personalprofile/:id', async (req, res) => {
   try {
@@ -182,6 +182,8 @@ app.get('/personalprofile/:id', async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 });
+
+
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
