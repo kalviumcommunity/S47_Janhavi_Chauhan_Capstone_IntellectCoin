@@ -161,30 +161,6 @@ app.delete("/companyregister/:id", async (req, res) => {
   }
 });
 
-
-// Get user by ID
-app.get('/personalprofile/:id', async (req, res) => {
-  try {
-    const user = await user.findById(req.params.userId);
-    if (!user) {
-      return res.status(404).json({ error: 'User not found' });
-    }
-    // Only send relevant user data (you may customize this)
-    const userData = {
-      firstName: user.firstName,
-      lastName: user.lastName,
-      email: user.email,
-      // Add more fields as needed
-    };
-    res.json(userData);
-  } catch (error) {
-    console.error('Error fetching user data:', error);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-});
-
-
-
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
