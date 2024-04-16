@@ -7,6 +7,7 @@ import{faArrowRight} from '@fortawesome/free-solid-svg-icons';
 import{faUser} from '@fortawesome/free-solid-svg-icons';
 import Main from '../pages/Main';
 import JoinUs from '../pages/JoinUs';
+import Categories from '../pages/Categories';
 function LandingPage(){
     const [showDropdown, setShowDropdown] = useState(false);
 
@@ -42,6 +43,7 @@ function LandingPage(){
     </nav>
     <div>
         <Main/>
+        <Categories/>
         <JoinUs/>
     </div>
   </>
