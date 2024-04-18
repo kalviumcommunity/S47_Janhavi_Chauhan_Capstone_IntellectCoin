@@ -1,0 +1,80 @@
+
+
+.slider {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  flex: 0 0 33.33%; 
+}
+
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1;
+}
+
+.prev {
+  left: 0;
+}
+
+.next {
+  right: 0;
+}
+
+
+.Card1,
+.Card2,
+.Card3,
+.Card4 {
+  height: 400px;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-right: 20px; /* Adjust margin between cards */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.Card1 img,
+.Card2 img,
+.Card3 img,
+.Card4 img {
+  /* Adjust image styles */
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px; /* Adjust spacing between image and text */
+}
+
+.Card1 h1,
+.Card2 h1,
+.Card3 h1,
+.Card4 h1 {
+  /* Heading styles */
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.Card1 p,
+.Card2 p,
+.Card3 p,
+.Card4 p {
+  /* Paragraph styles */
+  font-size: 1rem;
+  line-height: 1.4;
+}
