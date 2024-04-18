@@ -10,6 +10,7 @@ const SideNavbar = () => {
       <ul>
         <li> <h3><Link to='/'>Intellect Coin</Link></h3></li>
         <li> <Link to='/Findjob'>Find Job</Link></li>
+        <li><Link to='/homechat'>Chat</Link></li>
         <li><Link to='/Events'>Events</Link></li>
         <li><Link to="/Features">Features</Link></li>
         <li> <Link to="/Contact">Contact</Link></li>

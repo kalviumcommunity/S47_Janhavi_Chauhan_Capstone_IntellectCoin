@@ -27,6 +27,7 @@ function LandingPage(){
             <Link to="Contact">Contact</Link>
             <Link to='/Whyus'>Why Us?</Link>
             <Link to='/Aboutus'>About Us</Link>
+            <Link to ='/homechat'>Home Chat</Link>
         </ul>
         <div className="dropdown">
         <button onClick={toggleDropdown} className="JoinNow">
