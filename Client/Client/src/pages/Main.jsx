@@ -42,7 +42,7 @@ function Main() {
 </Link>
      <Link to="/signup"><button className={styles.signup}>Signup </button></Link>
       </div>
-      <ScrollContainer >
+      {/* <ScrollContainer >
       <ScrollPage>
         <Animator animation={batch(Fade(), Sticky(), MoveOut(0, -200))}>
           <span style={{ fontSize: "30px", color: "rgb(84,121,247)"}}>Let's start our learning and earning journey!! </span>
@@ -75,7 +75,7 @@ function Main() {
           </span>
         </Animator>
       </ScrollPage>
-    </ScrollContainer>
+    </ScrollContainer> */}
     </>
   );
 }

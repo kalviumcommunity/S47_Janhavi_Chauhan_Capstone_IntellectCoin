@@ -1,0 +1,44 @@
+
+.joinUsContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px;
+    gap: 20px;
+  }
+  
+  .Card1,
+  .Card2,
+  .Card3,
+  .Card4,
+  .Card5 {
+    width: 40%;
+    height: 150px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .Card1 h1,
+  .Card2 h1,
+  .Card3 h1,
+  .Card4 h1,
+  .Card5 h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .Card1 p,
+  .Card2 p,
+  .Card3 p,
+  .Card4 p,
+  .Card5 p {
+    font-size: 16px;
+    color: #666;
+  }
+  
+  
+  
