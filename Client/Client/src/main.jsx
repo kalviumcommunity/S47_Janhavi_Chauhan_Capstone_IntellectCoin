@@ -5,8 +5,7 @@ import App from './App.jsx';
 import './index.css';
 import { Provider } from 'react-redux';
 import store from './store';
-import AuthContextProvider from './components/Context/AuthContext.jsx';
-import ChatContextProvider from './components/Context/ChatContext.jsx';
+;
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
@@ -17,11 +16,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         redirect_uri: window.location.origin
       }}
     >
-      <AuthContextProvider> 
-        <ChatContextProvider> 
+  
           <App />
-        </ChatContextProvider>
-      </AuthContextProvider>
+    
     </Auth0Provider>
   </Provider>
 );

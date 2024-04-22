@@ -20,7 +20,6 @@ import PersonalProfile from '../components/PersonalProfile';
 import ProtectedRoute from '../ProtectedRoute';
 import { useSelector } from 'react-redux';
 import { selectors } from '../authSlice';
-import HomeChat from '../Home/HomeChat';
 
 function Rout() {
   const isAuthenticated = useSelector(selectors);
@@ -44,7 +43,7 @@ function Rout() {
         <Route path="/userprofiledata" element={<DataDisplayPage />} />
         <Route path="/companylist" element={<CompanyList />} />
         <Route path="/personalprofile/:id" element={<PersonalProfile />} />
-        <Route path="/homechat" element={<HomeChat />} />
+
       </Routes>
     </Router>
   );
