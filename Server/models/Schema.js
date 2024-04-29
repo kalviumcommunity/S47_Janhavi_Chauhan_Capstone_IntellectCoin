@@ -34,6 +34,9 @@ const Schema = mongoose.Schema({
     },
     Certificates: {
         type:String
+    },  PhoneNumber: {
+        type: String,
+        trim: true
     }
 
 })
