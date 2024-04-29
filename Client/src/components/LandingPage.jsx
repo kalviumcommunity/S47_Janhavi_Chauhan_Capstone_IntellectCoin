@@ -8,6 +8,7 @@ import{faUser} from '@fortawesome/free-solid-svg-icons';
 import Main from '../pages/Main';
 import JoinUs from '../pages/JoinUs';
 import Categories from '../pages/Categories';
+import Whyus from '../pages/Whyus';
 function LandingPage(){
     const [showDropdown, setShowDropdown] = useState(false);
 
@@ -43,9 +44,13 @@ function LandingPage(){
       </div>
     </nav>
     <div>
+        
         <Main/>
         <Categories/>
         <JoinUs/>
+        
+        <Whyus/>
+        
     </div>
   </>
     

@@ -1,0 +1,50 @@
+.whyUsContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    margin-top: 5px;
+  }
+  
+  .whyUsContainer img {
+    margin-top: 70px;
+    max-width: 43%;
+    height: auto;
+  }
+  
+  .whyUsContainer h1 {
+    margin-left: 70px;
+    font-size: 24px;
+  }
+  
+  .title h4{
+    color:rgb(84,121,247);
+  }
+
+  
+  .card {
+    margin-left: 80px;
+    height: auto;
+    background-color: #f9f9f9;
+    border: 0.5px solid rgba(84, 122, 247, 0.304);
+    border-radius: 8px;
+    padding: 10px;
+    width:90%;
+    box-shadow: 0 4px 8px rgba(92, 112, 176, 0.397);
+  }
+  
+  .title {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #333;
+  }
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction:column;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  
