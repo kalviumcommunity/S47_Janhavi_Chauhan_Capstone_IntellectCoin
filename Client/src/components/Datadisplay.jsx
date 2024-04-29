@@ -48,6 +48,10 @@ const DataDisplayPage = () => {
     }));
   };
 
+  const sendMessage = (phoneNumber) => {
+    window.open(`https://api.whatsapp.com/send?phone=${phoneNumber}`, '_blank');
+  };
+
   return (
     <div className={styles.container}>
       <h2>Registered Users and Educations</h2>
@@ -64,6 +68,7 @@ const DataDisplayPage = () => {
             </div>
             <p className={styles.About}>About: {data.About}</p>
             <p className={styles.languages}>Languages: {data.languages}</p>
+            <p className={styles.PhoneNumber}>Phone Number: {data.PhoneNumber}</p> {/* Display phone number */}
           </div>
           <div className={styles.section}>
             <h3 className={styles.heading}>Education Information:</h3>
@@ -88,8 +93,7 @@ const DataDisplayPage = () => {
             </div>
           </div>
           <div>
-            <button>Hire Now</button>
-            <button>Message</button>
+            <button onClick={() => sendMessage(data.PhoneNumber)}>Message</button>
           </div>
         </div>
       ))}
