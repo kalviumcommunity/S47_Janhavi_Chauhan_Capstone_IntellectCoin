@@ -20,6 +20,8 @@ import PersonalProfile from '../components/PersonalProfile';
 import ProtectedRoute from '../ProtectedRoute';
 import { useSelector } from 'react-redux';
 import { selectors } from '../authSlice';
+import BloggingForm from '../components/BloggingForm';
+import BlogDisplay from '../components/BlogDisplay';
 
 function Rout() {
   const isAuthenticated = useSelector(selectors);
@@ -43,6 +45,8 @@ function Rout() {
         <Route path="/userprofiledata" element={<DataDisplayPage />} />
         <Route path="/companylist" element={<CompanyList />} />
         <Route path="/personalprofile/:id" element={<PersonalProfile />} />
+        <Route path="/bloggingform" element={<BloggingForm />} />
+        <Route path="/blogdisplay" element={<BlogDisplay />} />
 
       </Routes>
     </Router>

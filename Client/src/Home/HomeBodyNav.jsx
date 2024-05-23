@@ -17,7 +17,7 @@ const HomeBodyNav = () => {
       </label>
       <label className={styles.radio}>
         <input type="radio" name="radio" />
-        <span className={styles.name}><Link to="/blogs">Blogs</Link></span>
+        <span className={styles.name}><Link to="/blogdisplay">Blogs</Link></span>
       </label>
 
     </div>
