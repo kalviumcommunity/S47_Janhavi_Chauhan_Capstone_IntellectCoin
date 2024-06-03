@@ -2,7 +2,7 @@ import React from "react";
 import { useTypewriter , Cursor } from "react-simple-typewriter";
 import styles from "./Main.module.css";
 import {Link} from 'react-router-dom'
-import '../components/button.css'
+import '../../components/button.css'
 
 
 

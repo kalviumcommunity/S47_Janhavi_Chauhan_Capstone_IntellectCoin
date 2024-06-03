@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './HomeHor.module.css';
-import PersonalProfile from '../components/PersonalProfile';
+import PersonalProfile from '../../components/PersonalProfile';
 
 const HomeHorizontal = () => {
   const id = localStorage.getItem('id');

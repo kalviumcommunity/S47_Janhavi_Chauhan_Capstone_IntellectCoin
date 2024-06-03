@@ -37,9 +37,9 @@ const CompanyRegistration = () => {
   };
 
   return (
-    <div className={styles.container}> {/* Apply container class */}
+    <div className={styles.container}> 
       <form onSubmit={handleSubmit}>
-        <div className={styles.formgroup}> {/* Apply form-group class */}
+        <div className={styles.formgroup}>
           <h3>Company Information</h3>
           <input type="text" name="Name" placeholder="Name" value={formData.Name} onChange={handleChange} className={styles['input-field']} />
           <input type="text" name="Description" placeholder="Description" value={formData.Description} onChange={handleChange} className={styles['input-field']} />

@@ -4,13 +4,13 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useAuth0 } from "@auth0/auth0-react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { motion } from 'framer-motion';
-import Navbar from '../pages/Navbar';
+import Navbar from '../pages/LandingPage/Navbar';
 import { CarouselData } from '../../data/Carouseldata';
 import { faChevronRight, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import styles from './Login.module.css';
 import './button.css';
 import { useDispatch, useSelector } from 'react-redux';
-import {selectors, actions } from '../authSlice'; 
+import {selectors, actions } from '../redux/authSlice'; 
 
 const Login = () => {
     const { loginWithRedirect } = useAuth0();
