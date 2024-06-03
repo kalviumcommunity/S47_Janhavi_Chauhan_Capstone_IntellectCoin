@@ -6,6 +6,7 @@ const Schema = require("./models/Schema");
 const CompanySchema = require("./models/CompanySchema");
 const usersRoutes = require('./routes/users');
 const authRoutes = require('./routes/auth');
+const blogRoutes = require('./routes/blogRoutes');
 require("dotenv").config();
 
 const app = express();
@@ -16,6 +17,8 @@ const PORT = process.env.PORT || 4000;
 
 app.use('/api/users', usersRoutes);
 app.use('/api/auth', authRoutes);
+// app.use('/api/blogger', blogRoutes);
+
 
 const connectDB = async () => {
   try {
@@ -160,6 +163,8 @@ app.delete("/companyregister/:id", async (req, res) => {
     res.status(400).send(err);
   }
 });
+
+
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
