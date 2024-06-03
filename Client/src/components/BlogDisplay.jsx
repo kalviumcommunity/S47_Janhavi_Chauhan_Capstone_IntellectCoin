@@ -3,11 +3,11 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const BlogDisplay = ({ setBlogToUpdate }) => {
-    const [blogs, setBlogs] = useState([]);
+    const [blogs, setBlogs] = useState([]);//[] means when company will first render then it will be an empty array as company will be populated with list
 
     useEffect(() => {
         fetchData();
-    }, []);
+    }, []);// The empty array ensures this effect runs only once after the initial render.
 
     const fetchData = async () => {
         try {

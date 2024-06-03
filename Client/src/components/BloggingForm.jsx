@@ -20,7 +20,7 @@ const BloggingForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("http://localhost:4000/api/blogger/blog", blogdata);
+            const response = await axios.post("http://localhost:4000/api/blogs/addblog", blogdata);
             console.log(response.data);
             setBlogdata({
                 Title: "",

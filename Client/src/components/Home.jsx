@@ -1,10 +1,10 @@
-import Navbar from '../pages/Navbar'
+// import Navbar from '../pages/Navbar'
 import React from 'react';
 
-import HomeNavbar from '../Home/HomeNavbar';
-import HomeHorizontal from '../Home/HomeHorizontalNav';
-import HomeHeader from '../Home/HomeHeader';
-import HomeBodyNav from '../Home/HomeBodyNav';
+import HomeBodyNav from '../pages/HomePage/HomeBodyNav';
+import HomeHorizontal from '../pages/HomePage/HomeHorizontalNav';
+import HomeHeader from '../pages/HomePage/HomeHeader';
+import SideNavbar from '../pages/HomePage/HomeNavbar';
 import { useSelector } from 'react-redux';
 function Home() {
   const isAuthenticated = useSelector ((state )=> state.root)
@@ -12,9 +12,11 @@ function Home() {
     return (
       <>
        <HomeHorizontal/>
-       <HomeNavbar/> 
+       {/* <HomeNavbar/>  */}
        <HomeHeader/>
        <HomeBodyNav/>
+       <SideNavbar/>
+      
       </>
     );
   }

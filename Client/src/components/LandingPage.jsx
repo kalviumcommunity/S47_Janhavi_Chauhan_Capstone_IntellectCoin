@@ -5,10 +5,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faUserPlus} from '@fortawesome/free-solid-svg-icons';
 import{faArrowRight} from '@fortawesome/free-solid-svg-icons';
 import{faUser} from '@fortawesome/free-solid-svg-icons';
-import Main from '../pages/Main';
-import JoinUs from '../pages/JoinUs';
-import Categories from '../pages/Categories';
-import Whyus from '../pages/Whyus';
+import Main from '../pages/LandingPage/Main';
+import JoinUs from '../pages/LandingPage/JoinUs';
+import Categories from '../pages/LandingPage/Categories';
+import Whyus from '../pages/LandingPage/Whyus';
+import Footer from '../components/Footer';
 function LandingPage(){
     const [showDropdown, setShowDropdown] = useState(false);
 
@@ -22,10 +23,10 @@ function LandingPage(){
         <h3><Link to='/'>Intellect Coin</Link></h3>
         <ul>
             <Link to="/home">Home</Link>
-            <Link to='Findjob'> Find Job</Link>
-            <Link to='Events'>Events</Link>
+            <Link to='/Findjob'> Find Job</Link>
+            <Link to='/Events'>Events</Link>
             <Link to="/Features">Features</Link>
-            <Link to="Contact">Contact</Link>
+            <Link to="/Contact">Contact</Link>
             <Link to='/Whyus'>Why Us?</Link>
             <Link to='/Aboutus'>About Us</Link>
             
@@ -50,6 +51,7 @@ function LandingPage(){
         <JoinUs/>
         
         <Whyus/>
+        <Footer/>
         
     </div>
   </>

@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { motion } from 'framer-motion';
 import { CarouselData } from '../../data/Carouseldata';
-import Navbar from '../pages/Navbar';
+import Navbar from '../pages/LandingPage/Navbar';
 import './button.css';
 import styles from './Signup.module.css';
 

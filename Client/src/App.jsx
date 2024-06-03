@@ -1,8 +1,8 @@
 import React from 'react';
 import Rout from './Routes/Routes.jsx'
 
-import './App.css'; 
-import './pages/Heading.css';
+// import './App.css'; 
+// import './pages/Heading.css';
 
 function App() {
   return (

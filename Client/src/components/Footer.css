@@ -1,0 +1,204 @@
+
+.new_footer_area {
+    background-color: #f9f9ff;
+    padding-top: 20px;
+    padding-bottom: 1%;
+  }
+  
+  .new_footer_top {
+    background-color: #f2f2f2;
+  }
+  
+  .new_footer_top .container {
+    padding: 0 30px;
+  }
+  
+  .new_footer_top .row {
+    margin-bottom: -30px;
+  }
+
+
+
+  .mail{
+    margin-right: 30%;
+    margin-top: 2%;
+    margin-bottom: 3%;
+    padding: 10px 20px;
+    border: none;
+    box-shadow: 0 0 0.5px 0.5px rgba(0, 0, 0, 0.29);  
+    width : 70%;
+    font-size: 15px; 
+  }
+
+  .row{
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+  }
+  
+ 
+  .part-2,
+  .part-3,
+  .part-4 {
+    flex : 1;
+    padding: 30px 0;
+    text-align:  left;
+    position: relative;
+    margin-left: 5%;
+  }
+  
+  .part-1 h3,
+  .part-2 h3,
+  .part-3 h3,
+  .part-4 h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color :rgb(84,121,247);
+  }
+
+  .part-1 h3 {
+    margin-top: 35px;
+  }
+  
+  .part-1 p {
+    margin-bottom: 5px;
+  }
+  
+  .part-2 ul,
+  .part-3 ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .part-2 ul li,
+  .part-3 ul li {
+    margin-bottom: 10px;
+  }
+  
+  .part-2 a,
+  .part-3 a {
+    color: #333;
+    text-decoration: none;
+  }
+  
+  .part-4 {
+    text-align: left;
+  }
+  
+  .f_social_icon {
+    margin-top: 20px;
+  }
+  
+  .f_social_icon a {
+    font-size: 20px;
+    margin-right: 15px;
+    color: #333;
+  }
+  
+
+
+.but-1 {
+
+    background:rgb(84,121,247);
+    color: #fff;
+    -webkit-box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+    -webkit-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+    border : None ;
+    
+}
+.but-1:hover {
+    background: transparent;
+    color: #5e2ced;
+}
+  .footer_bg {
+    position: relative;
+    bottom: 0;
+    background: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEigB8iI5tb8WSVBuVUGc9UjjB8O0708X7Fdic_4O1LT4CmLHoiwhanLXiRhe82yw0R7LgACQ2IhZaTY0hhmGi0gYp_Ynb49CVzfmXtYHUVKgXXpWvJ_oYT8cB4vzsnJLe3iCwuzj-w6PeYq_JaHmy_CoGoa6nw0FBo-2xLdOPvsLTh_fmYH2xhkaZ-OGQ/s16000/footer_bg.png") 
+    no-repeat scroll center 0 ;
+    background-size: cover;
+    width: 100%;
+    height: 266px;
+   
+  }
+  
+  .new_footer_top .footer_bg .footer_bg_two {
+    background: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhyLGwEUVwPK6Vi8xXMymsc-ZXVwLWyXhogZxbcXQYSY55REw_0D4VTQnsVzCrL7nsyjd0P7RVOI5NKJbQ75koZIalD8mqbMquP20fL3DxsWngKkOLOzoOf9sMuxlbyfkIBTsDw5WFUj-YJiI50yzgVjF8cZPHhEjkOP_PRTQXDHEq8AyWpBiJdN9SfQA/s16000/cyclist.gif") no-repeat center center;
+    width: 88px;
+    height: 100px;
+  background-size:100%;
+    bottom: 0;
+    left: 38%;
+    position: absolute;
+    -webkit-animation: myfirst 30s linear infinite;
+    animation: myfirst 30s linear infinite;
+}
+
+.new_footer_top .footer_bg .footer_bg_one {
+    background: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEia0PYPxwT5ifToyP3SNZeQWfJEWrUENYA5IXM6sN5vLwAKvaJS1pQVu8mOFFUa_ET4JuHNTFAxKURFerJYHDUWXLXl1vDofYXuij45JZelYOjEFoCOn7E6Vxu0fwV7ACPzArcno1rYuVxGB7JY6G7__e4_KZW4lTYIaHSLVaVLzklZBLZnQw047oq5-Q/s16000/volks.gif") no-repeat center center;
+    width: 330px;
+    height: 105px;
+  background-size:100%;
+    position: absolute;
+    bottom: 0;
+    left: 30%;
+    -webkit-animation: myfirst 22s linear infinite;
+    animation: myfirst 22s linear infinite;
+}
+
+  @-moz-keyframes myfirst {
+    0% {
+      left: -25%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+  
+  @-webkit-keyframes myfirst {
+    0% {
+      left: -25%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+  
+  @keyframes myfirst {
+    0% {
+      left: -25%;
+    }
+    100% {
+      left: 100%;
+    }
+  } 
+
+  .copy {
+    display : flex ;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+  }
+
+  .rights{
+    color : #414040 ;
+  }
+
+.copyRight{
+    text-align: center;
+    color: rgb(84,121,247);
+}
+
+.copyRight a{
+    color: rgb(84,121,247);
+    text-decoration: none;
+}
+  

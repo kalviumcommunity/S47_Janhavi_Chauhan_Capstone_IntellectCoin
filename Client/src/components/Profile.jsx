@@ -20,7 +20,7 @@ const RegistrationAndEducationForm = () => {
     ProjectCode: '',
     DeployedLink: '',
     Certificates: '',
-    PhoneNumber: '' // New field for phone number
+    PhoneNumber: '' 
   });
 
   const handleChange = e => {
@@ -57,7 +57,7 @@ const RegistrationAndEducationForm = () => {
           <input type="text" name="linkedin" className={styles.formInput} placeholder="LinkedIn" value={formData.linkedin} onChange={handleChange} />
           <input type="text" name="github" className={styles.formInput} placeholder="GitHub" value={formData.github} onChange={handleChange} />
           <input type="text" name="languages" className={styles.formInput} placeholder="Languages (comma-separated)" value={formData.languages} onChange={handleChange} />
-          <input type="text" name="PhoneNumber" className={styles.formInput} placeholder="Phone Number" value={formData.PhoneNumber} onChange={handleChange} /> {/* New phone number field */}
+          <input type="number" name="PhoneNumber" className={styles.formInput} placeholder="Phone Number" value={formData.PhoneNumber} onChange={handleChange} /> {/* New phone number field */}
         </div>
         <div className={styles.formSection}>
           <h3>Education Information</h3>

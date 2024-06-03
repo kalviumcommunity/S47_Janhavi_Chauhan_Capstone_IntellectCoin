@@ -1,5 +1,5 @@
 import React from 'react'
-import WhyUs from '../../images/whyUs.png'
+import WhyUs from '../../../images/whyUs.png'
 import styles from './Whyus.module.css'
 
 

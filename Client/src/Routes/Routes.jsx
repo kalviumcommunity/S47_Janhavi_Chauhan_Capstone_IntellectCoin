@@ -1,15 +1,15 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from '../pages/Navbar';
+import Navbar from '../pages/LandingPage/Navbar';
 import LandingPage from '../components/LandingPage';
 import Home from '../components/Home';
 import RegistrationAndEducationForm from '../components/Profile';
-import Findjob from '../pages/Findjob';
-import Events from '../pages/Events';
-import Features from '../pages/Features';
-import Contact from '../pages/Contact';
-import Whyus from '../pages/Whyus';
-import Aboutus from '../pages/AboutUs';
+import Findjob from '../pages/LandingPage/Findjob';
+import Events from '../pages/LandingPage/Events';
+import Features from '../pages/LandingPage/Features';
+import Contact from '../pages/LandingPage/Contact';
+import Whyus from '../pages/LandingPage/Whyus';
+import Aboutus from '../pages/LandingPage/AboutUs';
 import UpdateUser from '../components/UpdateUser';
 import Login from '../components/Login';
 import Signup from '../components/Signup';
@@ -17,11 +17,12 @@ import CompanyRegistration from '../components/CompanyProfile';
 import DataDisplayPage from '../components/Datadisplay';
 import CompanyList from '../components/DisplayCompanyData';
 import PersonalProfile from '../components/PersonalProfile';
-import ProtectedRoute from '../ProtectedRoute';
-import { useSelector } from 'react-redux';
-import { selectors } from '../authSlice';
 import BloggingForm from '../components/BloggingForm';
 import BlogDisplay from '../components/BlogDisplay';
+import ProtectedRoute from '../redux/ProtectedRoute';
+import { useSelector } from 'react-redux';
+import { selectors } from '../redux/authSlice';
+
 
 function Rout() {
   const isAuthenticated = useSelector(selectors);

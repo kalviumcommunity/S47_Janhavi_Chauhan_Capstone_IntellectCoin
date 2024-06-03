@@ -12,7 +12,7 @@ const DataDisplayPage = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  },[]);
 
   const fetchData = async () => {
     try {
@@ -31,7 +31,7 @@ const DataDisplayPage = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`/register/${id}`);
+      await axios.delete(`http://localhost:4000/register/${id}`);
       console.log(`Deleted registration with ID: ${id}`);
       setRegistrationsAndEducations(prevState => prevState.filter(item => item._id !== id));
       alert('Registration deleted successfully');
@@ -55,7 +55,7 @@ const DataDisplayPage = () => {
   return (
     <div className={styles.container}>
       <h2>Registered Users and Educations</h2>
-      {registrationsAndEducations.map((data, index) => (
+      {registrationsAndEducations.map((data, index) => ( 
         <div className={styles.usercontainer} key={index}>
           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9884_2DHgeJ1TvweTybwH2d2eTtBNOWn7C38Jdc-3Pw&s" alt="" className={styles.profile} />
           <div className={styles.section}>

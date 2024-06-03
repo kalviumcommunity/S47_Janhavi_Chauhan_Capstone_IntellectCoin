@@ -7,32 +7,23 @@ const CompanySchema = require("./models/CompanySchema");
 const usersRoutes = require('./routes/users');
 const authRoutes = require('./routes/auth');
 const blogRoutes = require('./routes/blogRoutes');
-require("dotenv").config();
+const connectDB  = require('./config/db');
 
 const app = express();
+require("dotenv").config();
+
 app.use(cors());
 app.use(express.json());
+connectDB();
 
 const PORT = process.env.PORT || 4000;
 
 app.use('/api/users', usersRoutes);
 app.use('/api/auth', authRoutes);
-// app.use('/api/blogger', blogRoutes);
+app.use('/api/blogs', blogRoutes);
 
 
-const connectDB = async () => {
-  try {
-    await mongoose.connect(process.env.MONGO_URI, {
-      dbName: 'Capstone', 
-    });
-    console.log('MongoDB connected');
-  } catch (err) {
-    console.error('MongoDB connection error:', err);
-    process.exit(1); 
-  }
-};
 
-connectDB();
 
 // Middleware to log responses
 app.use((req, res, next) => {
@@ -95,6 +86,7 @@ app.put("/register/:id", async (req, res) => {
 app.delete("/register/:id", async (req, res) => {
   const { id } = req.params;
   try {
+    console.log("route visited"); // Log message (route Visited)
     const deletedRegistration = await Registration.findByIdAndDelete(id);
     if (!deletedRegistration) {
       return res.status(404).json({ error: "Registration not found" });
