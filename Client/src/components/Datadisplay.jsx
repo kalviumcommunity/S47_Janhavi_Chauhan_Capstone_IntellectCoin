@@ -16,7 +16,7 @@ const DataDisplayPage = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/registrations");
+      const response = await axios.get("http://localhost:4000/api/users/registrations");
       console.log('Response data:', response.data); 
       setRegistrationsAndEducations(response.data.data);
     } catch (error) {
@@ -31,7 +31,7 @@ const DataDisplayPage = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:4000/register/${id}`);
+      await axios.delete(`http://localhost:4000/api/users/register/${id}`);
       console.log(`Deleted registration with ID: ${id}`);
       setRegistrationsAndEducations(prevState => prevState.filter(item => item._id !== id));
       alert('Registration deleted successfully');

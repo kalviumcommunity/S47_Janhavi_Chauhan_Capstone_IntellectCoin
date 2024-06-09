@@ -23,7 +23,6 @@ const Schema = mongoose.Schema({
     Degree: String,
     YearOfStudy: String,
     Skills: String,
-    About: String,
     ProjectCode: {
         type: String, 
         trim: true 
@@ -34,12 +33,13 @@ const Schema = mongoose.Schema({
     },
     Certificates: {
         type:String
-    },  PhoneNumber: {
+    },  
+    PhoneNumber: {
         type: String,
         trim: true
     }
 
 })
 
-module.exports = Schema;
+module.exports = mongoose.model('Registration', Schema)
 
