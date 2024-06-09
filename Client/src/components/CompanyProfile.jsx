@@ -27,7 +27,7 @@ const CompanyRegistration = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:4000/companyregister', formData);
+      const response = await axios.post('http://localhost:4000/api/companies/register', formData);
       console.log('Registration successful! Response:', response.data);
       alert('Registration successful!');
     } catch (error) {

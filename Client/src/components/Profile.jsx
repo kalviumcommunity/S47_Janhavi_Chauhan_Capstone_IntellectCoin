@@ -16,7 +16,6 @@ const RegistrationAndEducationForm = () => {
     Degree: '',
     YearOfStudy: '',
     Skills: '',
-    AboutEducation: '',
     ProjectCode: '',
     DeployedLink: '',
     Certificates: '',
@@ -34,7 +33,7 @@ const RegistrationAndEducationForm = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:4000/register', formData);
+      const response = await axios.post('http://localhost:4000/api/users/register', formData);
       console.log('Registration successful! Response:', response.data); 
       alert('Registration successful!');
     } catch (error) {

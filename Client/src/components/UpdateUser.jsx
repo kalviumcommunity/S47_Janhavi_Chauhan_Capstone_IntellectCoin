@@ -30,7 +30,7 @@ const UpdateUser = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:4000/registrations/${id}`
+        `http://localhost:4000/api/registerations/${id}`
       );
       setFormData(response.data.data);
       console.log(response.data.data);

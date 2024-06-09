@@ -1,13 +1,12 @@
-
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const Schema = require("./models/Schema");
-const CompanySchema = require("./models/CompanySchema");
-const usersRoutes = require('./routes/users');
+const connectDB = require('./config/db');
+const userRegistrationRoutes = require('./routes/UserRegistrationRoute');
 const authRoutes = require('./routes/auth');
 const blogRoutes = require('./routes/blogRoutes');
-const connectDB  = require('./config/db');
+const companyRoutes = require('./routes/CompanyRegistrationRoute');
+const logResponses = require('./middleware/LogResponse');
 
 const app = express();
 require("dotenv").config();
@@ -18,145 +17,12 @@ connectDB();
 
 const PORT = process.env.PORT || 4000;
 
-app.use('/api/users', usersRoutes);
+app.use('/api/users', userRegistrationRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/blogs', blogRoutes);
+app.use('/api/companies', companyRoutes);
 
-
-
-
-// Middleware to log responses
-app.use((req, res, next) => {
-  const oldSend = res.send;
-  res.send = function (data) {
-    console.log('Response from server:', data);
-    oldSend.apply(res, arguments);
-  };
-  next();
-});
-
-const Registration = mongoose.model("Register", Schema);
-const CompanyRegistration = mongoose.model("CompanyRegister", CompanySchema);
-
-app.post("/register", async (req, res) => {
-  const registration = new Registration(req.body);
-  try {
-    const savedRegistration = await registration.save();
-    res.send(savedRegistration);
-  } catch (err) {
-    res.status(400).send(err);
-  }
-});
-
-app.get("/registrations", async (req, res) => {
-  try {
-    const registrations = await Registration.find();
-    res.json({ data: registrations });
-  } catch (err) {
-    res.status(400).send(err);
-  }
-});
-
-app.get("/registrations/:id", async (req, res) => {
-  const { id } = req.params;
-  try {
-    const registration = await Registration.findById(id);
-    if (!registration) {
-      return res.status(404).json({ error: "Registration not found" });
-    }
-    res.json({ data: registration });
-  } catch (err) {
-    res.status(400).send(err);
-  }
-});
-
-app.put("/register/:id", async (req, res) => {
-  const { id } = req.params;
-  try {
-    const updatedRegistration = await Registration.findByIdAndUpdate(id, req.body, { new: true });
-    if (!updatedRegistration) {
-      return res.status(404).json({ error: "Registration not found" });
-    }
-    res.send(updatedRegistration);
-  } catch (err) {
-    res.status(400).send(err);
-  }
-});
-
-app.delete("/register/:id", async (req, res) => {
-  const { id } = req.params;
-  try {
-    console.log("route visited"); // Log message (route Visited)
-    const deletedRegistration = await Registration.findByIdAndDelete(id);
-    if (!deletedRegistration) {
-      return res.status(404).json({ error: "Registration not found" });
-    }
-    res.send("Registration deleted successfully");
-  } catch (err) {
-    res.status(400).send(err);
-  }
-});
-
-app.post("/companyregister", async (req, res) => {
-  const companyregistration = new CompanyRegistration(req.body);
-  try {
-    const savedCompanyRegistration = await companyregistration.save();
-    res.status(201).send(savedCompanyRegistration); 
-  } catch (err) {
-    console.error('Company registration failed:', err);
-    res.status(400).send({ error: 'Company registration failed', details: err.message });
-  }
-});
-
-app.get("/companyregistrations", async (req, res) => {
-  try {
-    const companyregistrations = await CompanyRegistration.find();
-    res.json({ data: companyregistrations });
-  } catch (err) {
-    res.status(400).send(err);
-  }
-});
-
-app.get ("/companyregistrations/:id", async (req, res) => {
-  const { id } = req.params;
-  try {
-    const companyregistration = await CompanyRegistration.findById(id);
-    if (!companyregistration) {
-      return res.status(404).json({ error: "Company registration not found" });
-    }
-    res.json({ data: companyregistration });
-  } catch (err) {
-    res.status(400).send(err);
-  }
-});
-
-app.put("/companyregister/:id", async (req, res) => {
-  const { id } = req.params;
-  try {
-    const updatedCompanyRegistration = await CompanyRegistration.findByIdAndUpdate(id, req.body, { new: true });
-    if (!updatedCompanyRegistration) {
-      return res.status(404).json({ error: "Company registration not found" });
-    }
-    res.send(updatedCompanyRegistration);
-  } catch (err) {
-    res.status(400).send(err);
-  }
-});
-
-app.delete("/companyregister/:id", async (req, res) => {
-  const { id } = req.params;
-  try {
-    const deletedCompanyRegistration = await CompanyRegistration.findByIdAndDelete(id);
-    if (!deletedCompanyRegistration) {
-      return res.status(404).json({ error: "Company registration not found" });
-    }
-    res.send("Company Registration deleted successfully");
-  } catch (err) {
-    res.status(400).send(err);
-  }
-});
-
-
+app.use(logResponses);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
