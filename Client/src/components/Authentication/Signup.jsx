@@ -6,8 +6,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { motion } from 'framer-motion';
-import { CarouselData } from '../../data/Carouseldata';
-import Navbar from '../pages/LandingPage/Navbar';
+import { CarouselData } from '../../../data/Carouseldata';
+import Navbar from '../LandingPageComponent/Navbar';
 import './button.css';
 import styles from './Signup.module.css';
 
@@ -147,3 +147,9 @@ const Signup = () => {
 };
 
 export default Signup;
+
+
+
+
+
+

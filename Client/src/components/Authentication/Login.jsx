@@ -4,13 +4,13 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useAuth0 } from "@auth0/auth0-react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { motion } from 'framer-motion';
-import Navbar from '../pages/LandingPage/Navbar';
-import { CarouselData } from '../../data/Carouseldata';
+import Navbar from '../LandingPageComponent/Navbar';
+import { CarouselData } from '../../../data/Carouseldata';
 import { faChevronRight, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import styles from './Login.module.css';
 import './button.css';
 import { useDispatch, useSelector } from 'react-redux';
-import {selectors, actions } from '../redux/authSlice'; 
+import {selectors, actions } from '../../redux/authSlice'; 
 
 const Login = () => {
     const { loginWithRedirect } = useAuth0();
@@ -64,10 +64,6 @@ const Login = () => {
             localStorage.setItem('token', res.data);
             console.log(isAuthenticated)
             dispatch(actions.login());
-            console.log(isAuthenticated)
-            // console.log(login)     
-            // console.log(res.message);
-            // console.log(res);
             localStorage.setItem('id', res.user._id);
             navigate('/home');
         } catch (error) {
