@@ -1,10 +1,10 @@
 // import Navbar from '../pages/Navbar'
 import React from 'react';
 
-import HomeBodyNav from '../pages/HomePage/HomeBodyNav';
-import HomeHorizontal from '../pages/HomePage/HomeHorizontalNav';
-import HomeHeader from '../pages/HomePage/HomeHeader';
-import SideNavbar from '../pages/HomePage/HomeNavbar';
+import HomeBodyNav from '../components/HomePageComponent/HomeBodyNav';
+import HomeHorizontal from '../components/HomePageComponent/HomeHorizontalNav';
+import HomeHeader from '../components/HomePageComponent/HomeHeader';
+import SideNavbar from '../components/HomePageComponent/HomeNavbar';
 import { useSelector } from 'react-redux';
 function Home() {
   const isAuthenticated = useSelector ((state )=> state.root)

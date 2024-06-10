@@ -1,15 +1,18 @@
 import {Link} from 'react-router-dom'
 import { useState } from 'react';
+
 import './LandingPage.css'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faUserPlus} from '@fortawesome/free-solid-svg-icons';
 import{faArrowRight} from '@fortawesome/free-solid-svg-icons';
 import{faUser} from '@fortawesome/free-solid-svg-icons';
-import Main from '../pages/LandingPage/Main';
-import JoinUs from '../pages/LandingPage/JoinUs';
-import Categories from '../pages/LandingPage/Categories';
-import Whyus from '../pages/LandingPage/Whyus';
-import Footer from '../components/Footer';
+
+import HeroSection from '../components/LandingPageComponent/HeroSection';
+import JoinUs from '../components/LandingPageComponent/JoinUs';
+import Categories from '../components/LandingPageComponent/Categories';
+import Whyus from '../components/LandingPageComponent/Whyus';
+import Footer from '../components/LandingPageComponent/Footer';
 function LandingPage(){
     const [showDropdown, setShowDropdown] = useState(false);
 
@@ -46,7 +49,7 @@ function LandingPage(){
     </nav>
     <div>
         
-        <Main/>
+        <HeroSection/>
         <Categories/>
         <JoinUs/>
         

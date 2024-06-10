@@ -1,12 +1,12 @@
 import React from "react";
 import { useTypewriter , Cursor } from "react-simple-typewriter";
-import styles from "./Main.module.css";
+import styles from "./HeroSection.module.css";
 import {Link} from 'react-router-dom'
-import '../../components/button.css'
+import '../Authentication/button.css'
 
 
 
-function Main() {
+function HeroSection() {
   const [typeEffect] = useTypewriter({
     words: [
       "as if you'll EARN forever...",
@@ -44,4 +44,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default HeroSection;
