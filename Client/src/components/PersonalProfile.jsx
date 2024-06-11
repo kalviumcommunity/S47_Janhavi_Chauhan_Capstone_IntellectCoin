@@ -1,7 +1,7 @@
 
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import styles from './PersonalProfile.module.css';
 
 
 const PersonalProfile = ({ userId }) => {
@@ -32,9 +32,11 @@ const PersonalProfile = ({ userId }) => {
       {error ? (
         <p>Error: {error}</p>
       ) : userData ? (
-        <div>
+        <div className={styles.container}>
           <h3>{userData.firstName} {userData.lastName}</h3>
           <p>Email: {userData.email}</p>
+          <img src={userData.pic} alt="" />
+
     
         </div>
       ) : (
