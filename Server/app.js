@@ -4,9 +4,11 @@ const cors = require("cors");
 const connectDB = require('./config/db');
 const userRegistrationRoutes = require('./routes/UserRegistrationRoute');
 const authRoutes = require('./routes/auth');
+const userRoute = require('./routes/users');
 const blogRoutes = require('./routes/blogRoutes');
 const companyRoutes = require('./routes/CompanyRegistrationRoute');
 const logResponses = require('./middleware/LogResponse');
+
 
 const app = express();
 require("dotenv").config();
@@ -19,6 +21,7 @@ const PORT = process.env.PORT || 4000;
 
 app.use('/api/users', userRegistrationRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/users', userRoute);
 app.use('/api/blogs', blogRoutes);
 app.use('/api/companies', companyRoutes);
 

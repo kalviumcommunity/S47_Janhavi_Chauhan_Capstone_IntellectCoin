@@ -3,7 +3,7 @@ const { User } = require('../models/user');
 const Joi = require('joi');
 const bcrypt = require('bcrypt');
 
-router.post('/', async (req, res) => {
+router.post('/add', async (req, res) => {
     try {
         console.log(req.body);
         const user = await User.findOne({ email: req.body.email });

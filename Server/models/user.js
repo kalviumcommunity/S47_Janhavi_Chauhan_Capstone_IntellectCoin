@@ -4,13 +4,15 @@ const Joi = require('joi');
 const passwordComplexity = require('joi-password-complexity');
 
 
-
 const userSchema = new mongoose.Schema({
-    name: {
+    firstName: {
         type: String,
         required: true
     },
-  
+    lastName: {
+        type: String,
+        required: true
+    },
     email: {
         type: String,
         required: true
@@ -18,11 +20,12 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
+    },
+    pic: {
+        type: String,
+        default: "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"
     }
-
-}
-    
-)
+})
 
 userSchema.methods.generateAuthToken = function () {
     const token = jwt.sign({ _id: this._id }, process.env.JWTPRIVATEKEY, {
@@ -40,9 +43,9 @@ const Validate = (data) => {
         lastName: Joi.string().required().label("Last Name"),
         email: Joi.string().email().required().label("Email"),
         password: passwordComplexity().required().label("Password"),
-    }).options({ abortEarly: false });
-    return schema.validate(data);
+        pic: Joi.string()
+    })
+    return schema.validate(data)
 }
-
 
 module.exports = { User, Validate }

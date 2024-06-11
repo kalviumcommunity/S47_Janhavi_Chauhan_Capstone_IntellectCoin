@@ -11,6 +11,7 @@ import Navbar from '../LandingPageComponent/Navbar';
 import './button.css';
 import styles from './Signup.module.css';
 
+
 const Signup = () => {
     const { loginWithRedirect } = useAuth0();
     const navigate = useNavigate();
@@ -19,24 +20,26 @@ const Signup = () => {
         firstName: '',
         lastName: '',
         email: '',
-        password: ''
+        password: '',
+        pic: null
     });
-
+    const [picUrl, setPicUrl] = useState('');
+    const [loading, setLoading] = useState(false);
     const [currentImage, setCurrentImage] = useState(0);
-    const [isVisible, setIsVisible] = useState(false); 
+    const [isVisible, setIsVisible] = useState(false);
 
     const forwardImage = () => {
         setCurrentImage(currentImage < CarouselData.length - 1 ? currentImage + 1 : 0);
-        setIsVisible(false); 
+        setIsVisible(false);
     };
 
     const backwardImage = () => {
         setCurrentImage(currentImage > 0 ? currentImage - 1 : CarouselData.length - 1);
-        setIsVisible(false); 
+        setIsVisible(false);
     };
 
     const fadeInAnimation = () => {
-        setIsVisible(true); 
+        setIsVisible(true);
     };
 
     useEffect(() => {
@@ -48,36 +51,89 @@ const Signup = () => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
-        
+        if (name === 'pic') {
+            setFormData({ ...formData, [name]: e.target.files[0] });
+        } else {
+            setFormData({ ...formData, [name]: value });
+        }
+
         let errorMessage = '';
         if (name === 'email' && !/\S+@\S+\.\S+/.test(value))
             errorMessage = 'Email is not valid';
-        else if (name !== 'password' && !value.trim())
+        else if (name !== 'password' && name !== 'pic' && !value.trim())
             errorMessage = `${name.charAt(0).toUpperCase() + name.slice(1)} is required`;
 
         setErrors({ ...errors, [name]: errorMessage });
     };
 
+    const postDetails = async () => {
+        setLoading(true);
+
+        if (!formData.pic) {
+            setErrors("Please select an image");
+            setLoading(false);
+            return;
+        }
+
+        if (formData.pic.type === 'image/jpeg' || formData.pic.type === 'image/png') {
+            const data = new FormData();
+            data.append('file', formData.pic);
+            data.append('upload_preset', 'IntellectCoin');
+            data.append('cloud_name', 'janhavi');
+
+            try {
+                const res = await fetch('https://api.cloudinary.com/v1_1/janhavi/image/upload', {
+                    method: 'post',
+                    body: data,
+                });
+                const result = await res.json();
+
+                if (result.url) {
+                    setPicUrl(result.url.toString());
+                    setLoading(false);
+                    return result.url.toString();
+                } else {
+                    setErrors('Upload failed');
+                    setLoading(false);
+                    return null;
+                }
+            } catch (err) {
+                setErrors('Error uploading image');
+                setLoading(false);
+                return null;
+            }
+        } else {
+            setErrors("Please select a valid image");
+            setLoading(false);
+            return null;
+        }
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        
-            const data = await axios.post('http://localhost:4000/api/users/add', formData)
-                .then(data =>{
-                    localStorage.setItem('token', data.data.token);
-                    navigate('/home');
-                })
-                .catch((error) =>{ 
-                
-                    if (error.response && error.response.data && error.response.data.error) {
-                        setErrors(error.response.data.error.map(err=>err.message).join(", ") );
-                    } 
-                     else {
-                
-                        console.log("An unexpected error occurred.");
-                    }
-                })
+        const imageUrl = await postDetails();
+        if (!imageUrl) return;
+
+        setLoading(true);
+
+        const uri = 'http://localhost:4000/api/users/add';
+
+        axios.post(uri, { ...formData, pic: imageUrl })
+            .then(response => {
+                const res = response.data;
+                localStorage.setItem('token', res.data);
+                setLoading(false);
+                navigate('/home');
+            })
+            .catch(error => {
+                if (error.response && error.response.data && error.response.data.error) {
+                    setErrors(error.response.data.error.map(err => err.message).join(", "));
+                } else {
+                    setErrors("An unexpected error occurred.");
+                }
+                setLoading(false);
+            });
     };
 
     return (
@@ -86,7 +142,7 @@ const Signup = () => {
             <div className={styles.login_container}>
                 <div className={styles.left}>
                     <div onClick={forwardImage} className={styles.forward}>
-                        <FontAwesomeIcon icon={faChevronRight} style={{ height: '30px', width: '30px', marginLeft: '40px' }} />
+                       <FontAwesomeIcon icon={faChevronRight} style={{ height: '30px', width: '30px', marginLeft: '40px' }} />
                     </div>
                     <motion.img
                         src={CarouselData[currentImage].img}
@@ -134,19 +190,26 @@ const Signup = () => {
                             {errors.email && <div className={styles.error_msg}>{errors.email}</div>}
                             <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} />
                             {errors.password && <div className={styles.error_msg}>{errors.password}</div>}
+                            <input type= "file" name='pic' accept='image/*'onChange={handleChange} />
                             {errors && typeof errors === 'string' && <div className={styles.error_msg}>{errors}</div>}
                             <button className="btn">Sign Up <FontAwesomeIcon icon={faArrowRight} className='arrow' /></button>
                             <button type="button" className="login-with-google-btn" onClick={loginWithRedirect}>Sign up with Google</button>
                             <p className={styles.noaccount}>Already have an account? <Link to="/login">Login</Link></p>
                         </form>
-                    </div>
-                </div>
-            </div>
+                     </div>
+               </div>
+             </div>
+           
         </>
     );
 };
 
 export default Signup;
+
+
+
+  
+
 
 
 
