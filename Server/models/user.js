@@ -34,6 +34,13 @@ userSchema.methods.generateAuthToken = function () {
     return token;
 
 }
+ 
+userSchema.pre('save', async function (next) {
+    if (this.isModified('password')) {
+        this.password = await bcrypt.hash(this.password, 10);
+    }
+    next();
+})
 
 const User = mongoose.model('User', userSchema);
 
@@ -47,5 +54,14 @@ const Validate = (data) => {
     })
     return schema.validate(data)
 }
+const ValidateLogin = (data) => {
+    const schema = Joi.object({
+        email: Joi.string().email().required().label("Email"),
+        password: Joi.string().required().label("Password"),
+    });
+    return schema.validate(data);
+};
 
-module.exports = { User, Validate }
+
+
+module.exports = { User, Validate , ValidateLogin };

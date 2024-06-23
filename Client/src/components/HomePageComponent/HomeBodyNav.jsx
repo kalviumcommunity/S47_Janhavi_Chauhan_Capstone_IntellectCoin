@@ -1,29 +1,45 @@
 
+
+
 import React from 'react';
 import styles from './HomeBodyNav.module.css';
 import { Link } from 'react-router-dom';
 
-const HomeBodyNav = () => {
+
+const HomeBodyNav = ({ setSelectedContent }) => {
   return (
     <>
-    <div className={styles.radioInputs}>
-      <label className={styles.radio}>
-        <input type="radio" name="radio" defaultChecked />
-        <span className={styles.name}><Link to="/UserProfileData">Browse Projects</Link></span>
-      </label>
-      <label className={styles.radio}>
-        <input type="radio" name="radio" />
-        <span className={styles.name}><Link to="/companylist">Company List</Link></span>
-      </label>
-      <label className={styles.radio}>
-        <input type="radio" name="radio" />
-        <span className={styles.name}><Link to="/blogdisplay">Blogs</Link></span>
-      </label>
-
-    </div>
-    <hr />
+      <div className={styles.radioInputs}>
+        <label className={styles.radio}>
+          <input 
+            type="radio" 
+            name="radio" 
+            defaultChecked 
+            onClick={() => setSelectedContent('browseProjects')}
+          />
+           <span className={styles.name}>Browse Projects</span>
+        </label>
+        <label className={styles.radio}>
+          <input 
+            type="radio" 
+            name="radio" 
+            onClick={() => setSelectedContent('companyList')}
+          />
+          <span className={styles.name}>Company List</span>
+        </label>
+        <label className={styles.radio}>
+          <input 
+            type="radio" 
+            name="radio" 
+            onClick={() => setSelectedContent('blogs')}
+          />
+          <span className={styles.name}>Blogs</span>
+        </label>
+      </div>
+      <hr />
     </>
   );
 };
 
 export default HomeBodyNav;
+
