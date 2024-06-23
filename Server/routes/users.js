@@ -1,12 +1,11 @@
 const router = require("express").Router();
 const { User, Validate } = require("../models/user");
 const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
 
 router.post("/add", async (req, res) => {
   try {
     const { error } = Validate(req.body);
-    if (error) return res.status(400).json({ error: error.details });
+    if (error) return res.status(400).json({ error: error.details[0].message });
 
     let user = await User.findOne({ email: req.body.email });
     if (user) return res.status(400).json({ error: "User already registered" });
@@ -16,13 +15,12 @@ router.post("/add", async (req, res) => {
 
     user = await new User({ ...req.body, password: hashPassword }).save();
 
-    const token = jwt.sign({ _id: user._id }, process.env.JWTPRIVATEKEY, {
-      expiresIn: "7d",
-    });
+    const token = user.generateAuthToken();
+
 
     res.status(201).json({ token, message: "User created successfully" });
   } catch (err) {
-    res.status(500).send(err);
+    res.status(500).send({ error: err.message });
   }
 });
 
