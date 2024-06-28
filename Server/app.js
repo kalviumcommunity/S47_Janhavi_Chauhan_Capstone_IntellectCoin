@@ -8,6 +8,9 @@ const userRoute = require('./routes/users');
 const blogRoutes = require('./routes/blogRoutes');
 const companyRoutes = require('./routes/CompanyRegistrationRoute');
 const logResponses = require('./middleware/LogResponse');
+// const {protect} = require('./middleware/authMiddleware');
+const  Users = require('./routes/userRoutes')
+
 
 
 const app = express();
@@ -20,13 +23,17 @@ connectDB();
 const PORT = process.env.PORT || 4000;
 
 app.use('/api/users', userRegistrationRoutes);
-app.use('/api/auth', authRoutes);
+app.use('/api/auth',  authRoutes);
 app.use('/api/users', userRoute);
 app.use('/api/blogs', blogRoutes);
 app.use('/api/companies', companyRoutes);
+
+app.use('/api/user', Users);
+
 
 app.use(logResponses);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+

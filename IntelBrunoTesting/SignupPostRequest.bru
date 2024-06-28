@@ -1,0 +1,22 @@
+meta {
+  name: SignupPostRequest
+  type: http
+  seq: 4
+}
+
+post {
+  url: http://localhost:4000/api/user/register
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "username": "exampleUsername",
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "john.doe@example.com",
+    "password": "securePassword@123",
+    "pic": "profilePicUrl"
+  }
+}
