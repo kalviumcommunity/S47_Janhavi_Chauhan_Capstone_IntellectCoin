@@ -22,18 +22,23 @@ import BlogDisplay from '../components/BloggingComponent/BlogDisplay';
 import ProtectedRoute from '../redux/ProtectedRoute';
 import { useSelector } from 'react-redux';
 import { selectors } from '../redux/authSlice';
+import CompleteProfile from '../components/Authentication/completeProfile';
+import { AuthProvider } from '../components/Authentication/AuthContext';
 
 
 function Rout() {
   const isAuthenticated = useSelector(selectors);
   console.log('routes isAuthenticated:--',isAuthenticated)
   return (
+    <AuthProvider>
     <Router>
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/registration" element={<RegistrationAndEducationForm />} />
-        <Route path="/home" element={<ProtectedRoute isAuthenticated = {isAuthenticated} component={Home} > </ProtectedRoute>} />
-        <Route path="/findjob" element={<ProtectedRoute isAuthenticated = {isAuthenticated} component={Findjob} > </ProtectedRoute>} />
+        {/* <Route path="/home" element={<ProtectedRoute isAuthenticated = {isAuthenticated} component={Home} > </ProtectedRoute>} />
+        <Route path="/findjob" element={<ProtectedRoute isAuthenticated = {isAuthenticated} component={Findjob} > </ProtectedRoute>} /> */}
+        <Route path="/home" element={<Home />} />
+        <Route path="/findjob" element={<Findjob />} />
         <Route path="/events" element={<Events />} />
         <Route path="/features" element={<Features />} />
         <Route path="/contact" element={<Contact />} />
@@ -48,9 +53,11 @@ function Rout() {
         <Route path="/personalprofile/:id" element={<PersonalProfile />} />
         <Route path="/bloggingform" element={<BloggingForm />} />
         <Route path="/blogdisplay" element={<BlogDisplay />} />
+        <Route path="/completeprofile" element={<CompleteProfile />} />
 
       </Routes>
     </Router>
+  </AuthProvider>
   );
 }
 

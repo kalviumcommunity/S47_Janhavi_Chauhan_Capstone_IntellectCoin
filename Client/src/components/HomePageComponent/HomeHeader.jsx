@@ -6,24 +6,24 @@ import React, { useState, useEffect } from 'react';
 // import styles from './HomeHeader.module.css'; 
 
 const HomeHeader = () => {
-    const [currentImage, setCurrentImage] = useState(0);
+//     const [currentImage, setCurrentImage] = useState(0);
 
-    const forwardImage = () => {
-        setCurrentImage(currentImage === CarouselData.length - 1 ? 0 : currentImage + 1);
-    };
+//     const forwardImage = () => {
+//         setCurrentImage(currentImage === CarouselData.length - 1 ? 0 : currentImage + 1);
+//     };
 
-    const backwardImage = () => {
-        setCurrentImage(currentImage === 0 ? CarouselData.length - 1 : currentImage - 1);
-    };
+//     const backwardImage = () => {
+//         setCurrentImage(currentImage === 0 ? CarouselData.length - 1 : currentImage - 1);
+//     };
 
    
-    useEffect(() => {
-        const interval = setInterval(() => {
-            forwardImage();
-        }, 5000); 
+//     useEffect(() => {
+//         const interval = setInterval(() => {
+//             forwardImage();
+//         }, 5000); 
 
-        return () => clearInterval(interval);  
-    }, [currentImage]); 
+//         return () => clearInterval(interval);  
+//     }, [currentImage]); 
 
     return (
         <>

@@ -1,58 +1,40 @@
-
 const Blog = require('../models/Blog');
 
-// Get all blogs
-exports.getAllBlogs = async (req, res) => {
-    try {
-        const blogs = await Blog.find();
-        res.json(blogs);
-    } catch (error) {
-        res.status(500).json({ error: 'Server error' });
+exports.getUserBlogs = async (req, res) => {
+  try {
+    const authHeader = req.headers.authorization;
+    if (!authHeader || !authHeader.startsWith("Bearer ")) {
+      return res.status(401).send({ message: "Unauthenticated" });
     }
+
+    const token = authHeader.split(" ")[1];
+    const decoded = jwt.verify(token, process.env.JWTPRIVATEKEY);
+    const blogs = await Blog.find({ author: decoded._id }).sort({ createdAt: -1 });
+    res.status(200).json(blogs);
+  } catch (error) {
+    res.status(500).send({ message: "Internal Server Error" });
+  }
 };
 
-// Add a new blog
-exports.addBlog = async (req, res) => {
-
-    try {
-        const { Title, Description, Image } = req.body;
-        const newBlog = await Blog.create({ Title, Description, Image });
-        res.status(201).json(newBlog);
-
-    } catch (error) {
-        res.status(500).json({ error: error.message});
+exports.createBlog = async (req, res) => {
+  try {
+    const authHeader = req.headers.authorization;
+    if (!authHeader || !authHeader.startsWith("Bearer ")) {
+      return res.status(401).send({ message: "Unauthenticated" });
     }
+
+    const token = authHeader.split(" ")[1];
+    const decoded = jwt.verify(token, process.env.JWTPRIVATEKEY);
+
+    const newBlog = new Blog({
+      ...req.body,
+      author: decoded._id
+    });
+
+    const blog = await newBlog.save();
+    res.status(200).json(blog);
+  } catch (error) {
+    res.status(500).send({ message: "Internal Server Error" });
+  }
 };
 
-// Update a blog
-exports.updateBlog = async (req, res) => {
-    try {
-        const { id } = req.params;
-        const { Title, Description, Image } = req.body;
-        const updatedBlog = await Blog.findByIdAndUpdate(
-            id,
-            { Title, Description, Image },
-            { new: true }
-        );
-        if (!updatedBlog) {
-            return res.status(404).json({ error: 'Blog not found' });
-        }
-        res.json(updatedBlog);
-    } catch (error) {
-        res.status(500).json({ error: 'Server error' });
-    }
-};
-
-// Delete a blog
-exports.deleteBlog = async (req, res) => {
-    try {
-        const { id } = req.params;
-        const deletedBlog = await Blog.findByIdAndDelete(id);
-        if (!deletedBlog) {
-            return res.status(404).json({ error: 'Blog not found' });
-        }
-        res.json({ message: 'Blog deleted successfully' });
-    } catch (error) {
-        res.status(500).json({ error: 'Server error' });
-    }
-};

@@ -1,17 +1,10 @@
-const { getAllBlogs  , addBlog, updateBlog, deleteBlog} = require ("../controllers/blogController");
 const express = require('express');
 const router = express.Router();
+const VerifyToken = require('../middleware/verifyToken');
 
-//Get all blogs
-router.get('/getAllBlogs', getAllBlogs);
+const {createBlog , getUserBlogs} = require('../controllers/blogController');
 
-// Add a new blog
-router.post('/addblog', addBlog);
-
-// Update a blog
-router.put('/:id', updateBlog);
-
-// Delete a blog
-router.delete('/:id', deleteBlog);
+router.post('/blogs', createBlog);
+router.get('/user/blogs', getUserBlogs);
 
 module.exports = router;
