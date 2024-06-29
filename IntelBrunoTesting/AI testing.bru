@@ -1,0 +1,17 @@
+meta {
+  name: AI testing
+  type: http
+  seq: 5
+}
+
+post {
+  url: http://localhost:4000/api/user/ai
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "prompt":"give me some good websites"
+  }
+}

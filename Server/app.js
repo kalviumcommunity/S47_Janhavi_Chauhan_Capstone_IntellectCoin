@@ -10,7 +10,7 @@ const companyRoutes = require('./routes/CompanyRegistrationRoute');
 const logResponses = require('./middleware/LogResponse');
 // const {protect} = require('./middleware/authMiddleware');
 const  Users = require('./routes/userRoutes')
-
+const airoutes = require('./routes/airoute')
 
 
 const app = express();
@@ -29,7 +29,7 @@ app.use('/api/blogs', blogRoutes);
 app.use('/api/companies', companyRoutes);
 
 app.use('/api/user', Users);
-
+app.use('/api/user', airoutes);
 
 app.use(logResponses);
 
