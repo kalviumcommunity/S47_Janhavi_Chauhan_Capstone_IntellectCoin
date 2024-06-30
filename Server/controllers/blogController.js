@@ -1,4 +1,6 @@
 const Blog = require('../models/Blog');
+const jwt = require('jsonwebtoken');
+const {User} = require('../models/user')
 
 exports.getUserBlogs = async (req, res) => {
   try {
@@ -9,10 +11,13 @@ exports.getUserBlogs = async (req, res) => {
 
     const token = authHeader.split(" ")[1];
     const decoded = jwt.verify(token, process.env.JWTPRIVATEKEY);
-    const blogs = await Blog.find({ author: decoded._id }).sort({ createdAt: -1 });
-    res.status(200).json(blogs);
+    const blogs = await Blog.find({ author: decoded._id });
+    const user = await User.findById(decoded._id );
+    console.log(blogs, user);
+    res.status(200).json({blogs, user});
+
   } catch (error) {
-    res.status(500).send({ message: "Internal Server Error" });
+    res.status(500).send({ message: "Internal Server Error", error : error.message });
   }
 };
 

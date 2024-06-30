@@ -1,0 +1,23 @@
+meta {
+  name: getBlogs
+  type: http
+  seq: 6
+}
+
+post {
+  url: http://localhost:4000/api/blogs/blogs
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjY3YzhhOWIxMTI0NDk2N2QxMTljYmMiLCJpYXQiOjE3MTk2MzUxMjQsImV4cCI6MTcyMDIzOTkyNH0.EZoLOuXJv0KHGWki5ptayfTc8bLn_9hdm4TvtHCJ8l8
+}
+
+body:json {
+   {
+      "title": "Understanding JavaScript Closures",
+      "content": "Closures are a fundamental concept in JavaScript. They allow a function to access variables from an enclosing scope or environment...",
+      "createdAt": "2023-06-01T12:00:00Z"
+    }
+}
