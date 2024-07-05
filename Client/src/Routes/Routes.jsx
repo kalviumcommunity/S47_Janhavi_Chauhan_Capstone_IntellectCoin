@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from '../components/LandingPageComponent/Navbar';
 import LandingPage from '../pages/LandingPage';
 import Home from '../pages/Home';
-import RegistrationAndEducationForm from '../components/UserRegistrationComponent/UserRegistration';
+import CreateProject from '../components/UserRegistrationComponent/UserRegistration';
 import Findjob from '../components/LandingPageComponent/Findjob';
 import Events from '../components/LandingPageComponent/Events';
 import Features from '../components/LandingPageComponent/Features';
@@ -24,6 +24,7 @@ import { useSelector } from 'react-redux';
 import { selectors } from '../redux/authSlice';
 import CompleteProfile from '../components/Authentication/completeProfile';
 import { AuthProvider } from '../components/Authentication/AuthContext';
+import UserProfileProjects from '../components/UserRegistrationComponent/UserProjectDisplay';
 
 
 function Rout() {
@@ -34,7 +35,7 @@ function Rout() {
     <Router>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/registration" element={<RegistrationAndEducationForm />} />
+        <Route path="/registration" element={<CreateProject />} />
         {/* <Route path="/home" element={<ProtectedRoute isAuthenticated = {isAuthenticated} component={Home} > </ProtectedRoute>} />
         <Route path="/findjob" element={<ProtectedRoute isAuthenticated = {isAuthenticated} component={Findjob} > </ProtectedRoute>} /> */}
         <Route path="/home" element={<Home />} />
@@ -54,6 +55,7 @@ function Rout() {
         <Route path="/bloggingform" element={<BloggingForm />} />
         <Route path="/blogdisplay" element={<BlogDisplay />} />
         <Route path="/completeprofile" element={<CompleteProfile />} />
+        <Route path = "/userProfileProjects" element={<UserProfileProjects/>}/>
 
       </Routes>
     </Router>

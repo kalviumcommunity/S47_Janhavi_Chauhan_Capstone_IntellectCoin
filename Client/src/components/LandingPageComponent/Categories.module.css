@@ -1,78 +1,68 @@
-
-.cardlist{
-  display: flex;
-
-}
-
-.categoryTitle{
-  text-align: center;
-  margin-top: 40px;
-}
-
-
-.title{
-  font-size: 35px;
-  color: rgb(84,121,247);
-}
-
-.subtitle {
-  color: grey;
-}
-
-
 .container {
-  max-width: 1100px;
-  margin: 0 auto;
   padding: 20px;
-  background-color:rgba(108, 139, 238, 0.11) ;
+  overflow: hidden; 
+  background-color: rgba(155, 178, 252, 0.146);;
 }
 
 .categoryTitle {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
-
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  color: rgb(84,121,247);
+}
 
 .subtitle {
   font-size: 16px;
-  color: #666;
+  color: #555;
+}
+
+.subtitles{
+  color:#555 ;
+}
+
+.marquee {
+  display: flex;
+  overflow: hidden;
+  white-space: nowrap; /* Ensures content is on one line */
+  width: 100%; /* Ensure the container takes up the full width */
+  position: relative;
 }
 
 .cardlist {
   display: flex;
-  justify-content: space-between;
+  animation: marquee 20s linear infinite; /* Adjust the duration for speed */
 }
 
-.Card1,
-.Card2,
-.Card3,
-.Card4 {
-  flex: 1;
-  margin: 0 10px;
-  padding: 20px;
-
-  width : 90px;
-
+.card {
+  margin: 0 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
 }
 
-.Card1 h4,
-.Card2 h4,
-.Card3 h4,
-.Card4 h4 {
-  font-size: 20px;
-  margin-top: 10px;
-  color:rgb(84,121,247) ;
-  margin-bottom: 10px;
+.image {
+  width: 150px; /* Adjust width as needed */
+  height: 100px; /* Adjust height as needed */
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+h4 {
+  margin-top: 10px;
+  font-size: 14px;
+}
 
-
-
-.image{
-  height: 100px;
-  border-radius: 50% ;
-  border:6px solid rgb(229, 229, 229) ;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.47);
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%); /* Move the cards to the left */
+  }
 }

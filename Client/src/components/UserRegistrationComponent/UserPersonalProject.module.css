@@ -1,0 +1,112 @@
+
+
+/* Container for the entire projects section */
+.container {
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Heading for the projects section */
+  .projectsHeading {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+  }
+  
+  /* Message display */
+  .message {
+    color: #d9534f;
+    text-align: center;
+    font-size: 1rem;
+    margin-top: 10px;
+  }
+  
+  /* Grid container for the project cards */
+  .cardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Space between the cards */
+    justify-content: center; /* Center the cards */
+  }
+  
+  /* Card container for individual projects */
+  .card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    width: 300px; /* Fixed width for each card */
+    cursor: pointer; /* Pointer cursor to indicate clickability */
+    transition: transform 0.3s ease; /* Smooth hover effect */
+  }
+  
+  .card:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+  }
+  
+  /* Heading for the project card */
+  .cardHeading {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #007bff;
+  }
+  
+  /* Video player for the project card */
+  .video {
+    border-radius: 4px;
+    margin-bottom: 10px;
+    cursor: pointer; /* Pointer cursor to indicate clickability */
+  }
+  
+  /* Description text for the project card */
+  .description {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 10px;
+  }
+  
+  /* Link to view the project */
+  .projectLink {
+    display: block;
+    font-size: 1rem;
+    color: #007bff;
+    text-decoration: none;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .projectLink:hover {
+    text-decoration: underline;
+  }
+  
+  /* Date display for the project card */
+  .date {
+    font-size: 0.875rem;
+    color: #999;
+    text-align: center;
+  }
+  
+  /* Fullscreen video styles */
+  .fullscreenVideo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Fullscreen video element */
+  .fullscreenVideo video {
+    max-width: 90%;
+    max-height: 90%;
+  }
+  
