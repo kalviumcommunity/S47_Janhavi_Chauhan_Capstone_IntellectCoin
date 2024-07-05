@@ -1,82 +1,90 @@
+
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.usercontainer {
-  display: flex;
-  gap:20px;
-  width: 80%;
-  margin-bottom: 20px;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.section {
-  margin-bottom: 10px;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1em;
 }
 
 .heading {
-  font-size: 18px;
-  margin-bottom: 5px;
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
+  color: #333;
 }
 
-.buttons {
-  display: flex;
-  justify-content: space-between;
+.description {
+  font-size: 1em;
+  margin-bottom: 1em;
+  color: #555;
 }
 
-.profile {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%; 
-  margin-right: 20px; 
+.video {
+  width: 100%;
+  height: auto;
+  margin-bottom: 1em;
 }
 
-
-
-
-.Name {
-  font-weight: bold;
-  font-size: 20px;
-  color:rgb(84,121,247);
+.author {
+  font-size: 0.9em;
+  color: #777;
+  margin-bottom: 0.5em;
 }
 
-
-.category {
-  color: grey;
-  margin-top: 10px;
+.createdAt {
+  font-size: 0.8em;
+  color: #aaa;
 }
 
-
-.LinkedIn,
-.GitHub,
-.languages,
-.CollegeName,
-.Degree,
-.YearOfStudy,
-.Skills,
-.AboutEducation,
-.ProjectCode,
-.DeployedLink,
-.Certificates {
-  font-size: 14px;
+.projectList {
+  list-style-type: none;
+  padding: 0;
 }
 
-.LinkedIn img{
-  width: 30px;
+.projectItem {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 1em;
+  margin-bottom: 1em;
+  transition: box-shadow 0.3s;
+  overflow: hidden;
 }
 
-.GitHub img{
-  width: 30px;
+.projectItem:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.social{
-  display: flex;
-  gap:10px;
-  margin-top: 10px;
+.title {
+  text-align: center;
+  margin-bottom: 1em;
+  color: #333;
 }
 
+.link {
+  color: #1e90ff;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.message {
+  margin: 0.5em 0;
+}
+
+@media (max-width: 600px) {
+  .heading {
+    font-size: 1.2em;
+  }
+
+  .description {
+    font-size: 0.9em;
+  }
+
+  .author, .createdAt {
+    font-size: 0.8em;
+  }
+
+  .projectItem {
+    padding: 0.8em;
+  }
+}

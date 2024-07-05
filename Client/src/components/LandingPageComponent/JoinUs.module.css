@@ -1,48 +1,162 @@
-
 .joinUsContainer {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 20px;
-    gap: 20px;
-    margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 20px;
+  gap: 20px;
+  margin-top: 30px;
+  position: relative; /* Add this for arrow positioning */
+}
+
+/* Style for each card */
+.Card1,
+.Card2,
+.Card3,
+.Card4,
+.Card5 {
+  width: 40%;
+  height: 120px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  position: relative; /* Add this for arrow positioning */
+}
+
+/* Heading style */
+.Card1 h1,
+.Card2 h1,
+.Card3 h1,
+.Card4 h1,
+.Card5 h1 {
+  font-size: 17px;
+  color: #333;
+  margin-bottom: 10px;
+  text-align: center;
+  color: rgb(84, 121, 247);
+}
+
+/* Paragraph style */
+.Card1 p,
+.Card2 p,
+.Card3 p,
+.Card4 p,
+.Card5 p {
+  font-size: 15px;
+  color: #666;
+  text-align: center;
+}
+
+/* Arrow styles */
+.Card1::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -15px;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-left-color: rgb(84, 121, 247);
+  
+}
+
+.Card2::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -15px;
+  transform: translateY(-50%) rotate(45deg);
+  width: 10px;
+  height: 10px;
+  background-color: rgb(84, 121, 247);
+}
+
+.Card2::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -15px;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-left-color: rgb(84, 121, 247);
+
+}
+
+.Card3::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -15px;
+  transform: translateY(-50%) rotate(45deg);
+  width: 10px;
+  height: 10px;
+  background-color: rgb(84, 121, 247);
+}
+
+.Card3::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -15px;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-left-color: rgb(84, 121, 247);
+  
+}
+
+.Card4::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -15px;
+  transform: translateY(-50%) rotate(45deg);
+  width: 10px;
+  height: 10px;
+  background-color: rgb(84, 121, 247);
+}
+
+.Card4::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -15px;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-left-color: rgb(84, 121, 247);
+ 
+}
+
+.Card5::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -15px;
+  transform: translateY(-50%) rotate(45deg);
+  width: 10px;
+  height: 10px;
+  background-color: rgb(84, 121, 247);
+}
+
+/* Arrow Animation */
+@keyframes arrowProjectile {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
   }
-  
-  .Card1,
-  .Card2,
-  .Card3,
-  .Card4,
-  .Card5 {
-    width: 40%;
-    height: 120px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-bottom: 20px;
+  50% {
+    transform: translateY(10px);
+    opacity: 1;
   }
-  
-  .Card1 h1,
-  .Card2 h1,
-  .Card3 h1,
-  .Card4 h1,
-  .Card5 h1 {
-    font-size: 18px;
-    color: #333;
-    margin-bottom: 10px;
-    text-align: center;
-    color:rgb(84,121,247);
+  100% {
+    transform: translateY(0);
+    opacity: 0;
   }
-  
-  .Card1 p,
-  .Card2 p,
-  .Card3 p,
-  .Card4 p,
-  .Card5 p {
-    font-size: 16px;
-    color: #666;
-    text-align: center;
-  }
-  
-  
-  
+}

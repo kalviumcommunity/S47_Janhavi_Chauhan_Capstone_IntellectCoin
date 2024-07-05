@@ -22,12 +22,12 @@ connectDB();
 
 const PORT = process.env.PORT || 4000;
 
-app.use('/api/users', userRegistrationRoutes);
+
 app.use('/api/auth',  authRoutes);
 app.use('/api/users', userRoute);
 app.use('/api/blogs', blogRoutes);
 app.use('/api/companies', companyRoutes);
-
+app.use('/api/userregistration', userRegistrationRoutes);
 app.use('/api/user', Users);
 
 

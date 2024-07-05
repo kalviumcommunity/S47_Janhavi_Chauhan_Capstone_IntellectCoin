@@ -1,0 +1,24 @@
+meta {
+  name: ProjectCreatingRoute
+  type: http
+  seq: 8
+}
+
+post {
+  url: http://localhost:4000/api/userregistration/create
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjY3YzhhOWIxMTI0NDk2N2QxMTljYmMiLCJpYXQiOjE3MTk4NTAzNzgsImV4cCI6MTcyMDQ1NTE3OH0.sj0NPT81oaogt0rpw_Q-O_BMxUrRwMWRi9a-tleNHA4
+}
+
+body:json {
+  {
+    "heading": "Updat One",
+    "ProjectLink": "https://github.com/johndoe/updated-project-one",
+    "description": "This is the updated first project."
+  }
+  
+}

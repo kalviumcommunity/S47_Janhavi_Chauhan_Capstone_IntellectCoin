@@ -1,78 +1,133 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import styles from './User.module.css'; 
 
-const RegistrationAndEducationForm = () => {
-  const [formData, setFormData] = useState({
-    FirstName: '',
-    LastName: '',
-    Email: '',
-    Category: '',
-    About: '',
-    linkedin: '',
-    github: '',
-    languages: '',
-    CollegeName: '',
-    Degree: '',
-    YearOfStudy: '',
-    Skills: '',
-    ProjectCode: '',
-    DeployedLink: '',
-    Certificates: '',
-    PhoneNumber: '' 
-  });
+const CreateProject = () => {
+  const [heading, setHeading] = useState('');
+  const [projectLink, setProjectLink] = useState('');
+  const [description, setDescription] = useState('');
+  const [video, setVideo] = useState(null);
+  const [error, setError] = useState('');
+  const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const handleChange = e => {
-    const { name, value } = e.target;
-    setFormData(prevState => ({
-      ...prevState,
-      [name]: value
-    }));
+  const handleVideoChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      if (file.type !== 'video/mp4' && file.type !== 'video/mov') {
+        setError('Please select a valid video format (MP4, MOV)');
+        return;
+      }
+      setVideo(file);
+      setError('');
+    }
   };
 
-  const handleSubmit = async e => {
-    e.preventDefault();
+  const postVideoDetails = async () => {
+    setLoading(true);
+    if (!video) {
+      setError('Please select a video');
+      setLoading(false);
+      return null;
+    }
+    if (video.type !== 'video/mp4' && video.type !== 'video/mov') {
+      setError('Please select a valid video');
+      setLoading(false);
+      return null;
+    }
+
+    const data = new FormData();
+    data.append('file', video);
+    data.append('upload_preset', 'IntellectCoin'); // Adjust the preset if necessary
+    data.append('cloud_name', 'janhavi'); // Replace with your Cloudinary cloud name
+
     try {
-      const response = await axios.post('http://localhost:4000/api/users/register', formData);
-      console.log('Registration successful! Response:', response.data); 
-      alert('Registration successful!');
-    } catch (error) {
-      console.error('Registration failed:', error);
-      alert('Registration failed. Please try again.');
+      const res = await fetch('https://api.cloudinary.com/v1_1/janhavi/video/upload', {
+        method: 'POST',
+        body: data,
+      });
+      const result = await res.json();
+
+      if (result.url) {
+        setLoading(false);
+        return result.url.toString();
+      } else {
+        setError('Upload failed');
+        setLoading(false);
+        return null;
+      }
+    } catch (err) {
+      setError('Error uploading video');
+      setLoading(false);
+      return null;
+    }
+  };
+
+  const handleCreateProject = async (e) => {
+    e.preventDefault();
+    const videoUrl = await postVideoDetails();
+    if (videoUrl) {
+      try {
+        const token = localStorage.getItem('token');
+        if (!token) {
+          setMessage('Unauthenticated');
+          return;
+        }
+
+        const response = await axios.post(
+          'http://localhost:4000/api/userregistration/create',
+          { heading, projectLink, description, video: videoUrl },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        setMessage('Project created successfully!');
+      } catch (error) {
+        setMessage('Error creating project');
+      }
     }
   };
 
   return (
-    <div className={styles.container}>
-      <h2>Registration and Education Form</h2>
-      <form onSubmit={handleSubmit}>
-        <div className={styles.formSection}>
-          <h3>Personal Information</h3>
-          <input type="text" name="FirstName" className={styles.formInput} placeholder="First Name" value={formData.FirstName} onChange={handleChange} />
-          <input type="text" name="LastName" className={styles.formInput} placeholder="Last Name" value={formData.LastName} onChange={handleChange} />
-          <input type="email" name="Email" className={styles.formInput} placeholder="Email" value={formData.Email} onChange={handleChange} />
-          <input type="text" name="Category" className={styles.formInput} placeholder="Category" value={formData.Category} onChange={handleChange} />
-          <textarea name="About" className={styles.formTextarea} placeholder="About" value={formData.About} onChange={handleChange} />
-          <input type="text" name="linkedin" className={styles.formInput} placeholder="LinkedIn" value={formData.linkedin} onChange={handleChange} />
-          <input type="text" name="github" className={styles.formInput} placeholder="GitHub" value={formData.github} onChange={handleChange} />
-          <input type="text" name="languages" className={styles.formInput} placeholder="Languages (comma-separated)" value={formData.languages} onChange={handleChange} />
-          <input type="number" name="PhoneNumber" className={styles.formInput} placeholder="Phone Number" value={formData.PhoneNumber} onChange={handleChange} /> {/* New phone number field */}
-        </div>
-        <div className={styles.formSection}>
-          <h3>Education Information</h3>
-          <input type="text" name="CollegeName" className={styles.formInput} value={formData.CollegeName} placeholder='College Name' onChange={handleChange} />
-          <input type="text" name="Degree" className={styles.formInput} value={formData.Degree}placeholder='Degree' onChange={handleChange} />
-          <input type="text" name="YearOfStudy" className={styles.formInput} value={formData.YearOfStudy} placeholder='Year of Study' onChange={handleChange} />
-          <input type="text" name="Skills" className={styles.formInput} value={formData.Skills} placeholder='Skills' onChange={handleChange} />
-          <input type="text" name="AboutEducation" className={styles.formInput} value={formData.AboutEducation} placeholder='About' onChange={handleChange} />
-          <input type="text" name="ProjectCode" className={styles.formInput} value={formData.ProjectCode} placeholder='Project Code Link' onChange={handleChange} />
-          <input type="text" name="DeployedLink" className={styles.formInput} value={formData.DeployedLink} placeholder='Deployed Link' onChange={handleChange} />
-          <input type="text" name="Certificates" className={styles.formInput} value={formData.Certificates} placeholder='Certificates' onChange={handleChange} />
-        </div>
-        <button type="submit" className={styles.formButton}>Register</button>
+    <>
+      <h2>Create Project</h2>
+      <form onSubmit={handleCreateProject}>
+        <input
+          type="text"
+          placeholder="Heading"
+          value={heading}
+          onChange={(e) => setHeading(e.target.value)}
+          required
+        />
+        <input
+          type="text"
+          placeholder="Project Deployed Link"
+          value={projectLink}
+          onChange={(e) => setProjectLink(e.target.value)}
+          required
+        />
+        <textarea
+          placeholder="Description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          required
+        ></textarea>
+        <input
+          type="file"
+          name="video"
+          accept="video/mp4,video/mov"
+          onChange={handleVideoChange}
+        />
+        <span>{error}</span>
+        <button type="submit" disabled={loading}>
+          {loading ? 'Loading...' : 'Upload Project'}
+        </button>
       </form>
-    </div>
+      {message && <p>{message}</p>}
+    </>
   );
 };
 
-export default RegistrationAndEducationForm;
+export default CreateProject;
+  
