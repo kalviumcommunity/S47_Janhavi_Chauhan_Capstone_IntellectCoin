@@ -109,5 +109,25 @@ exports.updateProject = async (req, res) => {
   }
 };
 
+exports.getOneProject = async (req, res) => {
+  try {
+    const authHeader = req.headers.authorization;
+    if (!authHeader || !authHeader.startsWith("Bearer ")) {
+      return res.status(401).send({ message: "Unauthenticated" });
+    }
 
+    const token = authHeader.split(" ")[1];
+    const decoded = jwt.verify(token, process.env.JWTPRIVATEKEY);
+    const project = await Project.findById(req.params.id)
 
+    if (!project) {
+      return res.status(404).send({ message: "Project not found" });
+    }
+    if (project.author.toString() !== decoded._id) {
+      return res.status(403).send({ message: "Unauthorized" });
+    }
+    res.status(200).json(project);
+  } catch (error) {
+    res.status(500).send({ message: "Internal Server Error", error: error.message });
+  }
+}

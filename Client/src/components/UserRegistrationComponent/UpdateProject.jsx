@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useParams, useNavigate } from 'react-router-dom';
 
-const UpdateProject = ({ projectId }) => {
+const UpdateProject = () => {
   const [project, setProject] = useState(null);
   const [heading, setHeading] = useState('');
   const [projectLink, setProjectLink] = useState('');
   const [description, setDescription] = useState('');
   const [video, setVideo] = useState(null);
+  const [videoPreview, setVideoPreview] = useState(null);
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
+  const { projectId } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProject = async () => {
@@ -20,7 +24,7 @@ const UpdateProject = ({ projectId }) => {
           return;
         }
 
-        const response = await axios.get(`http://localhost:4000/api/userregistration/project/${projectId}`, {
+        const response = await axios.get(`http://localhost:4000/api/userregistration/getoneproject/${projectId}`, {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -32,7 +36,7 @@ const UpdateProject = ({ projectId }) => {
           setHeading(heading);
           setProjectLink(projectLink);
           setDescription(description);
-          setVideo(video);
+          setVideoPreview(video);
         } else {
           setMessage('Error fetching project');
         }
@@ -60,12 +64,6 @@ const UpdateProject = ({ projectId }) => {
   const postVideoDetails = async () => {
     setLoading(true);
     if (!video) {
-      setError('Please select a video');
-      setLoading(false);
-      return null;
-    }
-    if (video.type !== 'video/mp4' && video.type !== 'video/mov') {
-      setError('Please select a valid video');
       setLoading(false);
       return null;
     }
@@ -84,7 +82,7 @@ const UpdateProject = ({ projectId }) => {
 
       if (result.url) {
         setLoading(false);
-        return result.url.toString();
+        return result.url;
       } else {
         setError('Upload failed');
         setLoading(false);
@@ -99,8 +97,8 @@ const UpdateProject = ({ projectId }) => {
 
   const handleUpdateProject = async (e) => {
     e.preventDefault();
-    const videoUrl = video ? await postVideoDetails() : project.video;
-    if (videoUrl || !video) {
+    const videoUrl = video ? await postVideoDetails() : videoPreview;
+    if (videoUrl !== null) {
       try {
         const token = localStorage.getItem('token');
         if (!token) {
@@ -118,6 +116,8 @@ const UpdateProject = ({ projectId }) => {
           }
         );
         setMessage('Project updated successfully!');
+        console.log('response', response);
+        navigate('/personalprofile');
       } catch (error) {
         setMessage('Error updating project');
       }
@@ -159,6 +159,7 @@ const UpdateProject = ({ projectId }) => {
           <button type="submit" disabled={loading}>
             {loading ? 'Loading...' : 'Update Project'}
           </button>
+          {videoPreview && <video src={videoPreview} controls></video>}
         </form>
       ) : (
         <p>Loading project details...</p>
