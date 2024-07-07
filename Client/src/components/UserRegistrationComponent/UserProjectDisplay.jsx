@@ -1,42 +1,46 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from './UserPersonalProject.module.css';
+import { useNavigate } from 'react-router-dom';
+
+const fetchProjects = async (setProjects, setUsername, setMessage) => {
+  console.log('Fetching projects...');
+  try {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      setMessage('Unauthenticated');
+      return;
+    }
+
+    const response = await axios.get('http://localhost:4000/api/userregistration/user-projects', {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (response.data && response.data.projects && response.data.user) {
+      setProjects(response.data.projects);
+      setUsername(response.data.user.username);
+    } else {
+      // setMessage('Error fetching projects');
+    }
+
+  } catch (error) {
+    // setMessage('Error fetching projects');
+    console.error('Error fetching projects:', error);
+  }
+};
 
 const UserProfileProjects = () => {
   const [projects, setProjects] = useState([]);
   const [username, setUsername] = useState('');
   const [message, setMessage] = useState('');
   const [fullscreenVideo, setFullscreenVideo] = useState(null);
+  const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const token = localStorage.getItem('token');
-        if (!token) {
-          setMessage('Unauthenticated');
-          return;
-        }
-
-        const response = await axios.get('http://localhost:4000/api/userregistration/user-projects', {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        });
-
-        if (response.data && response.data.projects && response.data.user) {
-          setProjects(response.data.projects);
-          setUsername(response.data.user.username);
-        } else {
-          setMessage('Error fetching projects');
-        }
-
-      } catch (error) {
-        setMessage('Error fetching projects');
-      }
-    };
-
-    fetchProjects();
-  }, []);
+    fetchProjects(setProjects, setUsername, setMessage);
+  }, [refresh]);
 
   const handleVideoClick = (videoSrc) => {
     setFullscreenVideo(videoSrc);
@@ -44,6 +48,10 @@ const UserProfileProjects = () => {
 
   const closeFullscreen = () => {
     setFullscreenVideo(null);
+  };
+
+  const triggerRefresh = () => {
+    setRefresh(!refresh);
   };
 
   return (
@@ -60,6 +68,8 @@ const UserProfileProjects = () => {
                 key={project._id}
                 project={project}
                 onVideoClick={handleVideoClick}
+                fetchProjects={() => fetchProjects(setProjects, setUsername, setMessage)}
+                triggerRefresh={triggerRefresh}
               />
             ))
           ) : (
@@ -76,14 +86,44 @@ const UserProfileProjects = () => {
   );
 };
 
-const ProjectCard = ({ project, onVideoClick }) => {
+const ProjectCard = ({ project, onVideoClick, fetchProjects, triggerRefresh }) => {
   const [showMore, setShowMore] = useState(false);
+  const navigate = useNavigate();
 
   const toggleShowMore = () => {
     setShowMore(!showMore);
   };
 
   const descriptionPreview = project.description.split(' ').slice(0, 25).join(' ');
+
+  const handleEditClick = (projectId) => {
+    navigate(`/updateproject/${projectId}`);
+  };
+
+  const handleDeleteClick = (projectId) => {
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        setMessage('Unauthenticated');
+        return;
+      }
+
+      const response = axios.delete(`http://localhost:4000/api/userregistration/delete/${projectId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      if (response) {
+        // alert('Project deleted successfully');
+        console.log(response);
+        fetchProjects();
+        triggerRefresh();
+      }
+    } catch(error) {
+      alert('Error deleting project');
+      console.log(error);
+    }
+  }
 
   return (
     <div className={styles.card}>
@@ -104,6 +144,10 @@ const ProjectCard = ({ project, onVideoClick }) => {
       <a href={project.projectLink} target="_blank" rel="noopener noreferrer" className={styles.link}>
         View Project
       </a>
+      <div className='Edit-delete'>
+        <button onClick={() => handleEditClick(project._id)}>Edit</button>
+        <button onClick={() => handleDeleteClick(project._id)}>Delete</button>
+      </div>
       <p className={styles.date}><em>Created at: {new Date(project.createdAt).toLocaleString()}</em></p>
     </div>
   );

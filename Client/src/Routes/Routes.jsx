@@ -25,6 +25,7 @@ import { selectors } from '../redux/authSlice';
 import CompleteProfile from '../components/Authentication/completeProfile';
 import { AuthProvider } from '../components/Authentication/AuthContext';
 import UserProfileProjects from '../components/UserRegistrationComponent/UserProjectDisplay';
+import UpdateProject from '../components/UserRegistrationComponent/UpdateProject';
 
 
 function Rout() {
@@ -56,6 +57,7 @@ function Rout() {
         <Route path="/blogdisplay" element={<BlogDisplay />} />
         <Route path="/completeprofile" element={<CompleteProfile />} />
         <Route path = "/userProfileProjects" element={<UserProfileProjects/>}/>
+        <Route path="/updateproject/:projectId" element={<UpdateProject />} />
 
       </Routes>
     </Router>
