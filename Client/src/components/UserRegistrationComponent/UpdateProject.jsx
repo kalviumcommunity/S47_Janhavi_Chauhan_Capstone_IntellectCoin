@@ -117,7 +117,7 @@ const UpdateProject = () => {
         );
         setMessage('Project updated successfully!');
         console.log('response', response);
-        navigate('/personalprofile');
+        navigate(`/home`);
       } catch (error) {
         setMessage('Error updating project');
       }

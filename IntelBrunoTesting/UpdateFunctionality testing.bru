@@ -1,0 +1,22 @@
+meta {
+  name: UpdateFunctionality testing
+  type: http
+  seq: 10
+}
+
+put {
+  url: http://localhost:4000/api/userregistration/update/6687bf6f7017e52dd6c16156
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjdkNzIwZDE4MTNjYWEzODY4MGNiNjAiLCJpYXQiOjE3MjAxNzIzMjgsImV4cCI6MTcyMDc3NzEyOH0.86NyoMG_WtgnL0jXasJgpmj4y0wFyi_y4FVA9Xq6xWI
+}
+
+body:json {
+  {
+    "description": "This is an updated description for the Janhavi project. It provides an overview of the project's objectives, achievements, and future plans. The project aims to explore new technologies and approaches in the field of software development, offering insights and solutions for various challenges. We are excited about the progress and looking forward to sharing more details with you."
+  }
+  
+}

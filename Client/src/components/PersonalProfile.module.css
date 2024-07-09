@@ -1,140 +1,111 @@
-
-
-*{
-  font-family: 'Poppins', sans-serif;
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 1250px;
+  margin: 30px auto;
+  padding: 0 !important;
+  width: 90%;
+  background-color: #fff;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.10), 0 3px 6px rgba(0,0,0,0.10);
 }
 
+.banner {
+  width: 100%;
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url('https://png.pngtree.com/thumb_back/fw800/background/20231227/pngtree-linkedin-banner-cutting-edge-gradient-textured-technology-image_13879827.png');
+}
 
-.icon{
-  color :rgb(139, 141, 147) ;
-  height: 20px;
+.profileSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #fff;
+  position: relative;
+  z-index: 1;
+}
+
+.profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -100px; /* Adjust to overlap with banner */
+}
+
+.profileImage {
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
+  border: 4px solid #fff;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.10), 0 3px 6px rgba(0,0,0,0.10);
+  object-fit: cover;
+}
+
+.details {
+  text-align: center;
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+.name {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 18pt;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.icon {
   margin-left: 10px;
-  margin-bottom: 4px;
- 
-
+  color: #666;
 }
-  
-.heading img{
-    width: 66.5%;
-    height: 6%;
-    position: relative;
-    left: 17%;
-    border-radius: 10px;
-    margin-top: 50px;
 
- }
-  
-  
-  .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative; 
-    padding : 0px 20px;
-  }
-  
-  .profile {
-    position: absolute;
-    top: -75px; 
-    left: 28%;
-    transform: translateX(-50%);
-    z-index: 1; 
-  }
-  
-  .profile img {
-    width: 150px;
-    height: 150px;
-    margin-top: 60px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 5px solid #fff; /* White border for a clean look */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
-  }
-  
-  .details {
-    max-width: 800px;
-    width: 100%;
-    padding: 60px 20px 20px; 
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    position: relative;
-    height: fit-content;
-  }
-
-
-.languages{
-  margin-left: 60px;
+.contact {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 10px;
 }
-  
-  
-  .username {
-    font-size: 1rem;
-    margin-left: 60px;
-  }
-  
-  .firstname {
-    font-size: 1.6rem;
-    margin-bottom: 10px;
-    margin-left: 60px;
-    font-weight: 600;
-    color :rgb(84,121,247) ;
-  }
-  
-  .email {
-    font-size: 1rem;
-    margin-left: 60px;
-  }
 
-  .college{
-    margin-left: 60px;
-  }
-  
-  .contact {
-    display: flex;
-    gap: 10px;
-    margin-left:650px ;
+.linkedin img,
+.github img,
+.phone img {
+  width: 24px;
+  height: 24px;
+}
 
-  }
-  
-  .linkedin img,
-  .github img,
-  .phone img {
-    width: 40px;
-    height: 40px;
-  }
-  
-  .skills{
-    margin-left: 60px;  
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    word-wrap:break-word;
+.username,
+.email,
+.college,
+.skills,
+.certificates,
+.languages {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 10px;
+}
 
-  }
+.education {
+  margin-top: 20px;
+}
 
-  
+.hr {
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+}
 
-  .certificates {
-    margin-bottom: 20px;
-  }
-  
-  .certificates {
-    margin-bottom: 20px;
-    margin-left: 60px;
-  }
-  
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
+.rightSection {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-left: 1px solid #ddd;
+}
 
-  .hr {
-    width : 70%;
-    right : 30%;
-    position : relative; 
-    margin-top : 20px;
-    margin-bottom: 10px;
-   
-  }
-  
+.rightSection > * {
+  margin-bottom: 20px;
+}
