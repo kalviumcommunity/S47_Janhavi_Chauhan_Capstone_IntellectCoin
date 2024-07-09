@@ -39,7 +39,7 @@ function Home() {
       <HomeHorizontal />
       <HomeHeader />
       <HomeBodyNav setSelectedContent={setSelectedContent} />
-      <SideNavbar />
+      {/* <SideNavbar /> */}
   
         {renderContent()}
     
