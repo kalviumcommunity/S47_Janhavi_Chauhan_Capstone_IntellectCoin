@@ -26,6 +26,7 @@ import CompleteProfile from '../components/Authentication/completeProfile';
 import { AuthProvider } from '../components/Authentication/AuthContext';
 import UserProfileProjects from '../components/UserRegistrationComponent/UserProjectDisplay';
 import UpdateProject from '../components/UserRegistrationComponent/UpdateProject';
+import OtherViewer from '../components/UserRegistrationComponent/OtherViewer';
 
 
 function Rout() {
@@ -58,6 +59,7 @@ function Rout() {
         <Route path="/completeprofile" element={<CompleteProfile />} />
         <Route path = "/userProfileProjects" element={<UserProfileProjects/>}/>
         <Route path="/updateproject/:projectId" element={<UpdateProject />} />
+        <Route path='/otherusers/:userId' element={<OtherViewer />} />
 
       </Routes>
     </Router>
