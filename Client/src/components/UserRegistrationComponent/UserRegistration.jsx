@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import styles from './UserRegistration.module.css'; // Updated import for the CSS module
 
 const CreateProject = () => {
   const [heading, setHeading] = useState('');
@@ -91,43 +92,47 @@ const CreateProject = () => {
 
   return (
     <>
-      <h2>Create Project</h2>
-      <form onSubmit={handleCreateProject}>
+      <h2 className={styles.heading}>Create Project</h2>
+      <form onSubmit={handleCreateProject} className={styles.form}>
         <input
-          type="text"
           placeholder="Heading"
           value={heading}
           onChange={(e) => setHeading(e.target.value)}
           required
+          className={styles.input}
         />
         <input
-          type="text"
           placeholder="Project Deployed Link"
           value={projectLink}
           onChange={(e) => setProjectLink(e.target.value)}
           required
+          className={styles.input}
         />
         <textarea
           placeholder="Description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           required
+          className={styles.textarea}
         ></textarea>
-        <input
-          type="file"
-          name="video"
-          accept="video/mp4,video/mov"
-          onChange={handleVideoChange}
-        />
-        <span>{error}</span>
-        <button type="submit" disabled={loading}>
+        <div className={styles.fileInputContainer}>
+          <label className={styles.fileInputLabel}>Upload Video</label>
+          <input
+            type="file"
+            name="video"
+            accept="video/mp4,video/mov"
+            onChange={handleVideoChange}
+            className={styles.fileInput}
+          />
+        </div>
+        {error && <span className={styles.error}>{error}</span>}
+        <button type="submit" disabled={loading} className={styles.submitButton}>
           {loading ? 'Loading...' : 'Upload Project'}
         </button>
       </form>
-      {message && <p>{message}</p>}
+      {message && <p className={styles.message}>{message}</p>}
     </>
   );
 };
 
 export default CreateProject;
-  

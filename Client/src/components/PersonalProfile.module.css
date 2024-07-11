@@ -6,7 +6,7 @@
   padding: 0 !important;
   width: 90%;
   background-color: #fff;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.10), 0 3px 6px rgba(0,0,0,0.10);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.10), 0 3px 6px rgba(0, 0, 0, 0.10);
 }
 
 .banner {
@@ -20,12 +20,24 @@
 
 .profileSection {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
   background-color: #fff;
   position: relative;
   z-index: 1;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.leftSection {
+  flex: 1;
+  padding: 20px;
+  text-align: center;
+}
+
+.rightSection {
+  flex: 2;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-left: 1px solid #ddd;
 }
 
 .profile {
@@ -40,7 +52,7 @@
   height: 200px;
   border-radius: 100px;
   border: 4px solid #fff;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.10), 0 3px 6px rgba(0,0,0,0.10);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.10), 0 3px 6px rgba(0, 0, 0, 0.10);
   object-fit: cover;
 }
 
@@ -100,12 +112,136 @@
   margin-bottom: 20px;
 }
 
-.rightSection {
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-left: 1px solid #ddd;
+.switchButtons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
 }
 
-.rightSection > * {
-  margin-bottom: 20px;
+.switchButtons button {
+  background-color: transparent;
+  border: 2px solid #ddd;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.switchButtons button:hover {
+  background-color: #ddd;
+}
+
+.switchButtons .active {
+  background-color: #0073b1; /* LinkedIn blue color */
+  color: #fff;
+  border: 2px solid #0073b1;
+}
+
+.content {
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.10), 0 3px 6px rgba(0, 0, 0, 0.10);
+}
+
+.totalProjects {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 40px;
+  position: relative;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.totalProjects:before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: 5px;
+  width: 100%;
+  background-color: #0073b1; /* LinkedIn blue color */
+  border-radius: 5px;
+}
+
+.totalProjects p {
+  margin: 0;
+  text-align: center;
+  z-index: 1;
+}
+
+.totalProjects .chart {
+  position: relative;
+  height: 20px;
+  background-color: #ddd;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.totalProjects .chart .progress {
+  height: 100%;
+  background-color: #0073b1; /* LinkedIn blue color */
+  width: 0%; /* This will be dynamically set */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+  line-height: 20px;
+  transition: width 0.3s ease-in-out;
+}
+
+.totalProjects .chart .milestones {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.totalProjects .chart .milestone {
+  position: absolute;
+  top: 0;
+  height: 20px;
+  border-left: 1px solid #0073b1; /* LinkedIn blue color */
+  font-size: 10px;
+  color: #0073b1;
+  text-align: center;
+  transform: translateX(-50%);
+}
+.highlight {
+  background-color: #FFD700; /* Highlight color for dates with submissions */
+  border-radius: 50%;
+}
+
+
+
+@media (max-width: 768px) {
+  .profileSection {
+    flex-direction: column;
+  }
+
+  .leftSection {
+    padding: 20px 10px;
+  }
+
+  .rightSection {
+    border-left: none;
+    border-top: 1px solid #ddd;
+    padding: 20px 10px;
+  }
+
+  .switchButtons {
+    flex-direction: column;
+  }
+
+  .switchBs button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
 }
