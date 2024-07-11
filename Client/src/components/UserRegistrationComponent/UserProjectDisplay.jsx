@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from './UserPersonalProject.module.css';
 import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
 
-const fetchProjects = async (setProjects, setUsername, setMessage) => {
+const fetchProjects = async (setProjects, setUsername, setMessage, setTotalProjects, setProjectDates) => {
   console.log('Fetching projects...');
   try {
     const token = localStorage.getItem('token');
@@ -21,26 +23,37 @@ const fetchProjects = async (setProjects, setUsername, setMessage) => {
     if (response.data && response.data.projects && response.data.user) {
       setProjects(response.data.projects);
       setUsername(response.data.user.username);
+      setTotalProjects(response.data.projects.length);
+      setProjectDates(response.data.projects.map(project => new Date(project.createdAt)));
     } else {
-      // setMessage('Error fetching projects');
+      setMessage('Error fetching projects');
     }
 
   } catch (error) {
-    // setMessage('Error fetching projects');
     console.error('Error fetching projects:', error);
   }
 };
 
-const UserProfileProjects = () => {
+const UserProfileProjects = ({ setTotalProjects, setProjectDates }) => {
   const [projects, setProjects] = useState([]);
   const [username, setUsername] = useState('');
   const [message, setMessage] = useState('');
   const [fullscreenVideo, setFullscreenVideo] = useState(null);
   const [refresh, setRefresh] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredProjects, setFilteredProjects] = useState([]);
 
   useEffect(() => {
-    fetchProjects(setProjects, setUsername, setMessage);
+    fetchProjects(setProjects, setUsername, setMessage, setTotalProjects, setProjectDates);
   }, [refresh]);
+
+  useEffect(() => {
+    setFilteredProjects(
+      projects.filter(project =>
+        project.heading.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    );
+  }, [searchQuery, projects]);
 
   const handleVideoClick = (videoSrc) => {
     setFullscreenVideo(videoSrc);
@@ -60,15 +73,22 @@ const UserProfileProjects = () => {
         {username ? `${username}'s Projects` : 'My Projects'}
       </h2>
       {message && <p>{message}</p>}
+      <input
+        type="text"
+        placeholder="Search projects by name..."
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        className={styles.searchInput}
+      />
       <div className={styles.cardContainer}>
         {
-          projects.length > 0 ? (
-            projects.map((project) => (
+          filteredProjects.length > 0 ? (
+            filteredProjects.map((project) => (
               <ProjectCard
                 key={project._id}
                 project={project}
                 onVideoClick={handleVideoClick}
-                fetchProjects={() => fetchProjects(setProjects, setUsername, setMessage)}
+                fetchProjects={() => fetchProjects(setProjects, setUsername, setMessage, setTotalProjects, setProjectDates)}
                 triggerRefresh={triggerRefresh}
               />
             ))
@@ -100,7 +120,7 @@ const ProjectCard = ({ project, onVideoClick, fetchProjects, triggerRefresh }) =
     navigate(`/updateproject/${projectId}`);
   };
 
-  const handleDeleteClick = (projectId) => {
+  const handleDeleteClick = async (projectId) => {
     try {
       const token = localStorage.getItem('token');
       if (!token) {
@@ -108,26 +128,32 @@ const ProjectCard = ({ project, onVideoClick, fetchProjects, triggerRefresh }) =
         return;
       }
 
-      const response = axios.delete(`http://localhost:4000/api/userregistration/delete/${projectId}`, {
+      await axios.delete(`http://localhost:4000/api/userregistration/delete/${projectId}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
       });
-      if (response) {
-        // alert('Project deleted successfully');
-        console.log(response);
-        fetchProjects();
-        triggerRefresh();
-      }
-    } catch(error) {
+      fetchProjects();
+      triggerRefresh();
+    } catch (error) {
       alert('Error deleting project');
       console.log(error);
     }
-  }
+  };
 
   return (
     <div className={styles.card}>
-      <h3 className={styles.heading}>{project.heading}</h3>
+       <div className={styles.cardHeading}>
+       <h3 className={styles.heading}>{project.heading}</h3>
+      <div className={styles.actions}>
+        <p className={styles.edit} onClick={() => handleEditClick(project._id)}><FontAwesomeIcon icon={faPenToSquare} /></p>
+        <p className={styles.delete} onClick={() => handleDeleteClick(project._id)}><FontAwesomeIcon icon={faTrash} /></p>
+      </div>
+       </div>
+      <a href={project.projectLink} target="_blank" rel="noopener noreferrer" className={styles.link}>
+        View Project
+      </a>
+      <p className={styles.date}>Created at: {new Date(project.createdAt).toLocaleString()}</p>
       <video
         controls
         width="100%"
@@ -141,14 +167,9 @@ const ProjectCard = ({ project, onVideoClick, fetchProjects, triggerRefresh }) =
           {showMore ? 'Show Less' : 'Show More'}
         </button>
       </p>
-      <a href={project.projectLink} target="_blank" rel="noopener noreferrer" className={styles.link}>
-        View Project
-      </a>
-      <div className='Edit-delete'>
-        <button onClick={() => handleEditClick(project._id)}>Edit</button>
-        <button onClick={() => handleDeleteClick(project._id)}>Delete</button>
-      </div>
-      <p className={styles.date}><em>Created at: {new Date(project.createdAt).toLocaleString()}</em></p>
+     
+   
+      
     </div>
   );
 };
