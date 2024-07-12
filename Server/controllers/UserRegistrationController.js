@@ -131,3 +131,36 @@ exports.getOneProject = async (req, res) => {
     res.status(500).send({ message: "Internal Server Error", error: error.message });
   }
 }
+
+exports.getOtherProjects = async (req, res) => {
+  const id = req.params.id;
+
+  try {
+    // Ensure the user is authenticated
+    const authHeader = req.headers.authorization;
+    if (!authHeader || !authHeader.startsWith("Bearer ")) {
+      return res.status(401).send({ message: "Unauthenticated" });
+    }
+
+    const token = authHeader.split(" ")[1];
+    const decoded = jwt.verify(token, process.env.JWTPRIVATEKEY);
+
+    // Fetch the user by id
+    const user = await User.findById(id);
+    if (!user) {
+      return res.status(404).send({ message: "User not found" });
+    }
+    
+    // Fetch projects authored by the user
+    const projects = await Project.find({ author: id });
+    if (!projects || projects.length === 0) {
+      return res.status(404).send({ message: "Projects not found" });
+    }
+
+    // Respond with the user's projects and user details
+    res.status(200).json({ projects, user, message: "Projects fetched successfully" });
+  } catch (error) {
+    console.error('Error fetching user projects:', error);
+    res.status(500).send({ message: "Internal server error", error: error.message });
+  }
+};

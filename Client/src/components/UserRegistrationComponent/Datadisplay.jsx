@@ -97,7 +97,7 @@ const ProjectsList = () => {
                       <a href={project.projectLink} target="_blank" rel="noopener noreferrer" className={s.link}>View Project</a>
                     </p>
                     <p className={s.author}>
-                      Author: <Link to={`/personalprofile/${project.author._id}`} className={s.link}>{project.author.username}</Link>
+                      Author: <Link to={`/otherusers/${project.author._id}`} className={s.link}>{project.author.username}</Link>
                     </p>
                     <p className={s.createdAt}>Created At: {new Date(project.createdAt).toLocaleString()}</p>
                   </div>
@@ -119,7 +119,7 @@ const ProjectsList = () => {
                     <a href={project.projectLink} target="_blank" rel="noopener noreferrer" className={s.link}>View Project</a>
                   </p>
                   <p className={s.author}>
-                    Author: <Link to={`/personalprofile/${project.author._id}`} className={s.link}>{project.author.username}</Link>
+                    Author: <Link to={`/otherusers/${project.author._id}`} className={s.link}>{project.author.username}</Link>
                   </p>
                   <p className={s.createdAt}>Created At: {new Date(project.createdAt).toLocaleString()}</p>
                 </>

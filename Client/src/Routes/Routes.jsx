@@ -26,7 +26,12 @@ import CompleteProfile from '../components/Authentication/completeProfile';
 import { AuthProvider } from '../components/Authentication/AuthContext';
 import UserProfileProjects from '../components/UserRegistrationComponent/UserProjectDisplay';
 import UpdateProject from '../components/UserRegistrationComponent/UpdateProject';
+import OtherViewer from '../components/UserRegistrationComponent/OtherViewer';
 
+// books
+import Booksbrowse from '../components/Books/Booksbrowse';
+import Createbook from '../components/Books/Createbook';
+import BooksCart from '../components/Books/BooksCart';
 
 function Rout() {
   const isAuthenticated = useSelector(selectors);
@@ -58,6 +63,12 @@ function Rout() {
         <Route path="/completeprofile" element={<CompleteProfile />} />
         <Route path = "/userProfileProjects" element={<UserProfileProjects/>}/>
         <Route path="/updateproject/:projectId" element={<UpdateProject />} />
+        <Route path='/otherusers/:userId' element={<OtherViewer />} />
+
+        {/* Books Routes  */}
+        <Route path="/books" element={<Booksbrowse />} />
+        <Route path='/books/create' element={<Createbook />} />
+        <Route path='/books/cart' element={<BooksCart />} />
 
       </Routes>
     </Router>

@@ -10,6 +10,7 @@ const companyRoutes = require('./routes/CompanyRegistrationRoute');
 const logResponses = require('./middleware/LogResponse');
 // const {protect} = require('./middleware/authMiddleware');
 const  Users = require('./routes/userRoutes')
+const Books = require('./routes/bookroutes')
 
 
 
@@ -29,6 +30,7 @@ app.use('/api/blogs', blogRoutes);
 app.use('/api/companies', companyRoutes);
 app.use('/api/userregistration', userRegistrationRoutes);
 app.use('/api/user', Users);
+app.use('/api/book', Books);
 
 
 app.use(logResponses);
