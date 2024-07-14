@@ -50,6 +50,7 @@ Ensure you have the following installed on your machine:
 ```bash
 git clone https://github.com/your-repository.git
 cd your-repository
+```
 
 2. **# IntellectCoin - Learn2Earn
 
