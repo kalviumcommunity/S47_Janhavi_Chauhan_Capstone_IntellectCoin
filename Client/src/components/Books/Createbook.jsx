@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import styles from './CreateBooks.module.css';
+import HomeHorizontal from '../HomePageComponent/HomeHorizontalNav';
 
 function Createbook() {
   const [formData, setFormData] = useState({
@@ -59,7 +61,6 @@ function Createbook() {
     const completeFormData = { ...formData, image: imageUrls };
 
     try {
-      // Replace '' with your actual endpoint for submitting the book data
       const response = await axios.post('http://localhost:4000/api/book/create', completeFormData, {
         headers: {
           'Content-Type': 'application/json',
@@ -67,37 +68,73 @@ function Createbook() {
         }
       });
       console.log(response.data);
-      // Handle success (e.g., showing a success message, redirecting, etc.)
+      alert('Book created successfully!'); // Add alert for successful book creation
+      // Optionally, clear the form or redirect the user
+      setFormData({
+        title: '',
+        description: '',
+        price: '',
+        image: []
+      });
+      setImgFile([]);
+      setPreviewImages([]);
     } catch (error) {
       console.error("Error creating book:", error);
-      // Handle error (e.g., showing an error message)
+      alert('Error creating book. Please try again.'); // Add alert for error
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>Title:</label>
-      <input type="text" name="title" value={formData.title} onChange={handleChange} />
-
-      <label>Description:</label>
-      <textarea name="description" value={formData.description} onChange={handleChange} />
-
-      <label>Price:</label>
-      <input type="text" name="price" value={formData.price} onChange={handleChange} />
-
-      <label>Images:</label>
-      <input type="file" name="image" multiple onChange={handleImageChange} />
-      <div className="image-previews">
-        {previewImages.map((image, index) => (
-          <div key={index} className="image-preview">
-            <img src={image} alt="Preview" style={{ width: "100px", height: "100px" }} />
-            <button type="button" onClick={() => handleRemoveImage(index)}>Remove</button>
-          </div>
-        ))}
+    <div className={styles.container}>
+      <div className={styles.imageContainer}>
+        <img
+          src="https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?size=338&ext=jpg&ga=GA1.1.2008272138.1720915200&semt=ais_user"
+          alt="Books"
+        />
       </div>
+      <div className={styles.formContainer}>
+        <form onSubmit={handleSubmit}>
+          <input
+            name="title"
+            value={formData.title}
+            onChange={handleChange}
+            className={styles.Title}
+            placeholder="Title"
+          />
+          <textarea
+            name="description"
+            value={formData.description}
+            onChange={handleChange}
+            className={styles.Description}
+            placeholder="Description"
+          />
 
-      <button type="submit">Create Book</button>
-    </form>
+          <input
+            name="price"
+            value={formData.price}
+            onChange={handleChange}
+            className={styles.Price}
+            placeholder="Price"
+          />
+          <input
+            type="file"
+            name="image"
+            multiple
+            onChange={handleImageChange}
+            className={styles.Image}
+          />
+          <div className={styles.imagePreviews}>
+            {previewImages.map((image, index) => (
+              <div key={index} className={styles.imagePreview}>
+                <img src={image} alt="Preview" />
+                <button type="button" onClick={() => handleRemoveImage(index)}>Remove</button>
+              </div>
+            ))}
+          </div>
+          <button type="submit">Create Book</button>
+        </form>
+      </div>
+    </div>
   );
 }
 

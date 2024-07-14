@@ -15,7 +15,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-image: url('https://png.pngtree.com/thumb_back/fw800/background/20231227/pngtree-linkedin-banner-cutting-edge-gradient-textured-technology-image_13879827.png');
+  background-image: url('https://t4.ftcdn.net/jpg/04/62/20/69/360_F_462206927_4q6Q3sboWFis9XFmm5R9dUz80jYT4Ccm.jpg');
 }
 
 .profileSection {
@@ -38,6 +38,7 @@
   padding: 20px;
   background-color: #f9f9f9;
   border-left: 1px solid #ddd;
+  overflow: hidden; /* Ensure that content doesn't overflow */
 }
 
 .profile {
@@ -68,13 +69,14 @@
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
   font-size: 18pt;
-  color: #777;
+  color: rgb(84,121,247);
   margin-bottom: 10px;
+  margin-top: 20px;
 }
 
 .icon {
   margin-left: 10px;
-  color: #666;
+  color: rgb(84,121,247);
 }
 
 .contact {
@@ -101,6 +103,7 @@
   font-size: 14px;
   color: #555;
   margin-bottom: 10px;
+  word-wrap: break-word; /* Ensure text wraps within the container */
 }
 
 .education {
@@ -122,6 +125,7 @@
 .switchButtons button {
   background-color: transparent;
   border: 2px solid #ddd;
+  color: rgb(84,121,247);
   padding: 10px 20px;
   cursor: pointer;
   transition: background-color 0.3s;
@@ -129,12 +133,13 @@
 
 .switchButtons button:hover {
   background-color: #ddd;
+  color: rgb(84,121,247);
 }
 
 .switchButtons .active {
-  background-color: #0073b1; /* LinkedIn blue color */
+  background-color: rgb(84,121,247); /* LinkedIn blue color */
   color: #fff;
-  border: 2px solid #0073b1;
+  border: 2px solid rgb(84,121,247);
 }
 
 .content {
@@ -163,7 +168,7 @@
   left: 0;
   height: 5px;
   width: 100%;
-  background-color: #0073b1; /* LinkedIn blue color */
+  background-color: rgb(84,121,247); /* LinkedIn blue color */
   border-radius: 5px;
 }
 
@@ -184,7 +189,7 @@
 
 .totalProjects .chart .progress {
   height: 100%;
-  background-color: #0073b1; /* LinkedIn blue color */
+  background-color: rgb(84,121,247); /* LinkedIn blue color */
   width: 0%; /* This will be dynamically set */
   display: flex;
   align-items: center;
@@ -208,18 +213,28 @@
   position: absolute;
   top: 0;
   height: 20px;
-  border-left: 1px solid #0073b1; /* LinkedIn blue color */
+  border-left: 1px solid rgb(84,121,247); /* LinkedIn blue color */
   font-size: 10px;
-  color: #0073b1;
+  color: rgb(84,121,247);
   text-align: center;
   transform: translateX(-50%);
 }
-.highlight {
-  background-color: #FFD700; /* Highlight color for dates with submissions */
-  border-radius: 50%;
+
+@media (max-width: 1024px) {
+  .profileSection {
+    flex-direction: column;
+  }
+
+  .leftSection {
+    padding: 20px 15px;
+  }
+
+  .rightSection {
+    border-left: none;
+    border-top: 1px solid #ddd;
+    padding: 20px 15px;
+  }
 }
-
-
 
 @media (max-width: 768px) {
   .profileSection {
@@ -240,8 +255,73 @@
     flex-direction: column;
   }
 
-  .switchBs button {
+  .switchButtons button {
     width: 100%;
     margin-bottom: 10px;
   }
+
+  .profileImage {
+    width: 150px;
+    height: 150px;
+  }
+
+  .name {
+    font-size: 16pt;
+  }
+
+  .username,
+  .email,
+  .college,
+  .skills,
+  .certificates,
+  .languages {
+    font-size: 12px;
+  }
+
+  .totalProjects {
+    font-size: 14px;
+  }
+
+  .totalProjects .chart .progress {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 630px) {
+  .profileImage {
+    margin-top: 50px;
+    width: 120px;
+    height: 120px;
+  }
+
+  .name {
+    font-size: 14pt;
+  }
+
+  .username,
+  .email,
+  .college,
+  .skills,
+  .certificates,
+  .languages {
+    font-size: 11px;
+  }
+
+  .totalProjects {
+    font-size: 12px;
+  }
+
+  .totalProjects .chart .progress {
+    font-size: 8px;
+  }
+
+  .banner{
+    display: none;
+  }
+
+ .container{
+  box-shadow: none;
+ }
+
+  
 }

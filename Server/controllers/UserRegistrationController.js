@@ -145,6 +145,7 @@ exports.getOtherProjects = async (req, res) => {
     const token = authHeader.split(" ")[1];
     const decoded = jwt.verify(token, process.env.JWTPRIVATEKEY);
 
+
     // Fetch the user by id
     const user = await User.findById(id);
     if (!user) {

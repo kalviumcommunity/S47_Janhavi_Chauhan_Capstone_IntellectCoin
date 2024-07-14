@@ -2,10 +2,13 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import styles from './Booksbrowse.module.css';
+import '../../common/Loader.css';  // Import the CSS for the loader
 
 function Booksbrowse() {
   const [books, setBooks] = useState([]);
   const [cart, setCart] = useState({});
+  const [loading, setLoading] = useState(true);  // Add a loading state
+  const [searchQuery, setSearchQuery] = useState('');  // Add a state for the search query
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -16,6 +19,8 @@ function Booksbrowse() {
         setBooks(response.data);
       } catch (error) {
         console.error("Error fetching books:", error);
+      } finally {
+        setLoading(false);  // Set loading to false after data is fetched
       }
     };
 
@@ -60,34 +65,64 @@ function Booksbrowse() {
     });
   };
 
+  const filteredBooks = books.filter(book =>
+    book.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  if (loading) {
+    return (
+      <div className='spinner-wrapper'>
+        <div className='spinner'>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div> 
+        </div>
+        <p className='loading'>Loading Books...!!</p>
+      </div>
+    );
+  }
+
   return (
     <div className={styles.container}>
-    <h1 className={styles.header}>Books Browse</h1>
-    <button onClick={() => navigate(-1)}>Go Back</button>
-    <button onClick={() => navigate('/books/create')}>Add Book</button>
-    <button onClick={() => navigate('/books/cart')}>View Cart</button>
-    <div>
-      {books.map(book => (
-        <div key={book._id} className={styles.bookItem}>
-          <h2 className={styles.bookTitle}>{book.title}</h2>
-          {book.image.map((imageUrl, index) => (
-              <img key={index} className={styles.bookImage} src={imageUrl} alt={`${book.title} ${index + 1}`} />
-          ))}
-          <p className={styles.bookDescription}>{book.description}</p>
-          <p className={styles.bookPrice}>Price: ${book.price}</p>
-          {cart[book._id] ? (
-            <div className={styles.cartActions}>
-              <button className={styles.decreaseButton} onClick={() => decreaseQuantity(book._id)}>-</button>
-              <span> {cart[book._id].quantity} </span>
-              <button className={styles.addButton} onClick={() => addToCart(book)}>+</button>
+      <h3 className={styles.header}>A book is a gift you can open again and again. Share its magic by passing it on to someone in need.</h3>
+      
+      <div className={styles.searchContainer}>
+        <input
+          type="text"
+          className={styles.searchInput}
+          placeholder="Search for books..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+      </div>
+      
+      <div className={styles.booksContainer}>
+        {filteredBooks.map(book => (
+          <div key={book._id} className={styles.bookItem}>
+            <h2 className={styles.bookTitle}>{book.title}</h2>
+            <div className={styles.carousel}>
+              {book.image.map((imageUrl, index) => (
+                <img key={index} className={styles.bookImage} src={imageUrl} alt={`${book.title} ${index + 1}`} />
+              ))}
             </div>
-          ) : (
-            <button className={styles.addButton} onClick={() => addToCart(book)}>Add to Cart</button>
-          )}
-        </div>
-      ))}
+            <p className={styles.bookDescription}>{book.description}</p>
+            <p className={styles.bookPrice}>Price: ${book.price}</p>
+            {cart[book._id] ? (
+              <div className={styles.cartActions}>
+                <button className={styles.decreaseButton} onClick={() => decreaseQuantity(book._id)}>-</button>
+                <span> {cart[book._id].quantity} </span>
+                <button className={styles.addButton} onClick={() => addToCart(book)}>+</button>
+              </div>
+            ) : (
+              <button className={styles.addButton} onClick={() => addToCart(book)}>Add to Cart</button>
+            )}
+          </div>
+        ))}
+      </div>
     </div>
-  </div>
   );
 }
 

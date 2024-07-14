@@ -130,14 +130,15 @@ const UpdateProject = () => {
       {project ? (
         <form onSubmit={handleUpdateProject}>
           <input
-            type="text"
+            
             placeholder="Heading"
             value={heading}
             onChange={(e) => setHeading(e.target.value)}
             required
+            
           />
           <input
-            type="text"
+           
             placeholder="Project Deployed Link"
             value={projectLink}
             onChange={(e) => setProjectLink(e.target.value)}

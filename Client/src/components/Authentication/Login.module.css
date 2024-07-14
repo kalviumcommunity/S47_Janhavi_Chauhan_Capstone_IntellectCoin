@@ -3,6 +3,38 @@
     margin-top: 30px;
 }
 
+@media (max-width: 767px) {
+    .login_container {
+        flex-direction: column; /* Adjust for smaller screens */
+        margin-top: 0;
+        margin-bottom: 50px;
+        margin-left: auto;
+        margin-right:auto ;
+    }
+    .left {
+        display: none;
+    }
+    .image{
+        display: none;
+    }
+    .title_below{
+        display: none;
+    }
+    .forward,
+    .backward {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .login_container {
+        flex-direction: row; /* Adjust for larger screens */
+    }
+
+
+}
+
+
 .left {
     flex: 1;
     position: relative;
@@ -31,7 +63,17 @@
    
    
 }
+@media (min-width: 768px) {
+    .login_form_container {
+        height: 400px; /* Adjust for larger screens */
+    }
+}
 
+@media (max-width: 767px) {
+    .login_form_container {
+        height: 100vh; /* Adjust for smaller screens */
+    }
+}
 
 .forward,
 .backward {
@@ -56,14 +98,15 @@
     right: 100px; 
 }
 
-.login_form_container {
+/* .login_form_container {
     display: flex;
     flex: 1;
     justify-content: center;
     align-items: center;
-    height: 400px;
+    height: 100%;
+    margin-top: 50px;
 
-}
+} */
 
 .form_container {
     width: 300px;
@@ -95,9 +138,8 @@
     font-size: 24px;
     color:rgb(84,121,247);
     text-align: center;
+   
 }
-
-
 
 .noaccount{
     text-align: center; 
@@ -136,18 +178,27 @@
     border-radius: 10px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
     width: 400px;
-    height: 400px;
+    height: 350px;
     margin-right: 20%;
 }
 
 
-input[type="email"],
-input[type="password"],
-input[type="text"] {
+.email  {
     width: 350px;
     padding: 15px;
     height: 35px;
-;
+    font-size: 16px;
+    margin-left:25px ;
+    margin-bottom: 15px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.password {
+    width: 350px;
+    padding: 15px;
+    height: 35px;
     font-size: 16px;
     margin-left:25px ;
     margin-bottom: 15px;
@@ -171,3 +222,4 @@ h1 a {
 h1 a:hover {
     text-decoration: underline;
 }
+

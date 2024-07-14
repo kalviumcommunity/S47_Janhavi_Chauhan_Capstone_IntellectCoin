@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import styles from './BookCart.module.css'; 
+import CommonNavbar from '../../common/CommonNavbar';
 
 function BooksCart() {
   const [cart, setCart] = useState({});
@@ -33,24 +35,43 @@ function BooksCart() {
   };
 
   return (
-    <div>
-      <h1>Your Cart</h1>
+    <>
+    <CommonNavbar />
+    <div className={styles.cartContainer}>
+      <h1 className={styles.cartTitle}>Your Cart</h1>
       {Object.keys(cart).length === 0 ? (
-        <p>Your cart is empty</p>
+        <p className={styles.cartEmpty}>Your cart is empty</p>
       ) : (
-        Object.entries(cart).map(([bookId, book]) => (
-          <div key={bookId}>
-            <h2>{book.title}</h2>
-            <p>Price: ${book.price}</p>
-            <p>Quantity: {book.quantity}</p>
-            <button onClick={() => decreaseQuantity(bookId)}>-</button>
-            <button onClick={() => increaseQuantity(bookId)}>+</button>
-          </div>
-        ))
+        <div className={styles.cartItems}>
+          {Object.entries(cart).map(([bookId, book]) => (
+            <div key={bookId} className={styles.cartItem}>
+              <h2 className={styles.itemTitle}>{book.title}</h2>
+              <p className={styles.itemPrice}>Price: ${book.price.toFixed(2)}</p>
+              <p className={styles.itemQuantity}>Quantity: {book.quantity}</p>
+              <div className={styles.itemControls}>
+                <button
+                  className={`${styles.controlBtn} ${styles.decreaseBtn}`}
+                  onClick={() => decreaseQuantity(bookId)}
+                >
+                  -
+                </button>
+                <button
+                  className={`${styles.controlBtn} ${styles.increaseBtn}`}
+                  onClick={() => increaseQuantity(bookId)}
+                >
+                  +
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
       )}
-      <h3>Total: ${calculateTotal().toFixed(2)}</h3>
-      <button>Checkout</button>
+      <div className={styles.cartTotal}>
+        <h3>Total: ${calculateTotal().toFixed(2)}</h3>
+        <button className={styles.checkoutBtn}>Checkout</button>
+      </div>
     </div>
+  </>
   );
 }
 

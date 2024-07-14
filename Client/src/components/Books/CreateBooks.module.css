@@ -1,0 +1,144 @@
+/* CreateBooks.module.css */
+
+/* Container for the entire Createbook component */
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2rem;
+    background-color: #f9f9f9;
+  }
+  
+  /* Container for the image */
+  .imageContainer {
+    flex: 1;
+    padding-right: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Styling for the image */
+  .imageContainer img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  /* Container for the form */
+  .formContainer {
+    flex: 1;
+    padding-left: 1rem;
+  }
+  
+  /* Form styling */
+  .formContainer form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Input field for the title */
+  .Title {
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  /* Textarea for the description */
+  .Description {
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    min-height: 100px;
+  }
+  
+  /* Input field for the price */
+  .Price {
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  /* File input field for images */
+  .Image {
+    margin-bottom: 1rem;
+  }
+  
+  /* Container for image previews */
+  .imagePreviews {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* Individual image preview */
+  .imagePreview {
+    position: relative;
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 5px;
+  }
+  
+  /* Styling for preview images */
+  .imagePreview img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Remove button styling */
+  .imagePreview button {
+    top: 5px;
+    right: 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    width: 60px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  /* Submit button styling */
+  button{
+    padding: 0.75rem;
+    background-color:rgb(84, 121, 247);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  
+  
+
+  
+  /* Responsive styling */
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+      padding: 1rem;
+    }
+  
+    .imageContainer {
+      padding-right: 0;
+      margin-bottom: 1rem;
+    }
+  
+    .formContainer {
+      padding-left: 0;
+    }
+  }
+  

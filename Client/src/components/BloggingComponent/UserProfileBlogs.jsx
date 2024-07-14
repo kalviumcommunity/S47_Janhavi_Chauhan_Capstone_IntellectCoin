@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from './UserProfileBlogs.module.css';
+import '../../common/Loader.css';  // Import the CSS for the loader
 
 const UserProfileBlogs = () => {
   const [blogs, setBlogs] = useState([]);
@@ -8,9 +9,11 @@ const UserProfileBlogs = () => {
   const [message, setMessage] = useState('');
   const [selectedBlog, setSelectedBlog] = useState(null); // Track the blog to pop out
   const [searchTerm, setSearchTerm] = useState(''); // State for the search term
+  const [loading, setLoading] = useState(true);  // Add a loading state
 
   useEffect(() => {
     const fetchBlogs = async () => {
+      setLoading(true);  // Set loading to true
       try {
         const token = localStorage.getItem('token');
         if (!token) {
@@ -32,6 +35,8 @@ const UserProfileBlogs = () => {
         }
       } catch (error) {
         setMessage('Error fetching blogs');
+      } finally {
+        setLoading(false);  // Set loading to false
       }
     };
 
@@ -58,6 +63,22 @@ const UserProfileBlogs = () => {
   const filteredBlogs = blogs.filter((blog) =>
     blog.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  if (loading) {
+    return (
+      <div className='spinner-wrapper'>
+        <div className='spinner'>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div> 
+        </div>
+        <p className='loading'>Loading Blogs...!!</p>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.container}>

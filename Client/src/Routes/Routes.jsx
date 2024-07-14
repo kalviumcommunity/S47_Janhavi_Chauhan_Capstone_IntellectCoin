@@ -4,22 +4,18 @@ import Navbar from '../components/LandingPageComponent/Navbar';
 import LandingPage from '../pages/LandingPage';
 import Home from '../pages/Home';
 import CreateProject from '../components/UserRegistrationComponent/UserRegistration';
-import Findjob from '../components/LandingPageComponent/Findjob';
-import Events from '../components/LandingPageComponent/Events';
-import Features from '../components/LandingPageComponent/Features';
 import Contact from '../components/LandingPageComponent/Contact';
 import Whyus from '../components/LandingPageComponent/Whyus';
 import Aboutus from '../components/LandingPageComponent/AboutUs';
 import UpdateUser from '../components/UserRegistrationComponent/UpdateUser';
 import Login from '../components/Authentication/Login';
 import Signup from '../components/Authentication/Signup';
-import CompanyRegistration from '../components/CompanyComponent/CompanyProfile';
 import DataDisplayPage from '../components/UserRegistrationComponent/Datadisplay';
-import CompanyList from '../components/CompanyComponent/DisplayCompanyData';
 import PersonalProfile from '../components/PersonalProfile';
 import BloggingForm from '../components/BloggingComponent/BloggingForm';
 import BlogDisplay from '../components/BloggingComponent/BlogDisplay';
 import ProtectedRoute from '../redux/ProtectedRoute';
+import Categories from '../components/LandingPageComponent/Categories';
 import { useSelector } from 'react-redux';
 import { selectors } from '../redux/authSlice';
 import CompleteProfile from '../components/Authentication/completeProfile';
@@ -27,52 +23,52 @@ import { AuthProvider } from '../components/Authentication/AuthContext';
 import UserProfileProjects from '../components/UserRegistrationComponent/UserProjectDisplay';
 import UpdateProject from '../components/UserRegistrationComponent/UpdateProject';
 import OtherViewer from '../components/UserRegistrationComponent/OtherViewer';
+import JoinUs from '../components/LandingPageComponent/JoinUs';
 
-// books
+
+// Books
 import Booksbrowse from '../components/Books/Booksbrowse';
 import Createbook from '../components/Books/Createbook';
 import BooksCart from '../components/Books/BooksCart';
 
 function Rout() {
   const isAuthenticated = useSelector(selectors);
-  console.log('routes isAuthenticated:--',isAuthenticated)
+  console.log('routes isAuthenticated:--', isAuthenticated);
+
   return (
     <AuthProvider>
-    <Router>
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/registration" element={<CreateProject />} />
-        {/* <Route path="/home" element={<ProtectedRoute isAuthenticated = {isAuthenticated} component={Home} > </ProtectedRoute>} />
-        <Route path="/findjob" element={<ProtectedRoute isAuthenticated = {isAuthenticated} component={Findjob} > </ProtectedRoute>} /> */}
-        <Route path="/home" element={<Home />} />
-        <Route path="/findjob" element={<Findjob />} />
-        <Route path="/events" element={<Events />} />
-        <Route path="/features" element={<Features />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/whyus" element={<Whyus />} />
-        <Route path="/aboutus" element={<Aboutus />} />
-        <Route path="/update-user/:id" element={<UpdateUser />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/companyregister" element={<CompanyRegistration />} />
-        <Route path="/userprofiledata" element={<DataDisplayPage />} />
-        <Route path="/companylist" element={<CompanyList />} />
-        <Route path="/personalprofile/:id" element={<PersonalProfile />} />
-        <Route path="/bloggingform" element={<BloggingForm />} />
-        <Route path="/blogdisplay" element={<BlogDisplay />} />
-        <Route path="/completeprofile" element={<CompleteProfile />} />
-        <Route path = "/userProfileProjects" element={<UserProfileProjects/>}/>
-        <Route path="/updateproject/:projectId" element={<UpdateProject />} />
-        <Route path='/otherusers/:userId' element={<OtherViewer />} />
+      <Router>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/registration" element={<CreateProject />} />
+          {/* <Route path="/home" element={<ProtectedRoute isAuthenticated={isAuthenticated} component={Home} />} /> */}
 
-        {/* Books Routes  */}
-        <Route path="/books" element={<Booksbrowse />} />
-        <Route path='/books/create' element={<Createbook />} />
-        <Route path='/books/cart' element={<BooksCart />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/categories" element={<Categories />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/whyus" element={<Whyus />} />
+          <Route path="/aboutus" element={<Aboutus />} />
+          <Route path="/update-user/:id" element={<UpdateUser />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          {/* <Route path="/allprojectRoute" element={<DataDisplayPage />} /> */}
+          <Route path='/allprojectRoute' element={<ProtectedRoute isAuthenticated={isAuthenticated} component={DataDisplayPage} />} />
+          <Route path="/personalprofile/:id" element={<PersonalProfile />} />
+          <Route path="/bloggingform" element={<BloggingForm />} />
+          {/* <Route path="/blogdisplay" element={<BlogDisplay />} /> */}
+          <Route path='/blogdisplay' element={<ProtectedRoute isAuthenticated={isAuthenticated} component={BlogDisplay} />} />
+          <Route path="/completeprofile" element={<CompleteProfile />} />
+          <Route path="/userProfileProjects" element={<UserProfileProjects />} />
+          <Route path="/updateproject/:projectId" element={<UpdateProject />} />
+          <Route path="/otherusers/:userId" element={<OtherViewer />} />
+          <Route path="/books" element={<Booksbrowse />} />
+          <Route path="/books/create" element={<Createbook />} />
+          <Route path="/books/cart" element={<BooksCart />} />
+          <Route path="/joinus" element={<JoinUs />} />
 
-      </Routes>
-    </Router>
-  </AuthProvider>
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 }
 

@@ -1,56 +1,108 @@
-.main{
+.main {
     text-align: center;
     margin-top: 5%;
 }
 
-h3{
+h3 {
     color: rgb(91, 93, 98);
 }
 
-.static{
+.static {
     color: rgb(56, 55, 55);
     font-size: 40px;
 }
 
-.dynamic{
-    color: rgb(84,121,247);
+.dynamic {
+    color: rgb(84, 121, 247);
 }
 
 .line {
-    border-top: 2px solid rgba(84, 122, 247, 0.571);
     margin-top: 20px;
     width: 700px;
     margin-left: 22%;
 }
 
-.motivation{
+.motivation {
     color: rgba(65, 63, 63, 0.644);
     font-weight: 300;
     margin-top: 1%;
 }
 
-.buttons{
+.buttons {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 50px; 
     margin-top: 20px;
-    gap:10px;
+    gap: 10px;
 }
-.login{
-    background-color: rgb(84,121,247);
+
+/* Button styles */
+.login, .signup {
+    background-color: rgb(84, 121, 247);
     color: white;
     border: none;
     height: 30px;
     width: 60px;
-    border-radius: 1px;
+    border-radius: 4px; /* Updated for consistency */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none; /* Ensure text-decoration is removed */
 }
 
-.signup{
-    background-color: rgb(84,121,247);
-    color: white;
-    border: none;
-    height: 30px;
-    width: 60px; 
-    border-radius: 1px;
+.login:hover, .signup:hover {
+    background-color: rgb(91, 93, 98);
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .line {
+        width: 90%;
+        margin-left: 5%;
+    }
+
+    .static {
+        font-size: 28px; /* Smaller font size for mobile */
+    }
+
+    .dynamic {
+        font-size: 28px; /* Smaller font size for mobile */
+    }
+
+    .buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .login, .signup {
+        width: 100px; /* Wider buttons for easier tap on mobile */
+        height: 40px; /* Slightly taller buttons */
+    }
+}
+
+@media (max-width: 480px) {
+    .line {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .static {
+        font-size: 24px; /* Even smaller font size for very small screens */
+    }
+
+    .dynamic {
+        font-size: 24px; /* Even smaller font size for very small screens */
+    }
+
+    .buttons {
+        margin-bottom: 30px; /* Adjust spacing for very small screens */
+    }
+
+    .login, .signup {
+        width: 120px; /* Wider buttons for very small screens */
+        height: 45px; /* Slightly taller buttons */
+    }
 }

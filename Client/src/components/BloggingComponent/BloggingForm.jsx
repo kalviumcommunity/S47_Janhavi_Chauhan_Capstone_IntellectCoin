@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import blog from './BloggingForm.module.css';
+import '../../common/Loader.css';  // Import the CSS for the loader
 
 const CreateBlog = () => {
   const [title, setTitle] = useState('');
@@ -8,6 +9,7 @@ const CreateBlog = () => {
   const [image, setImage] = useState('');
   const [message, setMessage] = useState('');
   const [isError, setIsError] = useState(false);
+  const [loading, setLoading] = useState(false);  // Add a loading state
 
   const textareaRef = useRef(null);
 
@@ -20,6 +22,8 @@ const CreateBlog = () => {
 
   const handleCreateBlog = async (e) => {
     e.preventDefault();
+    setLoading(true);  // Set loading to true
+
     try {
       const token = localStorage.getItem('token');
       if (!token) {
@@ -39,11 +43,32 @@ const CreateBlog = () => {
 
       setIsError(false);
       setMessage('Blog created successfully!');
+      setTitle('');  // Clear form fields
+      setContent('');
+      setImage('');
     } catch (error) {
       setIsError(true);
       setMessage('Error creating blog');
+    } finally {
+      setLoading(false);  // Set loading to false
     }
   };
+
+  if (loading) {
+    return (
+      <div className='spinner-wrapper'>
+        <div className='spinner'>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div> 
+        </div>
+        <p className='loading'>Creating blog...!!</p>
+      </div>
+    );
+  }
 
   return (
     <div className={blog.container}>
@@ -65,7 +90,6 @@ const CreateBlog = () => {
           ref={textareaRef}
         ></textarea>
         <input
-         
           placeholder="Image URL"
           value={image}
           onChange={(e) => setImage(e.target.value)}

@@ -1,0 +1,105 @@
+.cartContainer {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 5%;
+    
+  }
+  
+  .cartTitle {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: rgb(84,121,247);
+  }
+  
+  .cartEmpty {
+    text-align: center;
+    font-size: 18px;
+    color: #666;
+  }
+  
+  .cartItems {
+    margin-bottom: 20px;
+  }
+  
+  .cartItem {
+    padding: 10px;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+  }
+  
+  .itemTitle {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  
+  .itemPrice,
+  .itemQuantity {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+  .itemControls {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .controlBtn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    background: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .controlBtn:hover {
+    background: #0056b3;
+  }
+  
+  .decreaseBtn {
+    background: #dc3545;
+  }
+  
+  .increaseBtn {
+    background:rgb(84,121,247);;
+  }
+  
+  .decreaseBtn:hover {
+    background: #c82333;
+  }
+  
+  .increaseBtn:hover {
+    background:rgb(68, 101, 210);;
+  }
+  
+  .cartTotal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid #ddd;
+  }
+  
+  .checkoutBtn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background: rgb(84,121,247);;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .checkoutBtn:hover {
+    background: rgb(68, 101, 210);;;
+  }
+  

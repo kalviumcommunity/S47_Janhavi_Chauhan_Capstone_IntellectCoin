@@ -66,20 +66,13 @@
   margin-bottom: 5px;
 }
 
-.part-2 ul,
-.part-3 ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.part-2 ul li,
-.part-3 ul li {
-  margin-bottom: 10px;
-}
-
-.part-2 a,
-.part-3 a {
+.links a {
   color: #333;
   text-decoration: none;
 }
@@ -150,28 +143,28 @@
 
 @-moz-keyframes myfirst {
   0% {
-      left: -25%;
+    left: -25%;
   }
   100% {
-      left: 100%;
+    left: 100%;
   }
 }
 
 @-webkit-keyframes myfirst {
   0% {
-      left: -25%;
+    left: -25%;
   }
   100% {
-      left: 100%;
+    left: 100%;
   }
 }
 
 @keyframes myfirst {
   0% {
-      left: -25%;
+    left: -25%;
   }
   100% {
-      left: 100%;
+    left: 100%;
   }
 }
 
