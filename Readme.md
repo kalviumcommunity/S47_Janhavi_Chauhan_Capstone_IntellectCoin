@@ -1,29 +1,126 @@
-CAPSTONE
-IntellectCoin
-Learn2Earn
+# IntellectCoin - Learn2Earn
+---
+## Overview
 
-Now you can start earning while you are learning.
+Welcome to **IntellectCoin**, the revolutionary app that enables you to earn while you learn. This platform is designed for everyone, from students to lifelong learners, providing opportunities to earn money with even the most basic knowledge. IntellectCoin serves as a bridge between companies, organizations, and individuals eager to earn and learn simultaneously.
+## Why Choose IntellectCoin?
 
-IntellectCoin is the app where you can learn as well as earn. This app is not only for students but for every person on the entire earth with minimal knowledge. This app will allow you to earn money with even basic knowledge. This app will be a bridge between company, organisation, etc and the people who are willing to earn and learn at same time. 
+IntellectCoin is the perfect solution for people looking to generate side income without compromising their study or work schedules. Whether you are a BTech student, UPSC aspirant, or a lifelong learner, IntellectCoin provides the flexibility to earn from short-term tasks that match your skills. Companies also benefit by hiring talented individuals for specific tasks without the expense of full-time or even part-time employees.
 
-For example :
- I am a btech cse student of 1st year and I want to generate my own income but I just have knowledge of HTML,CSS. So as of now I will be unaware how to proceed further so this app will allow me to register with the skills that I know and I will have to provide artifacts and proofs regarding my learning. Similarly there may be company who require people with knowledge of HTML,CSS but don’t want to hire them so this company will register in the app and tell there requirements. If data from the student matches the company’s requirement we will get the match and the student can work with company for that particular duration with earning.
+## Features
 
-Problem Statement : 
+- **Learn & Earn**: Register with your skills, provide artifacts and proofs of learning, and get matched with companies requiring your expertise.
+- **Flexible Opportunities**: Work on short-term tasks that fit into your schedule, enabling you to earn money without disrupting your studies.
+- **Cost-Effective for Companies**: Companies can hire individuals for specific tasks, reducing the cost of hiring full-time or part-time employees.
 
-People want to generate side income but are not getting time for part-time job or offline work. Many people are learning on daily basis such as  Btech students, UPSC students etc. For their earning without disturbing their earning this app is being prepared. Another reason is companies also need people to perform small tasks but hiring a intern for just small task will increase expenses so this app will allow company to hire particular person for short duration which will help in cost cutting.
+## Problem Statement
 
-Road Map : 
-- Initialising github project.
-- Creating Readme file with description.
-- Creating low-fid design.
-- Working with Front-end components.
-- Working on Backend and routing.
-- Authentication and Authorisation.
-—--------------------------
+Many people, especially students, want to generate a side income but struggle to find the time for a part-time job or offline work. Meanwhile, companies need people to perform small tasks but do not want to incur the expense of hiring interns for short durations. IntellectCoin addresses both these issues, allowing individuals to earn from their knowledge and skills while helping companies cut costs by hiring for specific tasks.
 
-Low Fidelity : https://www.figma.com/file/Yalg8tvyuTtHUoDInifzP1/Untitled?type=design&node-id=0-1&mode=design&t=7Vvxh4kFj2ZhcopC-0 
+## Roadmap
 
-Low Fidelity prototype : https://www.figma.com/proto/Yalg8tvyuTtHUoDInifzP1/Untitled?type=design&node-id=1-3&t=7Vvxh4kFj2ZhcopC-0&scaling=min-zoom&page-id=0%3A1&starting-point-node-id=1%3A2
+1. **Initialize GitHub Project**
+2. **Create ReadMe File with Description**
+3. **Create Low-Fidelity Design**
+4. **Develop Front-End Components**
+5. **Implement Backend and Routing**
+6. **Authentication and Authorization**
 
+## Tech Stack
 
+- **Front-End**: React.js
+- **Back-End**: Node.js, Express.js
+- **Database**: MongoDB
+- **State Management**: Redux
+- **Testing**: Bruno
+
+## Getting Started
+
+### Prerequisites
+
+Ensure you have the following installed on your machine:
+
+- Node.js
+- npm
+
+### Installation
+
+1. **Clone the Repository**
+
+```bash
+git clone https://github.com/your-repository.git
+cd your-repository
+
+2. **# IntellectCoin - Learn2Earn
+
+## Overview
+
+Welcome to **IntellectCoin**, the revolutionary app that enables you to earn while you learn. This platform is designed for everyone, from students to lifelong learners, providing opportunities to earn money with even the most basic knowledge. IntellectCoin serves as a bridge between companies, organizations, and individuals eager to earn and learn simultaneously.
+
+## Why Choose IntellectCoin?
+
+IntellectCoin is the perfect solution for people looking to generate side income without compromising their study or work schedules. Whether you are a BTech student, UPSC aspirant, or a lifelong learner, IntellectCoin provides the flexibility to earn from short-term tasks that match your skills. Companies also benefit by hiring talented individuals for specific tasks without the expense of full-time or even part-time employees.
+
+## Features
+
+- **Learn & Earn**: Register with your skills, provide artifacts and proofs of learning, and get matched with companies requiring your expertise.
+- **Flexible Opportunities**: Work on short-term tasks that fit into your schedule, enabling you to earn money without disrupting your studies.
+- **Cost-Effective for Companies**: Companies can hire individuals for specific tasks, reducing the cost of hiring full-time or part-time employees.
+
+## Problem Statement
+
+Many people, especially students, want to generate a side income but struggle to find the time for a part-time job or offline work. Meanwhile, companies need people to perform small tasks but do not want to incur the expense of hiring interns for short durations. IntellectCoin addresses both these issues, allowing individuals to earn from their knowledge and skills while helping companies cut costs by hiring for specific tasks.
+
+## Roadmap
+
+1. **Initialize GitHub Project**
+2. **Create ReadMe File with Description**
+3. **Create Low-Fidelity Design**
+4. **Develop Front-End Components**
+5. **Implement Backend and Routing**
+6. **Authentication and Authorization**
+
+## Tech Stack
+
+- **Front-End**: React.js
+- **Back-End**: Node.js, Express.js
+- **Database**: MongoDB
+- **State Management**: Redux
+- **Testing**: Bruno
+
+## Getting Started
+
+### Prerequisites
+
+Ensure you have the following installed on your machine:
+
+- Node.js
+- npm
+
+### Installation
+
+1. **Clone the Repository**
+
+```bash
+git clone https://github.com/kalviumcommunity/S47_Janhavi_Chauhan_Capstone_IntellectCoin.git
+cd your-repository
+```
+2. **Install Server Dependencies and Start the Server**
+```bash
+cd server
+npm install
+npm start
+```
+
+3. **Install Client Dependencies and Start the Client**
+```bash
+cd client
+npm install
+npm run dev
+```
+##Connect with Us
+
+- LinkedIn : Janhavi Chauhan(https://www.linkedin.com/in/janhavi-chauhan-972305291/)
+- Github: janhavichauhan(https://github.com/janhavichauhan)
+---
+By choosing IntellectCoin, you are joining a community that values learning and earning in harmony. Explore your potential, gain real-world experience, and earn money with IntellectCoin.
