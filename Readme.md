@@ -121,5 +121,6 @@ npm run dev
 
 - LinkedIn : [Janhavi Chauhan](https://www.linkedin.com/in/janhavi-chauhan-972305291/)
 - Github: [janhavichauhan](https://github.com/janhavichauhan)
+- [Live Demo](https://intellectcoin.onrender.com)
 ---
 By choosing IntellectCoin, you are joining a community that values learning and earning in harmony. Explore your potential, gain real-world experience, and earn money with IntellectCoin.
