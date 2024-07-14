@@ -1,0 +1,52 @@
+.navheading a {
+    text-decoration: none;
+    color: rgb(84, 121, 247);
+    font-size: 18px;
+}
+
+.navhead {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 30px;
+    margin-top: 20px;
+}
+
+.navheader a {
+    text-decoration: none;
+    color: rgb(84, 121, 247);
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+@media (max-width: 768px) {
+    .navhead {
+        flex-direction: column;
+        margin-right: 10px;
+        margin-top: 10px;
+    }
+
+    .navheading a {
+        font-size: 16px;
+    }
+
+    .navheader a {
+        font-size: 18px;
+        margin-left: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navhead {
+        margin-right: 5px;
+        margin-top: 5px;
+    }
+
+    .navheading a {
+        font-size: 14px;
+    }
+
+    .navheader a {
+        font-size: 16px;
+        margin-left: 3px;
+    }
+}

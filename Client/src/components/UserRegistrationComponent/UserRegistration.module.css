@@ -1,6 +1,5 @@
-/* UserRegistration.module.css */
+:last-child/* UserRegistration.module.css */
 
-/* Heading style */
 .heading {
     font-size: 2rem;
     color: #333;
@@ -8,14 +7,12 @@
     margin-bottom: 1.5rem;
   }
   
-  /* Form container style */
+ 
   .form {
     max-width: 600px;
     margin: 0 auto;
     padding: 1rem;
-    background-color: #f9f9f9;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
   
   /* Input and textarea styles */
@@ -38,7 +35,7 @@
   /* Input focus styles */
   .input:focus,
   .textarea:focus {
-    border-color: #007bff;
+    border-color:rgb(84,121,247);;
     outline: none;
     box-shadow: 0 0 0 2px rgba(38, 143, 255, 0.25);
   }
@@ -88,7 +85,7 @@
     padding: 0.75rem 1.25rem;
     font-size: 1rem;
     color: #fff;
-    background-color: #007bff;
+    background-color: rgb(84,121,247);;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -97,7 +94,7 @@
   
   /* Button hover styles */
   .submitButton:hover {
-    background-color: #0056b3;
+    background-color: rgb(47, 71, 152);;
   }
   
   /* Button disabled styles */

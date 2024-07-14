@@ -43,3 +43,11 @@ exports.createBlog = async (req, res) => {
   }
 };
 
+exports.getAllBlogs = async (req, res) => {
+  try {
+    const blogs = await Blog.find().populate('author', 'username');
+    res.status(200).json(blogs);
+  } catch (error) {
+    res.status(500).send({ message: "Internal Server Error" });
+  }
+}

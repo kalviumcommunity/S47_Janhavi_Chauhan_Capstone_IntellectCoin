@@ -1,7 +1,5 @@
-
 import React, { useState, useEffect } from 'react';
 import { register } from '../../services/services';
-import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faChevronRight } from '@fortawesome/free-solid-svg-icons';
@@ -10,7 +8,8 @@ import styles from './Signup.module.css';
 import { CarouselData } from '../../../data/Carouseldata';
 import Navbar from '../LandingPageComponent/Navbar';
 import './button.css';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import '../../common/Loader.css';
 
 const Register = () => {
     const dispatch = useDispatch();
@@ -72,7 +71,7 @@ const Register = () => {
     };
 
     const postDetails = async () => {
-        setLoading(true);
+        setLoading(true);  // Show loading spinner
         if (!formData.pic) {
             setErrors(prev => ({ ...prev, pic: 'Please select an image' }));
             setLoading(false);
@@ -131,94 +130,89 @@ const Register = () => {
     return (
         <div>
             <Navbar />
+            {loading && (
+                <div className='spinner-wrapper'>
+                    <div className='spinner'>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <p className='loading'>Loading...!!</p>
+                </div>
+            )}
             <div className={styles.login_container}>
-                 <div className={styles.left}>
-                     <div onClick={forwardImage} className={styles.forward}>
+                <div className={styles.left}>
+                    <div onClick={forwardImage} className={styles.forward}>
                         <FontAwesomeIcon icon={faChevronRight} style={{ height: '30px', width: '30px', marginLeft: '40px' }} />
-                     </div>
-                     <motion.img
+                    </div>
+                    <motion.img
                         src={CarouselData[currentImage].img}
-                         alt=""
-                         className={styles.image}
-                         initial={{ opacity: 0 }}                          animate={{ opacity: isVisible ? 1 : 0 }} 
-                         transition={{ duration: 0.5 }} 
+                        alt=""
+                        className={styles.image}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: isVisible ? 1 : 0 }}
+                        transition={{ duration: 0.5 }}
                         onLoad={fadeInAnimation}
-                     />
-                     <div onClick={backwardImage} className={styles.backward}>
-                       <FontAwesomeIcon icon={faChevronRight} style={{ transform: 'rotate(180deg)', height: '30px', width: '30px' }} />
+                    />
+                    <div onClick={backwardImage} className={styles.backward}>
+                        <FontAwesomeIcon icon={faChevronRight} style={{ transform: 'rotate(180deg)', height: '30px', width: '30px' }} />
                     </div>
                     {CarouselData.map((data, index) => (
-                         <motion.div
+                        <motion.div
                             key={index}
                             className={styles.title_below}
-                             initial={{ opacity: 0 }}
-                             animate={{ opacity: isVisible ? 1 : 0 }} 
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: isVisible ? 1 : 0 }}
                             transition={{ delay: index * 0.5, duration: 0.5 }}
-                         >
+                        >
                             {currentImage === index && (
                                 <motion.div
-                                     key={index}
-                                     initial={{ opacity: 0 }}
-                                     animate={{ opacity: isVisible ? 1 : 0 }} 
-                                     transition={{ delay: index * 0.5, duration: 0.5 }}
-                                 >
-                                   {data.title}
-                               </motion.div>
-                           )}
-                       </motion.div>
+                                    key={index}
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: isVisible ? 1 : 0 }}
+                                    transition={{ delay: index * 0.5, duration: 0.5 }}
+                                >
+                                    {data.title}
+                                </motion.div>
+                            )}
+                        </motion.div>
                     ))}
-                 </div>
-            
-            
-                <div className={styles.left}>
-                <form className={styles.form} onSubmit={handleSubmit} >
-                    <h1 className={styles.heading}>Create Account</h1>
-                    <p className={styles.para1}>Sign up and start your journey</p>
-                <input type="text" name="username" placeholder="Username" value={formData.username} onChange={handleChange} />
-                <span className={styles.error_msg}>{errors.username}</span>
-
-                <input type="text" name="firstName" placeholder="First Name" value={formData.firstName} onChange={handleChange} />
-                <span className={styles.error_msg}>{errors.firstName}</span>
-
-                <input type="text" name="lastName" placeholder="Last Name" value={formData.lastName} onChange={handleChange} />
-                <span className={styles.error_msg}>{errors.lastName}</span>
-
-                <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} />
-                <span className={styles.error_msg}>{errors.email}</span>
-
-                <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} />
-                <span className={styles.error_msg}>{errors.password}</span>
-
-                <input type="file" name="pic" accept="image/jpeg,image/png"  className={styles.file} onChange={handleChange} />
-                <span className={styles.error_msg}>{errors.pic}</span>
-
-                <button className="btn" type="button" disabled={loading} onClick={handleSubmit}>
-                    {loading ? 'Loading...' : 'Register'}
-                </button>
-                <button type="button" className="login-with-google-btn">Sign up with Google</button>
-                <p className={styles.noaccount}>Already have an account? <Link to="/login">Login</Link></p>
-
-            </form>
-
                 </div>
+                <div className={styles.left}>
+                    <form className={styles.form} onSubmit={handleSubmit}>
+                        <h1 className={styles.heading}>Create Account</h1>
+                        <p className={styles.para1}>Sign up and start your journey</p>
+                        <input type="text" name="username" placeholder="Username" value={formData.username} onChange={handleChange} />
+                        <span className={styles.error_msg}>{errors.username}</span>
 
+                        <input type="text" name="firstName" placeholder="First Name" value={formData.firstName} onChange={handleChange} />
+                        <span className={styles.error_msg}>{errors.firstName}</span>
+
+                        <input type="text" name="lastName" placeholder="Last Name" value={formData.lastName} onChange={handleChange} />
+                        <span className={styles.error_msg}>{errors.lastName}</span>
+
+                        <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} />
+                        <span className={styles.error_msg}>{errors.email}</span>
+
+                        <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} />
+                        <span className={styles.error_msg}>{errors.password}</span>
+
+                        <input type="file" name="pic" accept="image/jpeg,image/png" className={styles.file} onChange={handleChange} />
+                        <span className={styles.error_msg}>{errors.pic}</span>
+
+                        <button className="btn" type="submit" disabled={loading}>
+                            {loading ? 'Loading...' : 'Register'}
+                        </button>
+                        {/* <button type="button" className="login-with-google-btn">Sign up with Google</button> */}
+                        <p className={styles.noaccount}>Already have an account? <Link to="/login">Login</Link></p>
+                    </form>
+                </div>
             </div>
-
-
         </div>
     );
 };
 
 export default Register;
-
-
-
-
-  
-
-
-
-
-
-
-

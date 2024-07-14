@@ -9,6 +9,8 @@ import BloggingForm from './BloggingComponent/BloggingForm';  // Import your new
 import styles from './PersonalProfile.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import '../common/Loader.css'
+import CommonNavbar from '../common/CommonNavbar';
 
 const PersonalProfile = () => {
   const { auth } = useContext(AuthContext);
@@ -52,10 +54,23 @@ const PersonalProfile = () => {
   };
 
   if (!userData) {
-    return <p>Loading...</p>;
+    return         <div className='spinner-wrapper'>
+    <div className='spinner'>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div> 
+    </div>
+    <p className='loading'>Loading User details...!!</p>
+  </div>
+
   }
 
   return (
+    <>
+    <CommonNavbar />
     <div className={styles.container}>
       <div className={styles.banner} />
       <div className={styles.profileSection}>
@@ -142,6 +157,7 @@ const PersonalProfile = () => {
         </div>
       </div>
     </div>
+  </>
   );
 };
 

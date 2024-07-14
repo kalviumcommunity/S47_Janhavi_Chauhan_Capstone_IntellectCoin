@@ -14,7 +14,6 @@ const SideNavbar = () => {
         <li> <Link to="/Contact">Contact Us</Link></li>
         <li> <Link to="/companyregister">Company Registration</Link></li>
         <li><Link to="/UserProfileData">Browse Projects</Link></li>
-        <li> <Link to="/companylist">Company List</Link></li>
         <li>   <Link to="/registration">Registration</Link></li>
         
       </ul>

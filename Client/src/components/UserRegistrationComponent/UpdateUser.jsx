@@ -21,7 +21,9 @@ const UpdateUser = () => {
     ProjectCode: "",
     DeployedLink: "",
     Certificates: "",
+    pic: null,
   });
+  const [picPreview, setPicPreview] = useState("");
 
   useEffect(() => {
     fetchData();
@@ -29,11 +31,9 @@ const UpdateUser = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(
-        `http://localhost:4000/api/registerations/${id}`
-      );
+      const response = await axios.get(`http://localhost:4000/api/registerations/${id}`);
       setFormData(response.data.data);
-      // console.log(response.data.data);
+      setPicPreview(response.data.data.pic); // Assuming the pic URL is returned in the data
     } catch (error) {
       console.error("Error fetching user data:", error);
     }
@@ -47,10 +47,27 @@ const UpdateUser = () => {
     }));
   };
 
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setFormData((prevState) => ({
+      ...prevState,
+      pic: file,
+    }));
+    setPicPreview(URL.createObjectURL(file));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:4000/register/${id}`, formData);
+      const formDataToSend = new FormData();
+      for (const key in formData) {
+        formDataToSend.append(key, formData[key]);
+      }
+      await axios.put(`http://localhost:4000/register/${id}`, formDataToSend, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
       alert("User information updated successfully");
     } catch (error) {
       console.error("Error updating user information:", error);
@@ -162,6 +179,14 @@ const UpdateUser = () => {
             value={formData.Certificates}
             onChange={handleChange}
           />
+          <div>
+            <input type="file" name="pic" onChange={handleFileChange} />
+            {picPreview && (
+              <div>
+                <img src={picPreview} alt="Profile Preview" style={{ width: '150px', height: '150px' }} />
+              </div>
+            )}
+          </div>
         </div>
         <button type="submit">Update</button>
       </form>

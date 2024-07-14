@@ -22,6 +22,7 @@
   padding: 20px;
   margin-bottom: 20px;
   position: relative; /* Add this for arrow positioning */
+
 }
 
 /* Heading style */
@@ -59,7 +60,6 @@
   height: 0;
   border: 10px solid transparent;
   border-left-color: rgb(84, 121, 247);
-  
 }
 
 .Card2::before {
@@ -83,7 +83,6 @@
   height: 0;
   border: 10px solid transparent;
   border-left-color: rgb(84, 121, 247);
-
 }
 
 .Card3::before {
@@ -107,7 +106,6 @@
   height: 0;
   border: 10px solid transparent;
   border-left-color: rgb(84, 121, 247);
-  
 }
 
 .Card4::before {
@@ -131,7 +129,6 @@
   height: 0;
   border: 10px solid transparent;
   border-left-color: rgb(84, 121, 247);
- 
 }
 
 .Card5::before {
@@ -158,5 +155,70 @@
   100% {
     transform: translateY(0);
     opacity: 0;
+  }
+}
+
+/* Responsive styles for screen width 1047px */
+@media (max-width: 1047px) {
+  .Card1,
+  .Card2,
+  .Card3,
+  .Card4,
+  .Card5 {
+    width: 90%; /* Adjust the width to fit content */
+    height: auto; /* Adjust height to fit content */
+    padding: 15px;
+  }
+
+  .joinUsContainer {
+    flex-direction: column;
+    padding: 15px;
+    gap: 15px;
+  }
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .joinUsContainer {
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .Card1,
+  .Card2,
+  .Card3,
+  .Card4,
+  .Card5 {
+    width: 100%;
+    height: auto;
+    padding: 15px;
+  }
+
+  .Card1 h1,
+  .Card2 h1,
+  .Card3 h1,
+  .Card4 h1,
+  .Card5 h1 {
+    font-size: 15px;
+  }
+
+  .Card1 p,
+  .Card2 p,
+  .Card3 p,
+  .Card4 p,
+  .Card5 p {
+    font-size: 13px;
+  }
+
+  .Card1::after,
+  .Card2::before,
+  .Card2::after,
+  .Card3::before,
+  .Card3::after,
+  .Card4::before,
+  .Card4::after,
+  .Card5::before {
+    display: none;
   }
 }

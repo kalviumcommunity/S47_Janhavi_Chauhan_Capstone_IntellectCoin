@@ -18,14 +18,7 @@ const HomeBodyNav = ({ setSelectedContent }) => {
           />
            <span className={styles.name}>Browse Projects</span>
         </label>
-        <label className={styles.radio}>
-          <input 
-            type="radio" 
-            name="radio" 
-            onClick={() => setSelectedContent('companyList')}
-          />
-          <span className={styles.name}>Company List</span>
-        </label>
+
         <label className={styles.radio}>
           <input 
             type="radio" 

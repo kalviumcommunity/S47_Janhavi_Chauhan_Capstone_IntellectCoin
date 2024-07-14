@@ -37,11 +37,11 @@ function Home() {
   return (
     <>
       <HomeHorizontal />
-      <HomeHeader />
-      <HomeBodyNav setSelectedContent={setSelectedContent} />
+      {/* <HomeHeader /> */}
+      {/* <HomeBodyNav setSelectedContent={setSelectedContent} /> */}
       {/* <SideNavbar /> */}
   
-        {renderContent()}
+        {/* {renderContent()} */}
     
     </>
   );

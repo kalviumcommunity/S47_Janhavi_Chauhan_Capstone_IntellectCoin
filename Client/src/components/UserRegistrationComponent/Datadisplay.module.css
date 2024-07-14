@@ -2,17 +2,59 @@
   padding: 1.25em;
 }
 
-.title {
-  text-align: center;
-  margin-bottom: 1.25em;
-  font-size: 2rem;
+.heading{
+  font-size: 1.5em;
   font-weight: bold;
+  margin-bottom: 0.5em;
+  text-align: center;
+  color:rgb(84,121,247);
 }
 
 .projectGrid {
   display: flex;
   flex-wrap: wrap;
   gap: 1em;
+}
+
+.message{
+  margin-top: 20px;
+  text-align: center;
+ left: 50%;
+}
+
+.message a{
+  text-decoration: none;
+  color:white;
+  font-weight: bold;
+  font-size: 1em;
+  background-color: rgb(84,121,247);
+  padding:4px 4px ;
+  border-radius: 5px;
+
+}
+
+.message a:hover{
+  background-color: white;
+  color:rgb(84,121,247);
+  border: 2px solid rgb(84,121,247);
+}
+
+.author a{
+  text-decoration: none;
+  margin-top: 10px;
+
+}
+
+.author{
+  text-align: center;
+
+
+}
+
+.createdAt{
+  text-align: center;
+  margin-top:10px ;
+  color: #333;
 }
 
 .projectItem {
@@ -309,4 +351,21 @@
 .content {
   display: flex;
   flex-direction: column;
+}
+
+
+
+.searchInputWrapper {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.searchInput {
+  width: 40%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
 }

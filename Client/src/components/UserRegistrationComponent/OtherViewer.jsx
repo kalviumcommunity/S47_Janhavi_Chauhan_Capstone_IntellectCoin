@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import styles from './OtherViewer.module.css';
+import '../../common/Loader.css';
 
 function OtherViewer() {
     const { userId } = useParams();
@@ -28,11 +29,23 @@ function OtherViewer() {
     }, []); 
   
     if (!userData || projects.length === 0) {
-      return <div>Loading...</div>;
+      return (
+        <div className='spinner-wrapper'>
+          <div className='spinner'>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div> 
+          </div>
+          <p className='loading'>Loading User details...!!</p>
+        </div>
+      );
     }
   
     return (
-    <div className={styles.container}>
+      <div className={styles.container}>
         <div className={styles.profile}>
           <img src={userData.pic} alt="Profile" className={styles.profileImage} />
           <p>Name: {userData.firstName} {userData.lastName}</p>
@@ -57,6 +70,6 @@ function OtherViewer() {
         </div>
       </div>
     );
-  }
-  
-  export default OtherViewer;
+}
+
+export default OtherViewer;
