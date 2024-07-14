@@ -128,7 +128,7 @@ const ProjectCard = ({ project, onVideoClick, fetchProjects, triggerRefresh }) =
         return;
       }
 
-      await axios.delete(`http://localhost:4000/api/userregistration/delete/${projectId}`, {
+      await axios.delete(`https://s47-janhavi-chauhan-capstone-kql9.onrender.com/api/userregistration/delete/${projectId}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }

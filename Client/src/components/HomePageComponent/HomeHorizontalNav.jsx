@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import logo from '../../../images/8.png';
 import { Link } from 'react-router-dom';
-
 import ProjectList from '../UserRegistrationComponent/Datadisplay';
 import UserProfileBlogs from '../BloggingComponent/BlogDisplay';
 import CreateBook from '../Books/Createbook';

@@ -8,7 +8,7 @@ const CompanyList = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/companies/registrations');
+        const response = await axios.get('https://s47-janhavi-chauhan-capstone-kql9.onrender.com/api/companies/registrations');
         setCompanies(response.data.data);
       } catch (error) {
         console.error('Error fetching companies:', error);

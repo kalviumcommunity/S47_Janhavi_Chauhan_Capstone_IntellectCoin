@@ -27,7 +27,7 @@ const CompanyRegistration = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:4000/api/companies/register', formData);
+      const response = await axios.post('https://s47-janhavi-chauhan-capstone-kql9.onrender.com/api/companies/register', formData);
       console.log('Registration successful! Response:', response.data);
       alert('Registration successful!');
     } catch (error) {
@@ -52,7 +52,7 @@ const CompanyRegistration = () => {
           <input type="text" name="ProjectRequirement" placeholder="ProjectRequirement" value={formData.ProjectRequirement} onChange={handleChange} className={styles['input-field']} />
         </div>
 
-        <button type="submit" className={styles.button}>Register</button> {/* Apply button class */}
+        <button type="submit" className={styles.button}>Register</button> 
       </form>
     </div>
   );

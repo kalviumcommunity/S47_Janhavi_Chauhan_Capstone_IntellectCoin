@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:4000/api/user'; // Adjust to your backend URL
+const API_URL = 'https://s47-janhavi-chauhan-capstone-kql9.onrender.com/api/user'; // Adjust to your backend URL
 
 export const register = (userData) => {
     return axios.post(`${API_URL}/register`, userData);

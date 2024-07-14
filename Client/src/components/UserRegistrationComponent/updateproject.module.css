@@ -1,0 +1,101 @@
+.Updatecontainer {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 20px;
+    max-width: 1000px; 
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 5%;
+  }
+  
+  .formContainer {
+    flex: 1;
+    margin-right: 20px;
+  }
+  
+  .videoContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+  }
+  
+  .input2 {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .textarea2 {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    min-height: 100px;
+    resize: vertical;
+  }
+  
+  .fileInput2 {
+    margin-bottom: 10px;
+  }
+  
+  .submitButton {
+    background-color: rgb(84,121,247);
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .submitButton:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+  }
+
+  
+
+  
+  video {
+    width: 100%;
+    border-radius: 4px;
+    background-color: #000;
+  }
+  
+  /* Mobile Responsiveness */
+  @media (max-width: 768px) {
+    .Updatecontainer {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .formContainer {
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
+  
+    .videoContainer {
+      width: 100%;
+    }
+  
+    .input2,
+    .textarea2,
+    .fileInput2 {
+      margin-bottom: 15px;
+    }
+  }
+  

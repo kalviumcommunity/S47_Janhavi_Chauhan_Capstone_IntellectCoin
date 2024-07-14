@@ -32,7 +32,7 @@ const CreateBlog = () => {
         return;
       }
 
-      await axios.post('http://localhost:4000/api/blogs/blogs', 
+      await axios.post('https://s47-janhavi-chauhan-capstone-kql9.onrender.com/api/blogs/blogs', 
         { title, content, image }, 
         {
           headers: {

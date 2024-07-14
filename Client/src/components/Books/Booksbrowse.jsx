@@ -2,25 +2,25 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import styles from './Booksbrowse.module.css';
-import '../../common/Loader.css';  // Import the CSS for the loader
+import '../../common/Loader.css';  
 
 function Booksbrowse() {
   const [books, setBooks] = useState([]);
   const [cart, setCart] = useState({});
-  const [loading, setLoading] = useState(true);  // Add a loading state
-  const [searchQuery, setSearchQuery] = useState('');  // Add a state for the search query
+  const [loading, setLoading] = useState(true);  
+  const [searchQuery, setSearchQuery] = useState('');  
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/book', 
+        const response = await axios.get('https://s47-janhavi-chauhan-capstone-kql9.onrender.com/api/book', 
         { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } });
         setBooks(response.data);
       } catch (error) {
         console.error("Error fetching books:", error);
       } finally {
-        setLoading(false);  // Set loading to false after data is fetched
+        setLoading(false);  
       }
     };
 
