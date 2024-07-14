@@ -52,8 +52,6 @@ git clone https://github.com/your-repository.git
 cd your-repository
 ```
 
-2. # IntellectCoin - Learn2Earn
-
 ## Overview
 
 Welcome to **IntellectCoin**, the revolutionary app that enables you to earn while you learn. This platform is designed for everyone, from students to lifelong learners, providing opportunities to earn money with even the most basic knowledge. IntellectCoin serves as a bridge between companies, organizations, and individuals eager to earn and learn simultaneously.
