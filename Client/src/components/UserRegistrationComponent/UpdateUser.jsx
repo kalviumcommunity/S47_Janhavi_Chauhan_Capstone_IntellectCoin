@@ -63,7 +63,7 @@ const UpdateUser = () => {
       for (const key in formData) {
         formDataToSend.append(key, formData[key]);
       }
-      await axios.put(`http://localhost:4000/register/${id}`, formDataToSend, {
+      await axios.put(`https://s47-janhavi-chauhan-capstone-kql9.onrender.com/register/${id}`, formDataToSend, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

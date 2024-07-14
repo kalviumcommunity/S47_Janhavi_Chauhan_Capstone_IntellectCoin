@@ -61,15 +61,15 @@ function Createbook() {
     const completeFormData = { ...formData, image: imageUrls };
 
     try {
-      const response = await axios.post('http://localhost:4000/api/book/create', completeFormData, {
+      const response = await axios.post('https://s47-janhavi-chauhan-capstone-kql9.onrender.com/api/book/create', completeFormData, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${localStorage.getItem('token')}`, // Assuming the token is stored in localStorage
         }
       });
       console.log(response.data);
-      alert('Book created successfully!'); // Add alert for successful book creation
-      // Optionally, clear the form or redirect the user
+      alert('Book created successfully!'); 
+      
       setFormData({
         title: '',
         description: '',
@@ -80,7 +80,7 @@ function Createbook() {
       setPreviewImages([]);
     } catch (error) {
       console.error("Error creating book:", error);
-      alert('Error creating book. Please try again.'); // Add alert for error
+      alert('Error creating book. Please try again.'); 
     }
   };
 

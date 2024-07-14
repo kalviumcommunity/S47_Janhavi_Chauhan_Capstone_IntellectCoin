@@ -8,14 +8,17 @@ const Logout = () => {
     const dispatch = useDispatch();
 
     const handleLogout = () => {
-        // Clear the authentication state in Redux
+       
         dispatch(logout());
 
-        // Remove tokens or any authentication data from localStorage
+        
         localStorage.removeItem('token');
         localStorage.removeItem('id');
 
-        // Redirect to the login page
+        
+        sessionStorage.removeItem('CART');
+
+        
         navigate('/login');
     };
 

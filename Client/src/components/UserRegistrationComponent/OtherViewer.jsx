@@ -11,7 +11,7 @@ function OtherViewer() {
   
     const sendUserIdToServer = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/api/userregistration/otherview/${userId}`, {
+        const response = await axios.get(`https://s47-janhavi-chauhan-capstone-kql9.onrender.com/api/userregistration/otherview/${userId}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }

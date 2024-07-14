@@ -13,7 +13,7 @@ const ProjectsList = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/userregistration/allprojects');
+        const response = await axios.get('https://s47-janhavi-chauhan-capstone-kql9.onrender.com/api/userregistration/allprojects');
         const sortedProjects = response.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
         setProjects(sortedProjects);
         setFilteredProjects(sortedProjects);

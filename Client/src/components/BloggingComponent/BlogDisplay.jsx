@@ -15,7 +15,7 @@ const BlogList = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/blogs/Allblogs');
+        const response = await axios.get('https://s47-janhavi-chauhan-capstone-kql9.onrender.com/api/blogs/Allblogs');
         setBlogs(response.data);
         setFilteredBlogs(response.data); 
       } catch (err) {
@@ -29,7 +29,7 @@ const BlogList = () => {
   }, []);
 
   useEffect(() => {
-    // Filter blogs based on the search query
+   
     const result = blogs.filter(blog =>
       blog.title.toLowerCase().includes(searchQuery.toLowerCase())
     );

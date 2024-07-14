@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
+import styles from './updateproject.module.css';
+import '../../common/Loader.css';
+import CommonNavbar from '../../common/CommonNavbar';
 
 const UpdateProject = () => {
   const [project, setProject] = useState(null);
@@ -24,7 +27,7 @@ const UpdateProject = () => {
           return;
         }
 
-        const response = await axios.get(`http://localhost:4000/api/userregistration/getoneproject/${projectId}`, {
+        const response = await axios.get(`https://s47-janhavi-chauhan-capstone-kql9.onrender.com/api/userregistration/getoneproject/${projectId}`, {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -116,7 +119,6 @@ const UpdateProject = () => {
           }
         );
         setMessage('Project updated successfully!');
-        console.log('response', response);
         navigate(`/home`);
       } catch (error) {
         setMessage('Error updating project');
@@ -126,46 +128,64 @@ const UpdateProject = () => {
 
   return (
     <>
-      <h2>Update Project</h2>
-      {project ? (
-        <form onSubmit={handleUpdateProject}>
-          <input
-            
-            placeholder="Heading"
-            value={heading}
-            onChange={(e) => setHeading(e.target.value)}
-            required
-            
-          />
-          <input
-           
-            placeholder="Project Deployed Link"
-            value={projectLink}
-            onChange={(e) => setProjectLink(e.target.value)}
-            required
-          />
-          <textarea
-            placeholder="Description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            required
-          ></textarea>
-          <input
-            type="file"
-            name="video"
-            accept="video/mp4,video/mov"
-            onChange={handleVideoChange}
-          />
-          <span>{error}</span>
-          <button type="submit" disabled={loading}>
-            {loading ? 'Loading...' : 'Update Project'}
-          </button>
-          {videoPreview && <video src={videoPreview} controls></video>}
-        </form>
-      ) : (
-        <p>Loading project details...</p>
-      )}
-      {message && <p>{message}</p>}
+      <CommonNavbar />
+      <div className={styles.Updatecontainer}>
+        
+        <div className={styles.formContainer}>
+          {project ? (
+            <form onSubmit={handleUpdateProject}>
+              <input
+                placeholder="Heading"
+                value={heading}
+                onChange={(e) => setHeading(e.target.value)}
+                required
+                className={styles.input2}
+              />
+              <input
+                placeholder="Project Deployed Link"
+                value={projectLink}
+                onChange={(e) => setProjectLink(e.target.value)}
+                required
+                className={styles.input2}
+              />
+              <textarea
+                placeholder="Description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                required
+                className={styles.textarea2}
+              />
+              <input
+                type="file"
+                name="video"
+                accept="video/mp4,video/mov"
+                onChange={handleVideoChange}
+                className={styles.fileInput2}
+              />
+              <span>{error}</span>
+              <button type="submit" disabled={loading} className={styles.submitButton}>
+                {loading ? 'Loading...' : 'Update Project'}
+              </button>
+            </form>
+          ) : (
+            <div className={styles.spinnerWrapper}>
+              <div className={styles.spinner}>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div> 
+              </div>
+              <p className={styles.loading}>Loading Project details...!!</p>
+            </div>
+          )}
+          {message && <p className={styles.message}>{message}</p>}
+        </div>
+        <div className={styles.videoContainer}>
+          {videoPreview && <video src={videoPreview} controls />}
+        </div>
+      </div>
     </>
   );
 };

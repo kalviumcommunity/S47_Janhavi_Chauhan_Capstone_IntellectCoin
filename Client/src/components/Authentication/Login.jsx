@@ -15,7 +15,7 @@ import '../../common/Loader.css';
 
 const Login = () => {
     const [formData, setFormData] = useState({ email: '', password: '' });
-    const [loading, setLoading] = useState(false);  // Add loading state
+    const [loading, setLoading] = useState(false);  
     const { setAuth } = useContext(AuthContext);
     const navigate = useNavigate();
     const [currentImage, setCurrentImage] = useState(0);
@@ -53,7 +53,7 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setLoading(true);  // Show loading spinner
+        setLoading(true);  
         loginService(formData)
             .then(response => {
                 const token = response.data.data;
@@ -61,13 +61,13 @@ const Login = () => {
                 localStorage.setItem('token', token);
                 dispatch(login({ token, user }));
                 setAuth({ token, user });
-                navigate('/home'); // Redirect to profile completion page
+                navigate('/home'); 
             })
             .catch(error => {
                 alert(error.response.data.message);
             })
             .finally(() => {
-                setLoading(false);  // Hide loading spinner
+                setLoading(false);  
             });
     };
 

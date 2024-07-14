@@ -75,7 +75,7 @@ const CreateProject = () => {
         }
 
         const response = await axios.post(
-          'http://localhost:4000/api/userregistration/create',
+          'https://s47-janhavi-chauhan-capstone-kql9.onrender.com/api/userregistration/create',
           { heading, projectLink, description, video: videoUrl },
           {
             headers: {

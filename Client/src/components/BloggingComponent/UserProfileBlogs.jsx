@@ -21,7 +21,7 @@ const UserProfileBlogs = () => {
           return;
         }
 
-        const response = await axios.get('http://localhost:4000/api/blogs/user/blogs', {
+        const response = await axios.get('https://s47-janhavi-chauhan-capstone-kql9.onrender.com/api/blogs/user/blogs', {
           headers: {
             Authorization: `Bearer ${token}`
           }
