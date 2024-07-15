@@ -49,7 +49,8 @@ Ensure you have the following installed on your machine:
 
 ```bash
 git clone https://github.com/your-repository.git
-cd your-repository
+cd S47_Janhavi_Chauhan_Capstone_IntellectCoin
+
 ```
 
 ## Overview
@@ -102,7 +103,8 @@ Ensure you have the following installed on your machine:
 
 ```bash
 git clone https://github.com/kalviumcommunity/S47_Janhavi_Chauhan_Capstone_IntellectCoin.git
-cd your-repository
+cd S47_Janhavi_Chauhan_Capstone_IntellectCoin
+
 ```
 2. **Install Server Dependencies and Start the Server**
 ```bash
