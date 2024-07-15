@@ -1,5 +1,10 @@
 # IntellectCoin - Learn2Earn
 ---
+
+## Problem Statement
+
+Many people, especially students, want to generate a side income but struggle to find the time for a part-time job or offline work. Meanwhile, companies need people to perform small tasks but do not want to incur the expense of hiring interns for short durations. IntellectCoin addresses both these issues, allowing individuals to earn from their knowledge and skills while helping companies cut costs by hiring for specific tasks.
+
 ## Overview
 
 Welcome to **IntellectCoin**, the revolutionary app that enables you to earn while you learn. This platform is designed for everyone, from students to lifelong learners, providing opportunities to earn money with even the most basic knowledge. IntellectCoin serves as a bridge between companies, organizations, and individuals eager to earn and learn simultaneously.
@@ -67,9 +72,6 @@ IntellectCoin is the perfect solution for people looking to generate side income
 - **Flexible Opportunities**: Work on short-term tasks that fit into your schedule, enabling you to earn money without disrupting your studies.
 - **Cost-Effective for Companies**: Companies can hire individuals for specific tasks, reducing the cost of hiring full-time or part-time employees.
 
-## Problem Statement
-
-Many people, especially students, want to generate a side income but struggle to find the time for a part-time job or offline work. Meanwhile, companies need people to perform small tasks but do not want to incur the expense of hiring interns for short durations. IntellectCoin addresses both these issues, allowing individuals to earn from their knowledge and skills while helping companies cut costs by hiring for specific tasks.
 
 ## Roadmap
 
