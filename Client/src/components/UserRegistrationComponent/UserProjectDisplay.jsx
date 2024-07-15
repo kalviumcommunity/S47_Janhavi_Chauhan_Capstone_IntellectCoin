@@ -14,7 +14,7 @@ const fetchProjects = async (setProjects, setUsername, setMessage, setTotalProje
       return;
     }
 
-    const response = await axios.get('http://localhost:4000/api/userregistration/user-projects', {
+    const response = await axios.get('https://s47-janhavi-chauhan-capstone-kql9.onrender.com/api/userregistration/user-projects', {
       headers: {
         Authorization: `Bearer ${token}`
       }
