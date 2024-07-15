@@ -103,18 +103,18 @@ function Profile() {
         className={styles.fileInput}
       />
       {preview && <img src={preview} alt="Profile Preview" style={{ width: '100px', height: '100px', objectFit: 'cover' }} className={styles.preview} />}
-      <input  name="username" placeholder="Username" value={formData.username} onChange={handleChange} className={styles.input1} />
+            <input type="text" name="username" placeholder="Username" value={formData.username} onChange={handleChange} className={styles.input1} />
       <input  name="firstName" placeholder="First Name" value={formData.firstName} onChange={handleChange} className={styles.input1} />
-      <input  name="lastName" placeholder="Last Name" value={formData.lastName} onChange={handleChange} className={styles.input1} />
+      <input name="lastName" placeholder="Last Name" value={formData.lastName} onChange={handleChange} className={styles.input1} />
       <input  name="linkdin" placeholder="LinkedIn" value={formData.linkdin} onChange={handleChange} className={styles.input1} />
       <input  name="github" placeholder="GitHub" value={formData.github} onChange={handleChange} className={styles.input1} />
-      <input name="About yourself" placeholder="Languages" value={formData.languages} onChange={handleChange} className={styles.input1} />
+      <input  name="languages" placeholder="Write about yourself" value={formData.languages} onChange={handleChange} className={styles.input1} />
       <input  name="CollegeName" placeholder="College Name" value={formData.CollegeName} onChange={handleChange} className={styles.input1} />
-      <input  name="Degree" placeholder="Degree" value={formData.Degree} onChange={handleChange} className={styles.input1} />
-      <input name="YearOfStudy" placeholder="Year of Study" value={formData.YearOfStudy} onChange={handleChange} className={styles.input1} />
-      <input name="Skills" placeholder="Skills" value={formData.Skills} onChange={handleChange} className={styles.input1} />
-      <input name="Category" placeholder="Certificates" value={formData.Certificates} onChange={handleChange} className={styles.input1} />
-      <input name="PhoneNumber" placeholder="Phone Number" value={formData.PhoneNumber} onChange={handleChange} className={styles.input1} />
+      <input name="Degree" placeholder="Degree" value={formData.Degree} onChange={handleChange} className={styles.input1} />
+      <input  name="YearOfStudy" placeholder="Year of Study" value={formData.YearOfStudy} onChange={handleChange} className={styles.input1} />
+      <input  name="Skills" placeholder="Skills" value={formData.Skills} onChange={handleChange} className={styles.input1} />
+      <input  name="Certificates" placeholder="Category" value={formData.Certificates} onChange={handleChange} className={styles.input1} />
+      <input  name="PhoneNumber" placeholder="Phone Number" value={formData.PhoneNumber} onChange={handleChange} className={styles.input1} />
 
 
       <button type="submit" disabled={loading}>
